@@ -11,6 +11,7 @@ import Parse
 
 class WishlistTableViewController: UITableViewController {
     
+    private var currentUser = PFUser.currentUser()
     private var wishlists = [Wishlist]()
     
     // MARK: - Navigation
@@ -44,10 +45,7 @@ class WishlistTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        wishlists = StaticData.Wishlists
-        
-        self.tableView.reloadData()
+        loadWishLists()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,39 +75,27 @@ class WishlistTableViewController: UITableViewController {
         return cell
     }
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    func loadWishLists() {
+        let query = PFQuery(className:"Wishlist")
+        query.whereKey("userid", equalTo:currentUser!.objectId!)
+        query.findObjectsInBackgroundWithBlock {
+            (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                NSLog("results: \(wishlistObjects)")
+                
+                if let wishlistObjects = wishlistObjects as? [PFObject] {
+                    for wishlistObject in wishlistObjects {
+                        self.wishlists.append(
+                            Wishlist(identifier: wishlistObject.objectId!,
+                                name: wishlistObject["name"] as! String,
+                                description: "desc"))
+                    }
+                    self.tableView.reloadData()
+                }
+            } else {
+                NSLog("error: \(error)")
+            }
+        }
 
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 }

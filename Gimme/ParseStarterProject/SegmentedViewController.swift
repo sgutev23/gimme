@@ -11,8 +11,9 @@ import Parse
 
 class SegmentedViewController: UIViewController {
 
-    @IBOutlet weak var segmentedController: UISegmentedControl!
+    let currentUser = PFUser.currentUser()
     
+    @IBOutlet weak var segmentedController: UISegmentedControl!
     
     @IBOutlet weak var firstContainerView: UIView!
     
@@ -51,14 +52,18 @@ class SegmentedViewController: UIViewController {
             PFUser.logOut()
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+   
+    @IBAction func addWishlist(sender: AnyObject) {
+        let wishlist = PFObject(className:"Wishlist")
+        wishlist["userid"] = currentUser?.objectId
+        wishlist["name"] = "Wishlist " + String(arc4random())
+        wishlist.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                NSLog("added " + String(wishlist["name"]))
+            } else {
+                NSLog("error adding \(error)")
+            }
+        }
     }
-    */
-
 }
