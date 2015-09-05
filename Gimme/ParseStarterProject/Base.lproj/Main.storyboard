@@ -151,9 +151,35 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uQm-rB-YbN" id="lVD-ft-GiC">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btz-PJ-ekx">
+                                            <rect key="frame" x="8" y="8" width="77" height="14"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Wishlists: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-kH-97d">
+                                            <rect key="frame" x="508" y="18" width="84" height="17"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="btz-PJ-ekx" firstAttribute="top" secondItem="lVD-ft-GiC" secondAttribute="topMargin" id="UI9-HE-YuT"/>
+                                        <constraint firstItem="1Lq-kH-97d" firstAttribute="centerX" secondItem="lVD-ft-GiC" secondAttribute="centerX" id="Wgk-5s-eoo"/>
+                                        <constraint firstItem="1Lq-kH-97d" firstAttribute="top" secondItem="lVD-ft-GiC" secondAttribute="topMargin" constant="10" id="q3y-BO-Yxh"/>
+                                        <constraint firstItem="btz-PJ-ekx" firstAttribute="leading" secondItem="lVD-ft-GiC" secondAttribute="leadingMargin" id="vPz-s9-Or5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="btz-PJ-ekx" id="ihQ-jp-D5n"/>
+                                    <outlet property="wishListCounterLabel" destination="1Lq-kH-97d" id="PUl-0o-zav"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

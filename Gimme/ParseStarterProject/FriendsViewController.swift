@@ -40,7 +40,8 @@ class FriendsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as! FriendTableViewCell
         
         let friend = friends[indexPath.row]
-        cell.textLabel?.text = friend.name
+        cell.nameLabel?.text = friend.name
+        cell.wishListCounterLabel?.text = "Wishlists: 0"
         
         return cell
     }
