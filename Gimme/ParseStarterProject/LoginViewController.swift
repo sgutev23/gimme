@@ -24,17 +24,6 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginWithFacebook(sender: AnyObject) {
         let permissions = ["public_profile", "email", "user_friends"]
-        if let accessToken: FBSDKAccessToken = FBSDKAccessToken.currentAccessToken() {
-            PFFacebookUtils.logInInBackgroundWithAccessToken(accessToken, block: {
-                (user: PFUser?, error: NSError?) -> Void in
-                if let user = user {
-                    NSLog("User logged in through Facebook!")
-                    self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
-                } else {
-                    NSLog("Uh oh. There was an error logging in.")
-                }
-            })
-        } else {
             PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
             
                 (user: PFUser?, error: NSError?) -> Void in
@@ -48,7 +37,6 @@ class LoginViewController: UIViewController {
                     }
                 }
             })
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
