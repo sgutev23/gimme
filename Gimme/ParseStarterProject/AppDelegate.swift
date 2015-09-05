@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("A2RWW3BpTjLxNYju6SyqVvW6quKN3sPx6tblRU6G",
             clientKey: "wzsOJS3VLPnYEOcJqRM1ZjJKzXqVPf2CZQIb9k5p")
 
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
         PFUser.enableAutomaticUser()
 
         let defaultACL = PFACL();
@@ -69,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotificationTypes(types)
         }
     
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     //--------------------------------------

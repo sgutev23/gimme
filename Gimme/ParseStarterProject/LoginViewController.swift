@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,26 +29,14 @@ class LoginViewController: UIViewController {
             (user: PFUser?, error: NSError?) -> Void in
             
             if let error = error {
-                
-                print(error)
-                
+                NSLog("Error: \(error)")
             } else {
-                
                 if let user = user {
-                    
-                        self.performSegueWithIdentifier("showMyLists", sender: self)
-                    
+                    self.performSegueWithIdentifier("showMyLists", sender: self)
                 }
-                
-                
-                
             }
-        
-            
         })
-
     }
-    
     
     override func viewDidAppear(animated: Bool) {
         if PFUser.currentUser()?.username != nil {
