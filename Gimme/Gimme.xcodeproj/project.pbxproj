@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0183797F1B9B39B800E27C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0183797E1B9B39B800E27C39 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		018379811B9B39C400E27C39 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379801B9B39C400E27C39 /* Wishlist.swift */; settings = {ASSET_TAGS = (); }; };
+		018379831B9B39D000E27C39 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379821B9B39D000E27C39 /* Item.swift */; settings = {ASSET_TAGS = (); }; };
 		01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		588DFF2C1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0183797E1B9B39B800E27C39 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		018379801B9B39C400E27C39 /* Wishlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
+		018379821B9B39D000E27C39 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewController.swift; sourceTree = "<group>"; };
 		01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
 		588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -74,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01A535A71B9B370900DBC96C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0183797E1B9B39B800E27C39 /* User.swift */,
+				018379801B9B39C400E27C39 /* Wishlist.swift */,
+				018379821B9B39D000E27C39 /* Item.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +110,7 @@
 		81BA81471A49DA1800E65899 /* Gimme */ = {
 			isa = PBXGroup;
 			children = (
+				01A535A71B9B370900DBC96C /* Models */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */,
 				81BA814E1A49DA1800E65899 /* Main.storyboard */,
@@ -233,6 +250,9 @@
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */,
 				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
+				0183797F1B9B39B800E27C39 /* User.swift in Sources */,
+				018379831B9B39D000E27C39 /* Item.swift in Sources */,
+				018379811B9B39C400E27C39 /* Wishlist.swift in Sources */,
 				01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

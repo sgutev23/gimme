@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5pf-b8-9kx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A262e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5pf-b8-9kx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
@@ -17,67 +17,33 @@
                     <view key="view" contentMode="scaleToFill" id="IgQ-of-926">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gimme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jez-NU-pUO">
-                                <rect key="frame" x="256" y="56" width="88" height="28"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="88" id="ALX-iN-qrG"/>
-                                    <constraint firstAttribute="height" constant="28" id="DJ8-9W-T3r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hB1-os-UzZ">
-                                <rect key="frame" x="230" y="251" width="141" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="141" id="PqA-ZP-gsG"/>
-                                    <constraint firstAttribute="height" constant="30" id="ukf-WL-9c1"/>
-                                </constraints>
-                                <state key="normal" title="Login with Facebook"/>
-                                <connections>
-                                    <action selector="loginWithFacebook:" destination="1LW-Yy-Kxt" eventType="touchUpInside" id="Lh5-uN-ZVu"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="jez-NU-pUO" firstAttribute="centerX" secondItem="IgQ-of-926" secondAttribute="centerX" id="dBm-mq-Ktt"/>
-                            <constraint firstItem="hB1-os-UzZ" firstAttribute="centerX" secondItem="IgQ-of-926" secondAttribute="centerX" id="dO9-kJ-gvC"/>
-                            <constraint firstItem="jez-NU-pUO" firstAttribute="top" secondItem="BAv-M0-tY5" secondAttribute="bottom" constant="36" id="hsJ-3m-eGn"/>
-                            <constraint firstItem="hB1-os-UzZ" firstAttribute="top" secondItem="jez-NU-pUO" secondAttribute="bottom" constant="167" id="onR-gf-mJ5"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <segue destination="5pf-b8-9kx" kind="show" identifier="showMyLists" id="AFP-Rz-yNc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxv-r7-N6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-242" y="422"/>
+            <point key="canvasLocation" x="-354" y="436"/>
         </scene>
         <!--Wishlist Table View Controller-->
         <scene sceneID="p4l-9t-CJW">
             <objects>
                 <tableViewController id="5pf-b8-9kx" customClass="WishlistTableViewController" customModule="Gimme" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X87-yg-z7i">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="X87-yg-z7i">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WishlistCell" rowHeight="116" id="iJO-QY-Qpq" customClass="WishlistTableViewCell" customModule="Gimme">
-                                <rect key="frame" x="0.0" y="28" width="600" height="116"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WishlistCell" rowHeight="48" id="iJO-QY-Qpq" customClass="WishlistTableViewCell" customModule="Gimme">
+                                <rect key="frame" x="0.0" y="28" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iJO-QY-Qpq" id="ANk-ke-6vy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="115"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-Pc-pGO">
-                                            <rect key="frame" x="5" y="47" width="45" height="21"/>
+                                            <rect key="frame" x="8" y="8" width="45" height="31"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,35 +52,15 @@
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="tDz-Pc-pGO" firstAttribute="top" secondItem="ANk-ke-6vy" secondAttribute="topMargin" constant="39" id="MMO-0g-ibo"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="tDz-Pc-pGO" secondAttribute="bottom" constant="39" id="UQu-V1-ma8"/>
-                                        <constraint firstItem="tDz-Pc-pGO" firstAttribute="leading" secondItem="ANk-ke-6vy" secondAttribute="leadingMargin" constant="-3" id="g76-EO-LoU"/>
+                                        <constraint firstItem="tDz-Pc-pGO" firstAttribute="top" secondItem="ANk-ke-6vy" secondAttribute="topMargin" id="MMO-0g-ibo"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="tDz-Pc-pGO" secondAttribute="bottom" id="UQu-V1-ma8"/>
+                                        <constraint firstItem="tDz-Pc-pGO" firstAttribute="leading" secondItem="ANk-ke-6vy" secondAttribute="leadingMargin" id="g76-EO-LoU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="nameLabel" destination="tDz-Pc-pGO" id="1Ar-lD-czA"/>
                                 </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="af3-m1-Mce">
-                                <rect key="frame" x="0.0" y="144" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="af3-m1-Mce" id="XVi-YD-tPi">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TIi-0s-cIS">
-                                <rect key="frame" x="0.0" y="188" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TIi-0s-cIS" id="oYr-WQ-WGu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
