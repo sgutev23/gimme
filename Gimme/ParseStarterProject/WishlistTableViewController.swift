@@ -44,6 +44,7 @@ class WishlistTableViewController: UITableViewController {
         
         let wishlist = wishlists[indexPath.section]
         cell.nameLabel?.text = wishlist.name
+        cell.descriptionLabel?.text = wishlist.description
 
         return cell
     }
