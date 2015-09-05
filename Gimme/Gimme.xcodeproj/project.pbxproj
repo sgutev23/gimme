@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B535EA1B9B36B600D02062 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		58B535EF1B9B37E200D02062 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B535EC1B9B37E200D02062 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		58B535F01B9B37E200D02062 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B535ED1B9B37E200D02062 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		58B535F11B9B37E200D02062 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B535EE1B9B37E200D02062 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
 		81BA81501A49DA1800E65899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA814E1A49DA1800E65899 /* Main.storyboard */; };
 		81BA81521A49DA1800E65899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81BA81511A49DA1800E65899 /* Images.xcassets */; };
@@ -26,6 +30,10 @@
 /* Begin PBXFileReference section */
 		01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewController.swift; sourceTree = "<group>"; };
 		01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
+		58B535EA1B9B36B600D02062 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		58B535EC1B9B37E200D02062 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		58B535ED1B9B37E200D02062 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		58B535EE1B9B37E200D02062 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		81BA81451A49DA1800E65899 /* Gimme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gimme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA81491A49DA1800E65899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BA814A1A49DA1800E65899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,8 +61,11 @@
 				81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */,
 				81BA81771A49E0D500E65899 /* libsqlite3.dylib in Frameworks */,
 				81BA81711A49DB6800E65899 /* Parse.framework in Frameworks */,
+				58B535EF1B9B37E200D02062 /* FBSDKCoreKit.framework in Frameworks */,
 				81BA81721A49DB6800E65899 /* ParseCrashReporting.framework in Frameworks */,
 				81BA81731A49DB6800E65899 /* ParseFacebookUtils.framework in Frameworks */,
+				58B535F11B9B37E200D02062 /* FBSDKShareKit.framework in Frameworks */,
+				58B535F01B9B37E200D02062 /* FBSDKLoginKit.framework in Frameworks */,
 				81BA81811A49E10C00E65899 /* ParseUI.framework in Frameworks */,
 				81BA81701A49DB6800E65899 /* Bolts.framework in Frameworks */,
 			);
@@ -89,6 +100,7 @@
 				01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */,
 				81BA81511A49DA1800E65899 /* Images.xcassets */,
 				81BA81481A49DA1800E65899 /* Supporting Files */,
+				58B535EA1B9B36B600D02062 /* LoginViewController.swift */,
 			);
 			name = Gimme;
 			path = ParseStarterProject;
@@ -106,6 +118,9 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58B535EC1B9B37E200D02062 /* FBSDKCoreKit.framework */,
+				58B535ED1B9B37E200D02062 /* FBSDKLoginKit.framework */,
+				58B535EE1B9B37E200D02062 /* FBSDKShareKit.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
 				81BA816D1A49DB6800E65899 /* ParseCrashReporting.framework */,
@@ -217,6 +232,7 @@
 			files = (
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */,
+				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
 				01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
