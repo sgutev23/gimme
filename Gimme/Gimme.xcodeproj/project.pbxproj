@@ -19,6 +19,7 @@
 		0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		0185BE1F1B9B78B00099A56E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1E1B9B78B00099A56E /* Friend.swift */; settings = {ASSET_TAGS = (); }; };
+		0185BE211B9B7F580099A56E /* ItemsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE201B9B7F580099A56E /* ItemsNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
 		01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		588DFF2C1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */; };
@@ -52,6 +53,7 @@
 		0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
 		0185BE1E1B9B78B00099A56E /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		0185BE201B9B7F580099A56E /* ItemsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsNavigationController.swift; sourceTree = "<group>"; };
 		01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewController.swift; sourceTree = "<group>"; };
 		01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
 		588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */,
 				011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */,
 				58B535EA1B9B36B600D02062 /* LoginViewController.swift */,
+				0185BE201B9B7F580099A56E /* ItemsNavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				011EB7291B9B60C5002142A5 /* Cells.swift in Sources */,
 				01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */,
 				011EB71F1B9B4DF4002142A5 /* ItemTableViewCell.swift in Sources */,
+				0185BE211B9B7F580099A56E /* ItemsNavigationController.swift in Sources */,
 				0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */,
 				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
 				011EB7191B9B48CE002142A5 /* Segues.swift in Sources */,

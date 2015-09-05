@@ -14,7 +14,15 @@ class ItemsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let buttonBack: UIButton = UIButton()
+        buttonBack.frame = CGRectMake(0, 0, 40, 40)
+        //buttonBack.addTarget(self, action: "leftNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: buttonBack)
+        
+        self.navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: false)
+        
         self.tableView.reloadData()
     }
 
@@ -43,8 +51,6 @@ class ItemsTableViewController: UITableViewController {
         cell.nameLabel?.text = item.name
         cell.picture?.image = item.picture
             
-        NSLog("\(item.picture?.description)")
-        
         return cell
     }
     
