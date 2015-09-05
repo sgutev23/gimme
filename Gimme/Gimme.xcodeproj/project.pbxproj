@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		81BA81451A49DA1800E65899 /* ParseStarterProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseStarterProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81BA81451A49DA1800E65899 /* Gimme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gimme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA81491A49DA1800E65899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BA814A1A49DA1800E65899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81BA814C1A49DA1800E65899 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
-				81BA81471A49DA1800E65899 /* ParseStarterProject */,
+				81BA81471A49DA1800E65899 /* Gimme */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
 				81BA81461A49DA1800E65899 /* Products */,
 			);
@@ -73,12 +73,12 @@
 		81BA81461A49DA1800E65899 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				81BA81451A49DA1800E65899 /* ParseStarterProject.app */,
+				81BA81451A49DA1800E65899 /* Gimme.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
+		81BA81471A49DA1800E65899 /* Gimme */ = {
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
@@ -87,6 +87,7 @@
 				81BA81511A49DA1800E65899 /* Images.xcassets */,
 				81BA81481A49DA1800E65899 /* Supporting Files */,
 			);
+			name = Gimme;
 			path = ParseStarterProject;
 			sourceTree = "<group>";
 		};
@@ -126,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		81BA81441A49DA1800E65899 /* ParseStarterProject */ = {
+		81BA81441A49DA1800E65899 /* Gimme */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "ParseStarterProject" */;
+			buildConfigurationList = 81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "Gimme" */;
 			buildPhases = (
 				81BA81411A49DA1800E65899 /* Sources */,
 				81BA81421A49DA1800E65899 /* Frameworks */,
@@ -139,9 +140,9 @@
 			);
 			dependencies = (
 			);
-			name = ParseStarterProject;
+			name = Gimme;
 			productName = ParseStarterProject;
-			productReference = 81BA81451A49DA1800E65899 /* ParseStarterProject.app */;
+			productReference = 81BA81451A49DA1800E65899 /* Gimme.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -159,7 +160,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "ParseStarterProject" */;
+			buildConfigurationList = 81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "Gimme" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -172,7 +173,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				81BA81441A49DA1800E65899 /* ParseStarterProject */,
+				81BA81441A49DA1800E65899 /* Gimme */,
 			);
 		};
 /* End PBXProject section */
@@ -321,8 +322,8 @@
 				);
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.parse.appdem;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lepookey.gimme;
+				PRODUCT_NAME = Gimme;
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
 			};
 			name = Debug;
@@ -338,8 +339,8 @@
 				);
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.parse.appdem;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lepookey.gimme;
+				PRODUCT_NAME = Gimme;
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
 			};
 			name = Release;
@@ -347,7 +348,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "ParseStarterProject" */ = {
+		81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "Gimme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81BA81621A49DA1800E65899 /* Debug */,
@@ -356,7 +357,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "ParseStarterProject" */ = {
+		81BA81641A49DA1800E65899 /* Build configuration list for PBXNativeTarget "Gimme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81BA81651A49DA1800E65899 /* Debug */,
