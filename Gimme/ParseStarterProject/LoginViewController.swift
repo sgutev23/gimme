@@ -32,6 +32,20 @@ class LoginViewController: UIViewController {
                     NSLog("Error: \(error)")
                 } else {
                     if let user = user {
+                        if user.isNew {
+                            NSLog("New user \(user)")
+                            let fbRequest = FBSDKGraphRequest(graphPath:"/me", parameters: nil);
+                            fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+                                if error == nil {
+                                    if let result = result {
+                                        user["facebookId"] = result["id"] as? String
+                                        user["name"] = result["name"] as? String
+                                        user.saveInBackground()
+                                        NSLog("Saved user")
+                                    }
+                                }
+                            }
+                        }
                         NSLog("User logged in through Facebook!")
                         self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
                     }

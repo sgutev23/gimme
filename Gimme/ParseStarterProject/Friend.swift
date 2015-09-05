@@ -11,6 +11,7 @@ import UIKit
 public class Friend: NSObject {
     let name: String
     let identifier: String
+    var numWishLists: Int = 0
     
     public init(identifier: String, name: String) {
         self.identifier = identifier
