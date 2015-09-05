@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Parse
+import FBSDKCoreKit
 
 class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +23,40 @@ class LoginViewController: UIViewController {
     }
     
 
+    @IBAction func loginWithFacebook(sender: AnyObject) {
+        let permissions = ["public_profile", "email", "user_friends"]
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
+            
+            (user: PFUser?, error: NSError?) -> Void in
+            
+            if let error = error {
+                
+                print(error)
+                
+            } else {
+                
+                if let user = user {
+                    
+                        self.performSegueWithIdentifier("showMyLists", sender: self)
+                    
+                }
+                
+                
+                
+            }
+        
+            
+        })
+
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        if PFUser.currentUser()?.username != nil {
+            NSLog("User logged in")
+            self.performSegueWithIdentifier("showMyLists", sender: self)
+        }
+    }
     /*
     // MARK: - Navigation
 
