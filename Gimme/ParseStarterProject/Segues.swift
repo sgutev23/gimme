@@ -11,4 +11,5 @@ import Foundation
 public struct SeguesIdentifiers {
     public static let ItemsViewSegue = "ItemsViewSegue"
     public static let WishlistsViewSegue = "WishlistsViewSegue"
+    public static let LogOutSegue = "LogOutSegue"
 }

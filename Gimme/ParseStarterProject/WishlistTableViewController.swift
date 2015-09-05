@@ -13,7 +13,16 @@ class WishlistTableViewController: UITableViewController {
     
     private var wishlists = [Wishlist]()
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SeguesIdentifiers.LogOutSegue {
+            navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: false)
+            PFUser.logOut()
+        }
+        
+    }
+    
     @IBAction func logout(sender: AnyObject) {
+        NSLog("logging out")
         PFUser.logOut()
     }
     
