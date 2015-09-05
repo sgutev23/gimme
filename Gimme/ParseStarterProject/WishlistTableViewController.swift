@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Parse
 
 class WishlistTableViewController: UITableViewController {
     
     private var wishlists = [Wishlist]()
+    
+    @IBAction func logout(sender: AnyObject) {
+        PFUser.logOut()
+    }
     
     // MARK: View Controller Lifecycle
 

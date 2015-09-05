@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
                 NSLog("Error: \(error)")
             } else {
                 if let user = user {
-                    self.performSegueWithIdentifier("showMyLists", sender: self)
+                    self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
                 }
             }
         })
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         if PFUser.currentUser()?.username != nil {
             NSLog("User logged in")
-            self.performSegueWithIdentifier("showMyLists", sender: self)
+            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
         }
     }
     /*
