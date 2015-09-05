@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import Parse
+import FBSDKCoreKit
 
-class FriendsViewController: UIViewController {
+class FriendsViewController: UITableViewController {
 
+    private var friends = [Friend]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loadFriends()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +25,41 @@ class FriendsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
-    */
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return friends.count
+    }
+    
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as! FriendTableViewCell
+        
+        let friend = friends[indexPath.row]
+        cell.textLabel?.text = friend.name
+        
+        return cell
+    }
 
+
+    func loadFriends() {
+        let fbRequest = FBSDKGraphRequest(graphPath:"/me/friends", parameters: nil);
+        fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+            if error == nil {
+                let friendObjects = result["data"] as! [NSDictionary]
+                for friendObject in friendObjects {
+                    self.friends.append(Friend(identifier: friendObject["id"] as! String, name: friendObject["name"] as! String))
+                }
+                self.tableView.reloadData()
+                NSLog("Friends are : \(result)")
+            } else {
+                NSLog("Error Getting Friends \(error)");
+            }
+        }
+    }
+    
 }
