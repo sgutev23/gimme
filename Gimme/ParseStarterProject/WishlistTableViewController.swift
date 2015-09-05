@@ -13,11 +13,26 @@ class WishlistTableViewController: UITableViewController {
     
     private var wishlists = [Wishlist]()
     
+    // MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SeguesIdentifiers.LogOutSegue {
             navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: false)
             PFUser.logOut()
         }
+        if segue.identifier == SeguesIdentifiers.ItemsViewSegue {
+            if let destinationViewController = segue.destinationViewController as? ItemsTableViewController {
+                if let wishlistTableViewCell = sender as? WishlistTableViewCell {
+                    if let wishlistId = wishlistTableViewCell.wishlistId {
+                        //TODO search items for wishlistID
+                        NSLog("\(wishlistId)")
+                        
+                        destinationViewController.items = StaticData.Items
+                    }
+                }
+            }
+        }
+        
     }
     
     @IBAction func logout(sender: AnyObject) {
@@ -30,8 +45,7 @@ class WishlistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        wishlists.append(Wishlist(identifier: "1", name: "Christmas", description: "Christmas List"))
-        wishlists.append(Wishlist(identifier: "2", name: "Birthday", description: "Birthday List"))
+        wishlists = StaticData.Wishlists
         
         self.tableView.reloadData()
     }
@@ -44,20 +58,21 @@ class WishlistTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return wishlists.count
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return wishlists.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WishlistCell", forIndexPath: indexPath) as! WishlistTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.WishlistCell, forIndexPath: indexPath) as! WishlistTableViewCell
         
-        let wishlist = wishlists[indexPath.section]
+        let wishlist = wishlists[indexPath.row]
         cell.nameLabel?.text = wishlist.name
         cell.descriptionLabel?.text = wishlist.description
+        cell.wishlistId = wishlist.identifier
 
         return cell
     }
@@ -97,15 +112,4 @@ class WishlistTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

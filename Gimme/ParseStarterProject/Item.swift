@@ -12,12 +12,12 @@ public class Item {
     let identifier: String
     let name: String
     let url: String
-    let image: UIImage
+    let picture: UIImage?
     
-    public init(identifier: String, name: String, url: String, image: UIImage) {
+    public init(identifier: String, name: String, url: String, picture: UIImage?) {
         self.identifier = identifier
         self.name = name
         self.url = url
-        self.image = image
+        self.picture = picture
     }
 }

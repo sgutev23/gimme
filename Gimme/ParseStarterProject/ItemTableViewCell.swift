@@ -11,6 +11,6 @@ import UIKit
 class ItemTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var urlName: UILabel!
+    @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var picture: UIImageView!
 }

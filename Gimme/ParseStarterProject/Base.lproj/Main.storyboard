@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A262e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
@@ -113,7 +113,7 @@
                                 <connections>
                                     <outlet property="descriptionLabel" destination="8IM-CK-i5k" id="FkC-K4-vP2"/>
                                     <outlet property="nameLabel" destination="tDz-Pc-pGO" id="1Ar-lD-czA"/>
-                                    <segue destination="pUi-jM-nOy" kind="show" identifier="ItemsViewSegue" id="wux-Kb-Vwv"/>
+                                    <segue destination="YpY-uP-uUQ" kind="show" identifier="ItemsViewSegue" id="iII-TO-aeq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -195,44 +195,35 @@
         <!--Items-->
         <scene sceneID="Szo-t0-Y9V">
             <objects>
-                <tableViewController id="YpY-uP-uUQ" customClass="ItemsTableViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YpY-uP-uUQ" customClass="ItemsTableViewController" customModule="Gimme" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" id="em8-vb-Q5a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="73" id="3Ba-u5-x3e" customClass="ItemTableViewCell" customModule="Gimme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="73"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="73" id="3Ba-u5-x3e" customClass="ItemTableViewCell" customModule="Gimme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Ba-u5-x3e" id="bqC-4H-2PT">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IbW-Gn-WtC">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beats" translatesAutoresizingMaskIntoConstraints="NO" id="Lch-hB-ieC">
                                             <rect key="frame" x="8" y="8" width="100" height="56"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="129" id="Xlm-8w-1pE"/>
-                                                <constraint firstAttribute="height" constant="146" id="coq-mC-SqM"/>
-                                                <constraint firstAttribute="width" constant="129" id="nvp-CN-K8W"/>
+                                                <constraint firstAttribute="width" secondItem="Lch-hB-ieC" secondAttribute="height" multiplier="25:14" id="yvz-Rg-Rlf"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="Xlm-8w-1pE"/>
-                                                    <exclude reference="coq-mC-SqM"/>
-                                                    <exclude reference="nvp-CN-K8W"/>
-                                                </mask>
-                                            </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5f-j9-1Me">
-                                            <rect key="frame" x="113" y="8" width="45" height="21"/>
+                                            <rect key="frame" x="116" y="8" width="476" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-lg-UHI">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-lg-UHI">
                                             <rect key="frame" x="113" y="37" width="33" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -242,25 +233,24 @@
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="IbW-Gn-WtC" secondAttribute="bottom" id="6JB-Ym-gbT"/>
-                                        <constraint firstItem="IbW-Gn-WtC" firstAttribute="top" secondItem="bqC-4H-2PT" secondAttribute="topMargin" id="83B-Vm-wbQ"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="IbW-Gn-WtC" secondAttribute="leading" id="COv-mA-hyO"/>
-                                        <constraint firstItem="dVR-lg-UHI" firstAttribute="leading" secondItem="IbW-Gn-WtC" secondAttribute="trailing" constant="5" id="Kml-TO-Azg"/>
-                                        <constraint firstItem="U5f-j9-1Me" firstAttribute="leading" secondItem="IbW-Gn-WtC" secondAttribute="trailing" constant="5" id="Myf-MX-HWK"/>
-                                        <constraint firstAttribute="topMargin" secondItem="U5f-j9-1Me" secondAttribute="top" id="dmK-Mg-ifW"/>
+                                        <constraint firstItem="dVR-lg-UHI" firstAttribute="leading" secondItem="Lch-hB-ieC" secondAttribute="trailing" constant="8" symbolic="YES" id="Fwl-Qe-fbv"/>
+                                        <constraint firstItem="U5f-j9-1Me" firstAttribute="leading" secondItem="Lch-hB-ieC" secondAttribute="trailing" constant="8" symbolic="YES" id="I39-5v-na5"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Lch-hB-ieC" secondAttribute="leading" id="Zm0-Kd-QxY"/>
+                                        <constraint firstAttribute="topMargin" secondItem="Lch-hB-ieC" secondAttribute="top" id="kV5-PX-ebx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Lch-hB-ieC" secondAttribute="bottom" id="oGi-QJ-PA4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="U5f-j9-1Me" secondAttribute="trailing" id="pC0-Rl-lLU"/>
+                                        <constraint firstAttribute="topMargin" secondItem="U5f-j9-1Me" secondAttribute="top" id="wgY-4C-C4p"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="IbW-Gn-WtC" firstAttribute="width" secondItem="3Ba-u5-x3e" secondAttribute="height" multiplier="129:94" id="dO1-Yt-hqa"/>
-                                    <constraint firstAttribute="bottom" secondItem="dVR-lg-UHI" secondAttribute="bottom" constant="15" id="yd1-Rv-2Uq"/>
+                                    <constraint firstAttribute="bottom" secondItem="dVR-lg-UHI" secondAttribute="bottom" id="bxx-fK-cjP"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="image" destination="IbW-Gn-WtC" id="3mx-eh-ymu"/>
-                                    <outlet property="imageView" destination="IbW-Gn-WtC" id="I8A-n6-skS"/>
-                                    <outlet property="nameLabel" destination="U5f-j9-1Me" id="qlV-Ik-30d"/>
-                                    <outlet property="picture" destination="IbW-Gn-WtC" id="Qdt-c0-tG8"/>
-                                    <outlet property="urlName" destination="dVR-lg-UHI" id="efr-uk-Pgp"/>
+                                    <outlet property="imageView" destination="Lch-hB-ieC" id="f0h-lA-d5i"/>
+                                    <outlet property="nameLabel" destination="U5f-j9-1Me" id="7Yt-6d-6xE"/>
+                                    <outlet property="picture" destination="Lch-hB-ieC" id="bqa-RQ-T4y"/>
+                                    <outlet property="urlLabel" destination="dVR-lg-UHI" id="4AV-9i-mLZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -347,10 +337,10 @@
             </objects>
             <point key="canvasLocation" x="380" y="472"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Items Navigation Controller-->
         <scene sceneID="X94-CU-Ak1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pUi-jM-nOy" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pUi-jM-nOy" customClass="ItemsNavigationController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0o2-Ga-QZJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -367,4 +357,10 @@
             <point key="canvasLocation" x="1878" y="158"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="beats" width="275" height="183"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iII-TO-aeq"/>
+    </inferredMetricsTieBreakers>
 </document>

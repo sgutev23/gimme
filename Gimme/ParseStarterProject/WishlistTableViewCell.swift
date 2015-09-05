@@ -10,6 +10,8 @@ import UIKit
 
 class WishlistTableViewCell: UITableViewCell {
 
+    var wishlistId: String?
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
