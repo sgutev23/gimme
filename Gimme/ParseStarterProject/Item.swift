@@ -8,3 +8,16 @@
 
 import Foundation
 
+public class Item {
+    let identifier: String
+    let name: String
+    let url: String
+    let image: UIImage
+    
+    public init(identifier: String, name: String, url: String, image: UIImage) {
+        self.identifier = identifier
+        self.name = name
+        self.url = url
+        self.image = image
+    }
+}

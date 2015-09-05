@@ -9,11 +9,13 @@
 import Foundation
 
 public class Wishlist {
-    public let name: String
-    public let description: String
+    let identifier: String
+    let name: String
+    let description: String
     
     
-    public init(name: String, description: String) {
+    public init(identifier: String, name: String, description: String) {
+        self.identifier = identifier
         self.name = name
         self.description = description
     }

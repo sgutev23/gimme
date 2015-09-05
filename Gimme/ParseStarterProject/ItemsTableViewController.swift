@@ -1,5 +1,5 @@
 //
-//  WishlistTableViewController.swift
+//  ItemsTableViewController.swift
 //  Gimme
 //
 //  Created by Daniel Mihai on 9/5/15.
@@ -7,34 +7,17 @@
 //
 
 import UIKit
-import Parse
 
-class WishlistTableViewController: UITableViewController {
-    
-    private var wishlists = [Wishlist]()
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SeguesIdentifiers.LogOutSegue {
-            navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: false)
-            PFUser.logOut()
-        }
-        
-    }
-    
-    @IBAction func logout(sender: AnyObject) {
-        NSLog("logging out")
-        PFUser.logOut()
-    }
-    
-    // MARK: View Controller Lifecycle
+class ItemsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        wishlists.append(Wishlist(identifier: "1", name: "Christmas", description: "Christmas List"))
-        wishlists.append(Wishlist(identifier: "2", name: "Birthday", description: "Birthday List"))
-        
-        self.tableView.reloadData()
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,24 +28,24 @@ class WishlistTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return wishlists.count
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
 
-
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WishlistCell", forIndexPath: indexPath) as! WishlistTableViewCell
-        
-        let wishlist = wishlists[indexPath.section]
-        cell.nameLabel?.text = wishlist.name
-        cell.descriptionLabel?.text = wishlist.description
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        // Configure the cell...
 
         return cell
     }
-
+    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		011EB7191B9B48CE002142A5 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7181B9B48CE002142A5 /* Segues.swift */; settings = {ASSET_TAGS = (); }; };
+		011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		011EB71F1B9B4DF4002142A5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		0183797F1B9B39B800E27C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0183797E1B9B39B800E27C39 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		018379811B9B39C400E27C39 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379801B9B39C400E27C39 /* Wishlist.swift */; settings = {ASSET_TAGS = (); }; };
 		018379831B9B39D000E27C39 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379821B9B39D000E27C39 /* Item.swift */; settings = {ASSET_TAGS = (); }; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		011EB7181B9B48CE002142A5 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
+		011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		0183797E1B9B39B800E27C39 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		018379801B9B39C400E27C39 /* Wishlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		018379821B9B39D000E27C39 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */,
+				011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 			children = (
 				58B535EA1B9B36B600D02062 /* LoginViewController.swift */,
 				01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */,
+				011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -276,9 +282,11 @@
 			files = (
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */,
+				011EB71F1B9B4DF4002142A5 /* ItemTableViewCell.swift in Sources */,
 				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
 				011EB7191B9B48CE002142A5 /* Segues.swift in Sources */,
 				0183797F1B9B39B800E27C39 /* User.swift in Sources */,
+				011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */,
 				018379831B9B39D000E27C39 /* Item.swift in Sources */,
 				018379811B9B39C400E27C39 /* Wishlist.swift in Sources */,
 				01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */,
