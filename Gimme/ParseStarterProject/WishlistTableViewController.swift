@@ -18,7 +18,6 @@ class WishlistTableViewController: UITableViewController {
             navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: false)
             PFUser.logOut()
         }
-        
     }
     
     @IBAction func logout(sender: AnyObject) {
