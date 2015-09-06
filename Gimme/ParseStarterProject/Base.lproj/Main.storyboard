@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A262e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
@@ -77,6 +77,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-Pc-pGO">
+                                            <rect key="frame" x="8" y="8" width="45" height="14"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IM-CK-i5k">
                                             <rect key="frame" x="8" y="30" width="75" height="17"/>
                                             <animations/>
@@ -91,13 +98,6 @@
                                                     <exclude reference="Lhj-Iu-D0l"/>
                                                 </mask>
                                             </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-Pc-pGO">
-                                            <rect key="frame" x="8" y="8" width="45" height="14"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
@@ -179,6 +179,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="btz-PJ-ekx" id="ihQ-jp-D5n"/>
                                     <outlet property="wishListCounterLabel" destination="1Lq-kH-97d" id="PUl-0o-zav"/>
+                                    <segue destination="sys-rF-E9V" kind="show" identifier="FriendsWishlistViewSegue" id="y1G-c2-O3v"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -288,6 +289,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukb-fg-nVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2744" y="158"/>
+        </scene>
+        <!--Friend's wish list-->
+        <scene sceneID="pYZ-Uz-TDs">
+            <objects>
+                <tableViewController id="sys-rF-E9V" customClass="FriendsWishlistViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bmo-bz-iL9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendsWishlistCell" id="BpJ-df-hJL" customClass="FriendWishlistTableViewCell" customModule="Gimme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BpJ-df-hJL" id="b0n-D4-gLa">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJ6-W2-3IZ">
+                                            <rect key="frame" x="14" y="8" width="53" height="24"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Available Items: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxF-IX-fdq">
+                                            <rect key="frame" x="466" y="14" width="134" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="rJ6-W2-3IZ" firstAttribute="top" secondItem="b0n-D4-gLa" secondAttribute="topMargin" id="GbS-wO-iCs"/>
+                                        <constraint firstItem="rJ6-W2-3IZ" firstAttribute="leading" secondItem="b0n-D4-gLa" secondAttribute="leadingMargin" constant="6" id="jmO-ud-0q1"/>
+                                        <constraint firstItem="pxF-IX-fdq" firstAttribute="top" secondItem="b0n-D4-gLa" secondAttribute="topMargin" constant="6" id="kdP-Dh-L1i"/>
+                                        <constraint firstItem="pxF-IX-fdq" firstAttribute="leading" secondItem="rJ6-W2-3IZ" secondAttribute="trailing" constant="399" id="mV5-bC-u9o"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="availableItemsLabel" destination="pxF-IX-fdq" id="imD-Jm-EZd"/>
+                                    <outlet property="nameLabel" destination="rJ6-W2-3IZ" id="CIU-UJ-n9X"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sys-rF-E9V" id="htV-NC-vH8"/>
+                            <outlet property="delegate" destination="sys-rF-E9V" id="BiC-Ez-VLS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Friend's wish list" id="DI0-bG-Ya0"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="DI0-bG-Ya0" id="6gu-Xn-t4x"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTn-bt-zoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2744" y="851"/>
         </scene>
         <!--Segmented View Controller-->
         <scene sceneID="rUd-I7-4SG">

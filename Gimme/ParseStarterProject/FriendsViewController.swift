@@ -41,6 +41,7 @@ class FriendsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as! FriendTableViewCell
         
         let friend = friendsArray[indexPath.row]
+        cell.friend = friend
         cell.nameLabel?.text = friend.name
         cell.wishListCounterLabel?.text = "Wishlists: " + String(friend.numWishLists)
         
@@ -111,6 +112,19 @@ class FriendsViewController: UITableViewController {
                 }
             }
         }
-
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SeguesIdentifiers.FriendsWishlistSegue {
+            if let destinationViewController = segue.destinationViewController as? FriendsWishlistViewController {
+                if let friendTableViewCell = sender as? FriendTableViewCell {
+                    if let friend = friendTableViewCell.friend {
+                        destinationViewController.friend = friend
+                    }
+                }
+            }
+        }
+    }
+
 }
