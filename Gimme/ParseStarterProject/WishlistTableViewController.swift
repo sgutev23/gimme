@@ -22,15 +22,12 @@ class WishlistTableViewController: UITableViewController {
             PFUser.logOut()
         }
         if segue.identifier == SeguesIdentifiers.ItemsViewSegue {
-            if let destinationNavigationController = segue.destinationViewController as? ItemsNavigationController {
+            if let destinationViewController = segue.destinationViewController as? ItemsTableViewController {
                 if let wishlistTableViewCell = sender as? WishlistTableViewCell {
                     if let wishlistId = wishlistTableViewCell.wishlistId {
                         //TODO search items for wishlistID
                         NSLog("\(wishlistId)")
-                        
-                        if let destinationViewController = destinationNavigationController.topViewController as? ItemsTableViewController {
-                            destinationViewController.items = StaticData.Items
-                        }
+                        destinationViewController.items = StaticData.Items
                     }
                 }
             }
