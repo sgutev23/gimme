@@ -103,7 +103,7 @@ class FriendsViewController: UITableViewController {
                 
                 if let wishlistObjects = wishlistObjects as? [PFObject] {
                     for wishlistObject in wishlistObjects {
-                        var friendId = wishlistObject["userid"] as! String
+                        let friendId = wishlistObject["userid"] as! String
                         self.friendsMap[friendId]?.numWishLists = (self.friendsMap[friendId]?.numWishLists)! + 1
                     }
                     self.tableView.reloadData()
