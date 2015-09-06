@@ -66,4 +66,29 @@ class SegmentedViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func saveNewWishlist(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let source = segue.sourceViewController as? NewWishlistViewController {
+            let wishlist = PFObject(className:"Wishlist")
+            wishlist["userid"] = currentUser?.objectId
+            wishlist["name"] = source.nameTextField.text
+            wishlist.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    NSLog("added " + String(wishlist["name"]))
+                    self.reloadWishlists()
+                } else {
+                    NSLog("error adding \(error)")
+                }
+            }
+        }
+    }
+    
+    private func reloadWishlists() -> Void {
+        for childViewController in self.childViewControllers {
+            if let wishlistsViewController = childViewController as? WishlistTableViewController {
+                wishlistsViewController.loadWishLists()
+            }
+        }
+    }
 }

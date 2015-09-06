@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A262e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnf-Q9-YQp">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnf-Q9-YQp">
                                 <rect key="frame" x="228" y="198" width="144" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -31,7 +31,7 @@
                                     <action selector="loginWithFacebook:" destination="1LW-Yy-Kxt" eventType="touchUpInside" id="Muv-YW-oN5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gimme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRq-4u-fdw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gimme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRq-4u-fdw">
                                 <rect key="frame" x="260" y="62" width="81" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -152,15 +152,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btz-PJ-ekx">
-                                            <rect key="frame" x="8" y="8" width="77" height="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btz-PJ-ekx">
+                                            <rect key="frame" x="8" y="8" width="48" height="22"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Wishlists: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-kH-97d">
-                                            <rect key="frame" x="508" y="18" width="84" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Wishlists: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-kH-97d">
+                                            <rect key="frame" x="263" y="18" width="75" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -341,6 +341,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HKz-KG-hFt">
                             <connections>
                                 <action selector="addWishlist:" destination="FrI-EP-jDB" id="S2K-UQ-apq"/>
+                                <segue destination="Y5e-EL-ns9" kind="show" id="cTx-6G-OQp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -352,7 +353,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHl-Wc-BRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1202" y="484"/>
+            <point key="canvasLocation" x="1202" y="472"/>
+        </scene>
+        <!--New Wishlist View Controller-->
+        <scene sceneID="o57-BC-AfW">
+            <objects>
+                <viewController id="Y5e-EL-ns9" customClass="NewWishlistViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Yn-zh-Sl9"/>
+                        <viewControllerLayoutGuide type="bottom" id="afc-YV-Nn0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1ND-EJ-Pdj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqc-NE-Hpp">
+                                <rect key="frame" x="20" y="294" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdS-bc-3c8">
+                                <rect key="frame" x="20" y="332" width="560" height="222"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fk-Df-88l">
+                                <rect key="frame" x="20" y="562" width="560" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveNewWishlist:" destination="Y5e-EL-ns9" eventType="touchUpInside" id="fX0-CF-5x3"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBr-go-3QH">
+                                <rect key="frame" x="20" y="72" width="560" height="176"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ySX-H9-Mmg">
+                                <rect key="frame" x="20" y="256" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DdS-bc-3c8" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="1tf-ep-Wms"/>
+                            <constraint firstItem="DdS-bc-3c8" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="2Hx-Om-bzg"/>
+                            <constraint firstItem="DdS-bc-3c8" firstAttribute="top" secondItem="jqc-NE-Hpp" secondAttribute="bottom" constant="8" symbolic="YES" id="4pT-m6-5n0"/>
+                            <constraint firstItem="8fk-Df-88l" firstAttribute="trailing" secondItem="DdS-bc-3c8" secondAttribute="trailing" id="6iZ-Bc-S5O"/>
+                            <constraint firstItem="sBr-go-3QH" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="7R1-Vv-w9D"/>
+                            <constraint firstItem="sBr-go-3QH" firstAttribute="top" secondItem="2Yn-zh-Sl9" secondAttribute="bottom" constant="8" symbolic="YES" id="APb-1V-CYU"/>
+                            <constraint firstItem="8fk-Df-88l" firstAttribute="top" secondItem="DdS-bc-3c8" secondAttribute="bottom" constant="8" symbolic="YES" id="MbM-Pc-XvM"/>
+                            <constraint firstItem="8fk-Df-88l" firstAttribute="leading" secondItem="DdS-bc-3c8" secondAttribute="leading" id="Ohf-ye-j6g"/>
+                            <constraint firstItem="ySX-H9-Mmg" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="Olh-b8-1eo"/>
+                            <constraint firstItem="jqc-NE-Hpp" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="Ujq-UQ-L1K"/>
+                            <constraint firstItem="ySX-H9-Mmg" firstAttribute="top" secondItem="sBr-go-3QH" secondAttribute="bottom" constant="8" symbolic="YES" id="bnl-Az-KpV"/>
+                            <constraint firstItem="8fk-Df-88l" firstAttribute="top" secondItem="DdS-bc-3c8" secondAttribute="bottom" constant="8" symbolic="YES" id="f0g-sA-mVc"/>
+                            <constraint firstItem="jqc-NE-Hpp" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="hK1-Py-sPq"/>
+                            <constraint firstItem="sBr-go-3QH" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="ldX-VH-yDA"/>
+                            <constraint firstItem="afc-YV-Nn0" firstAttribute="top" secondItem="8fk-Df-88l" secondAttribute="bottom" constant="8" symbolic="YES" id="qL2-6K-pWd"/>
+                            <constraint firstItem="ySX-H9-Mmg" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="vFK-Vt-0Cv"/>
+                            <constraint firstItem="8fk-Df-88l" firstAttribute="top" secondItem="DdS-bc-3c8" secondAttribute="bottom" constant="8" symbolic="YES" id="wt4-aE-Tkx"/>
+                            <constraint firstItem="jqc-NE-Hpp" firstAttribute="top" secondItem="ySX-H9-Mmg" secondAttribute="bottom" constant="8" symbolic="YES" id="xGw-la-324"/>
+                            <constraint firstItem="ySX-H9-Mmg" firstAttribute="top" secondItem="1ND-EJ-Pdj" secondAttribute="top" constant="256" id="zcR-w2-U9g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="jqc-NE-Hpp" id="gyl-xx-0e5"/>
+                        <outlet property="nameTextField" destination="ySX-H9-Mmg" id="pLB-a6-pyA"/>
+                        <segue destination="tdx-Wg-BYv" kind="unwind" identifier="SaveNewWishlistSegue" unwindAction="saveNewWishlist:sender:" id="atj-hg-bsh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eug-RR-Xp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tdx-Wg-BYv" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1202" y="1227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ITE-BH-55N">
