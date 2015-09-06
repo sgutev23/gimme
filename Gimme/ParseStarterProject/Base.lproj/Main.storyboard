@@ -64,65 +64,6 @@
         <scene sceneID="p4l-9t-CJW">
             <objects>
                 <tableViewController id="5pf-b8-9kx" customClass="WishlistTableViewController" customModule="Gimme" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" id="X87-yg-z7i">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WishlistCell" rowHeight="56" id="iJO-QY-Qpq" customClass="WishlistTableViewCell" customModule="Gimme">
-                                <rect key="frame" x="0.0" y="28" width="600" height="56"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iJO-QY-Qpq" id="ANk-ke-6vy">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-Pc-pGO">
-                                            <rect key="frame" x="8" y="8" width="45" height="14"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IM-CK-i5k">
-                                            <rect key="frame" x="8" y="30" width="75" height="17"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="Lhj-Iu-D0l"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="Lhj-Iu-D0l"/>
-                                                </mask>
-                                            </variation>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="8IM-CK-i5k" secondAttribute="bottom" id="3h9-ux-Atb"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="8IM-CK-i5k" secondAttribute="leading" id="Jgi-O2-VtZ"/>
-                                        <constraint firstAttribute="topMargin" secondItem="tDz-Pc-pGO" secondAttribute="top" id="OUY-Np-cJy"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="tDz-Pc-pGO" secondAttribute="leading" id="PtX-Rf-wQg"/>
-                                        <constraint firstItem="8IM-CK-i5k" firstAttribute="top" secondItem="tDz-Pc-pGO" secondAttribute="bottom" constant="8" symbolic="YES" id="oG8-tc-vge"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <outlet property="descriptionLabel" destination="8IM-CK-i5k" id="FkC-K4-vP2"/>
-                                    <outlet property="nameLabel" destination="tDz-Pc-pGO" id="1Ar-lD-czA"/>
-                                    <segue destination="YpY-uP-uUQ" kind="show" identifier="ItemsViewSegue" id="EJz-cz-alY"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="5pf-b8-9kx" id="yPs-5Q-OEK"/>
-                            <outlet property="delegate" destination="5pf-b8-9kx" id="LrZ-69-VZc"/>
-                        </connections>
-                    </tableView>
                     <navigationItem key="navigationItem" title="Wishlists" id="0TL-Ng-Ste">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="iZL-Qk-fZl">
                             <connections>
@@ -130,6 +71,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="YpY-uP-uUQ" kind="show" identifier="ItemsViewSegue" id="zF7-hs-qo9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sx1-11-Bz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
