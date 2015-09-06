@@ -81,7 +81,7 @@ class WishlistTableViewController: UITableViewController {
             (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 NSLog("results: \(wishlistObjects)")
-                
+                self.wishlists.removeAll()
                 if let wishlistObjects = wishlistObjects as? [PFObject] {
                     for wishlistObject in wishlistObjects {
                         self.wishlists.append(
