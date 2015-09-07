@@ -40,6 +40,6 @@ class NewWishlistViewController: UIViewController {
         static let NameTitle = "Invalid Name"
         static let DescriptionTitle = "Invalid Description"
         static let NameMessage = "Please enter a valid name."
-        static let DescriptionMessage = "Please enter a valid description"
+        static let DescriptionMessage = "Please enter a valid description."
     }
 }

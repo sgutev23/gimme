@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import Parse
 
 class ItemsTableViewController: UITableViewController {
 
     var items = [Item]()
+    var wishlistId: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadItems()
         self.tableView.reloadData()
     }
 
@@ -46,50 +49,77 @@ class ItemsTableViewController: UITableViewController {
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == SeguesIdentifiers.NewItemSegue {
+            if let destination = segue.destinationViewController as? NewItemViewController {
+                destination.wishlistId = wishlistId
+            }
+        }
     }
-    */
-
+    
+    func loadItems() {
+        let query = PFQuery(className: DatabaseTables.Wishitem)
+        query.whereKey("wishlistId", equalTo: wishlistId!)
+        query.findObjectsInBackgroundWithBlock {
+            (itemObjects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                NSLog("results: \(itemObjects)")
+                
+                self.items.removeAll()
+                
+                if let itemObjects = itemObjects as? [PFObject] {
+                    for itemObject in itemObjects {
+                        if let picture = itemObject["picture"] as? PFFile {
+                            picture.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+                                if let errorMessage = error {
+                                    NSLog("Error while retrieving picture: \(errorMessage)")
+                                } else {
+                                    self.items.append(Item(identifier: itemObject.objectId!, name: itemObject["name"] as! String, url: itemObject["description"] as! String, picture: UIImage(data: imageData!)))
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                NSLog("Error while retrieving items: \(error)")
+            }
+        }
+    }
+    
+    @IBAction func saveNewItem(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let source = segue.sourceViewController as? NewItemViewController {
+            if let picture = source.imageView.image {
+                let pictureData = UIImagePNGRepresentation(picture)
+                let pictureName = "image-" + (PFUser.currentUser()!.objectId)! + "-" + "\(NSDate.timeIntervalSinceReferenceDate())"
+                
+                let file = PFFile(name: pictureName, data: pictureData!)
+                file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
+                    if succeeded {
+                        let item = PFObject(className: DatabaseTables.Wishitem)
+                        item["wishlistId"] = source.wishlistId
+                        item["picture"] = file
+                        item["name"] = source.nameLabel?.text
+                        item["description"] = source.descriptionLabel?.text
+                        
+                        item.saveInBackgroundWithBlock {
+                            (success: Bool, error: NSError?) -> Void in
+                            if (success) {
+                                NSLog("added item \(item.objectId)")
+                                self.items.append(Item(identifier: item.objectId!, name: item["name"] as! String, url: item["description"] as! String, picture: picture))
+                                self.tableView.reloadData()
+                            } else {
+                                NSLog("error adding \(error)")
+                            }
+                        }
+                        
+                    } else if let errorMessage = error {
+                        NSLog("\(errorMessage)")
+                    }
+                    }, progressBlock: { percent in
+                        NSLog("Uploaded: \(percent)")
+                })
+            }
+        }
+    }
 }

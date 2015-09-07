@@ -54,7 +54,7 @@ class SegmentedViewController: UIViewController {
     }
    
     @IBAction func addWishlist(sender: AnyObject) {
-        let wishlist = PFObject(className:"Wishlist")
+        let wishlist = PFObject(className: DatabaseTables.Wishlist)
         wishlist["userid"] = currentUser?.objectId
         wishlist["name"] = "Wishlist " + String(arc4random())
         wishlist.saveInBackgroundWithBlock {
@@ -69,7 +69,7 @@ class SegmentedViewController: UIViewController {
     
     @IBAction func saveNewWishlist(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let source = segue.sourceViewController as? NewWishlistViewController {
-            let wishlist = PFObject(className:"Wishlist")
+            let wishlist = PFObject(className: DatabaseTables.Wishlist)
             wishlist["userid"] = currentUser?.objectId
             wishlist["name"] = source.nameTextField.text
             wishlist.saveInBackgroundWithBlock {

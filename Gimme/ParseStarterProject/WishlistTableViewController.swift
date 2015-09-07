@@ -26,14 +26,12 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
         if segue.identifier == SeguesIdentifiers.ItemsViewSegue {
             if let destinationViewController = segue.destinationViewController as? ItemsTableViewController {
                 if currentSelectedWishlist != nil {
-                    NSLog("\(currentSelectedWishlist)")
-                    currentSelectedWishlist = nil
+                    destinationViewController.wishlistId = (currentSelectedWishlist?.identifier)!
                     
-                    destinationViewController.items = StaticData.Items
+                    currentSelectedWishlist = nil
                 }
             }
         }
-        
     }
     
     @IBAction func logout(sender: AnyObject) {
@@ -113,7 +111,7 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func loadWishLists() {
-        let query = PFQuery(className:"Wishlist")
+        let query = PFQuery(className: DatabaseTables.Wishlist)
         query.whereKey("userid", equalTo:currentUser!.objectId!)
         query.findObjectsInBackgroundWithBlock {
             (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
@@ -140,7 +138,7 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
         self.tableView.endUpdates()
         
-        let query = PFQuery(className: "Wishlist")
+        let query = PFQuery(className: DatabaseTables.Wishlist)
         query.whereKey("objectId", equalTo: wishlistToDelete.identifier)
         query.findObjectsInBackgroundWithBlock {
             (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in

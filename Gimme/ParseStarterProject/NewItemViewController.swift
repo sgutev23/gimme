@@ -25,7 +25,10 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - Image
     
     var imageView = UIImageView()
+    var wishlistId: String? = nil
     
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var descriptionLabel: UITextField!
     @IBOutlet weak var imageViewContainer: UIView! {
         didSet {
             imageViewContainer.addSubview(imageView)

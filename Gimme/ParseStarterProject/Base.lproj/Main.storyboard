@@ -268,6 +268,9 @@
                                 <rect key="frame" x="20" y="562" width="560" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <segue destination="gD7-F4-GWn" kind="unwind" unwindAction="saveNewItem:sender:" id="6oX-j1-a8F"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apl-lA-aUt">
                                 <rect key="frame" x="20" y="448" width="560" height="30"/>
@@ -313,10 +316,13 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="Uag-7B-nMt" id="WiO-bU-vkQ"/>
                         <outlet property="imageViewContainer" destination="Vqi-qp-icV" id="kZX-pD-p64"/>
+                        <outlet property="nameLabel" destination="jOl-QI-ofT" id="SWj-Vd-T37"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u01-Mf-BuR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gD7-F4-GWn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3518" y="158"/>
         </scene>
