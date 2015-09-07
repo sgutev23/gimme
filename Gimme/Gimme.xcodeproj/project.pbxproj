@@ -10,7 +10,6 @@
 		011EB7191B9B48CE002142A5 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7181B9B48CE002142A5 /* Segues.swift */; settings = {ASSET_TAGS = (); }; };
 		011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		011EB71F1B9B4DF4002142A5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		011EB7271B9B5B0D002142A5 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7261B9B5B0D002142A5 /* StaticData.swift */; settings = {ASSET_TAGS = (); }; };
 		011EB7291B9B60C5002142A5 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7281B9B60C5002142A5 /* Cells.swift */; settings = {ASSET_TAGS = (); }; };
 		0183797F1B9B39B800E27C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0183797E1B9B39B800E27C39 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		018379811B9B39C400E27C39 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379801B9B39C400E27C39 /* Wishlist.swift */; settings = {ASSET_TAGS = (); }; };
@@ -48,7 +47,6 @@
 		011EB7181B9B48CE002142A5 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
-		011EB7261B9B5B0D002142A5 /* StaticData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
 		011EB7281B9B60C5002142A5 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		0183797E1B9B39B800E27C39 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		018379801B9B39C400E27C39 /* Wishlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		011EB7251B9B5AB2002142A5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				011EB7261B9B5B0D002142A5 /* StaticData.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 				018379811B9B39C400E27C39 /* Wishlist.swift in Sources */,
 				0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */,
 				01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */,
-				011EB7271B9B5B0D002142A5 /* StaticData.swift in Sources */,
 				01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */,
 				0185BE1F1B9B78B00099A56E /* Friend.swift in Sources */,
 				01E3940E1B9CA3A600093162 /* NewItemViewController.swift in Sources */,
