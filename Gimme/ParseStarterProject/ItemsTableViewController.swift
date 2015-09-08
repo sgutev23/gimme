@@ -127,7 +127,7 @@ class ItemsTableViewController: UITableViewController {
     @IBAction func saveNewItem(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let source = segue.sourceViewController as? NewItemViewController {
             if let picture = source.imageView.image {
-                let pictureData = UIImagePNGRepresentation(picture)
+                let pictureData = (UIImagePNGRepresentation(cropAndScaleImage(source.scrollView)))
                 let pictureName = "image-" + (PFUser.currentUser()!.objectId)! + "-" + "\(NSDate.timeIntervalSinceReferenceDate())"
                 
                 let file = PFFile(name: pictureName, data: pictureData!)
@@ -158,5 +158,18 @@ class ItemsTableViewController: UITableViewController {
                 })
             }
         }
+    }
+    
+    func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(scrollView.bounds.size, true, UIScreen.mainScreen().scale)
+        let offset = scrollView.contentOffset
+        
+        CGContextTranslateCTM(UIGraphicsGetCurrentContext(), -offset.x, -offset.y)
+        scrollView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let pictureToSave = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return pictureToSave
+
     }
 }

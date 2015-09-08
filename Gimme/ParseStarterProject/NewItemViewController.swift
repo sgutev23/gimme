@@ -9,31 +9,28 @@
 import UIKit
 import MobileCoreServices
 
-class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupGestureRecognizer()
+        
+        scrollView.addSubview(imageView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - Image
     
     var imageView = UIImageView()
     var wishlistId: String? = nil
     
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var descriptionLabel: UITextField!
-    @IBOutlet weak var imageViewContainer: UIView! {
+    @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
-            imageViewContainer.addSubview(imageView)
+            resetScrollView()
+            scrollView.delegate = self
         }
     }
+    
     @IBAction func takePhoto(sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -47,7 +44,7 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
                 picker.sourceType = .Camera
                 picker.allowsEditing = true
                 
-                self.presentViewController(picker, animated: true, completion: nil)
+                //self.presentViewController(picker, animated: true, completion: nil)
             }))
         }
         
@@ -57,7 +54,7 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
                 action in
                 picker.sourceType = .PhotoLibrary
                 
-                self.presentViewController(picker, animated: true, completion: nil)
+                //self.presentViewController(picker, animated: true, completion: nil)
             }))
         }
         
@@ -74,32 +71,52 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         imageView.image = image
-        makeRoomForImage()
+        imageView.sizeToFit()
+        resetScrollView()
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func makeRoomForImage() {
-        var extraHeight: CGFloat = 0
-        if imageView.image?.aspectRatio > 0 {
-            if let width = imageView.superview?.frame.size.width {
-                let height = width / imageView.image!.aspectRatio
-                
-                extraHeight = height - imageView.frame.height
-                imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            }
+    func resetScrollView() {
+        scrollView?.contentSize = imageView.frame.size
+        
+        let imageViewSize = imageView.bounds.size
+        let scrollViewSize = scrollView.bounds.size
+        let widthScale = scrollViewSize.width / imageViewSize.width
+        let heightScale = scrollViewSize.height / imageViewSize.height
+        
+        scrollView.minimumZoomScale = min(widthScale, heightScale)
+        scrollView.maximumZoomScale = 1.0
+    }
+    
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        let imageViewSize = imageView.frame.size
+        let scrollViewSize = scrollView.bounds.size
+        
+        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
+        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
+        
+        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
+    func setupGestureRecognizer() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: "handleDoubleTap:")
+        doubleTap.numberOfTapsRequired = 2
+        scrollView.addGestureRecognizer(doubleTap)
+    }
+    
+    func handleDoubleTap(recognizer: UITapGestureRecognizer) {
+        if(scrollView.zoomScale > scrollView.minimumZoomScale) {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
         } else {
-            extraHeight = -imageView.frame.height
-            imageView.frame = CGRectZero
+            scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
         }
-        preferredContentSize = CGSize(width: preferredContentSize.width, height: preferredContentSize.height + extraHeight)
     }
-}
-
-extension UIImage {
-    var aspectRatio: CGFloat {
-        return size.height != 0 ? size.width / size.height : 0
-    }
+    
 }
