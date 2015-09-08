@@ -99,7 +99,7 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: NSIndexPath) -> Void in
-            self.deleteWishlist(indexPath)
+            self.deleteWishlist(indexPath.item)
         })
         delete.backgroundColor = UIColor.redColor()
         
@@ -130,13 +130,8 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    func deleteWishlist(indexPath: NSIndexPath) {
-        let wishlistToDelete = self.wishlists[indexPath.item]
-        
-        self.tableView.beginUpdates()
-        self.wishlists.removeAtIndex(indexPath.item)
-        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
-        self.tableView.endUpdates()
+    func deleteWishlist(wishlistIndex: Int) {
+        let wishlistToDelete = self.wishlists[wishlistIndex]
         
         let query = PFQuery(className: DatabaseTables.Wishlist)
         query.whereKey("objectId", equalTo: wishlistToDelete.identifier)
@@ -145,7 +140,7 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
             if error == nil {
                 if let wishlistObjects = wishlistObjects as? [PFObject] {
                     for wishlistObject in wishlistObjects {
-                        NSLog("Deleting wishlist with name: \(wishlistObject.objectId)")
+                        NSLog("Deleting wishlist with id: \(wishlistObject.objectId)")
                         wishlistObject.deleteInBackground()
                     }
                 }
@@ -153,6 +148,9 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
                 NSLog("error: \(error)")
             }
         }
+        
+        self.wishlists.removeAtIndex(wishlistIndex)
+        self.tableView.reloadData()
     }
     
     private func createTableView() -> Void {

@@ -57,6 +57,43 @@ class ItemsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // you need to implement this method too or you can't swipe to display the actions
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Delete", handler: { (action: UITableViewRowAction, indexPath: NSIndexPath) -> Void in
+            self.deleteItem(indexPath.item)
+        })
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete]
+    }
+    
+    func deleteItem(itemIndex: Int) {
+        let itemToDelete = self.items[itemIndex]
+        let query = PFQuery(className: DatabaseTables.Wishitem)
+        
+        query.whereKey("objectId", equalTo: itemToDelete.identifier)
+        query.findObjectsInBackgroundWithBlock {
+            (itemObjects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                if let itemObjects = itemObjects as? [PFObject] {
+                    for itemObject in itemObjects {
+                        NSLog("Deleting item with id: \(itemObject.objectId)")
+                        itemObject.deleteInBackground()
+                    }
+                }
+            } else {
+                NSLog("error: \(error)")
+            }
+        }
+        
+        self.items.removeAtIndex(itemIndex)
+        self.tableView.reloadData()
+        
+    }
+    
     func loadItems() {
         let query = PFQuery(className: DatabaseTables.Wishitem)
         query.whereKey("wishlistId", equalTo: wishlistId!)
