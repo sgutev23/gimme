@@ -9,7 +9,7 @@
 import UIKit
 import MobileCoreServices
 
-class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UIActionSheetDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,35 +32,35 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func takePhoto(sender: UIButton) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
+        let imageController = UIImagePickerController()
+        imageController.editing = false
+        imageController.delegate = self;
         
-        let actionSheet = UIAlertController(title: "Add Picture", message: "Please Select", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            actionSheet.addAction(UIAlertAction(title: "Camera", style: .Default, handler: {
-                action in
-                
-                picker.sourceType = .Camera
-                picker.allowsEditing = true
-                
-                //self.presentViewController(picker, animated: true, completion: nil)
-            }))
+        let alert = UIAlertController(title: "Add Photo", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let cancelButton = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        let libButton = UIAlertAction(title: "Select photo from library", style: UIAlertActionStyle.Default) { (alert) -> Void in
+            imageController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            
+            self.presentViewController(imageController, animated: true, completion: nil)
         }
         
-        
-        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-            actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .Default, handler: {
-                action in
-                picker.sourceType = .PhotoLibrary
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
+            let cameraButton = UIAlertAction(title: "Take a picture", style: UIAlertActionStyle.Default) { (alert) -> Void in
+                imageController.sourceType = UIImagePickerControllerSourceType.Camera
                 
-                //self.presentViewController(picker, animated: true, completion: nil)
-            }))
+                self.presentViewController(imageController, animated: true, completion: nil)
+            }
+            
+            alert.addAction(cameraButton)
+        } else {
+            NSLog("Camera not available")
+            
         }
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        self.presentViewController(picker, animated: true, completion: nil)
-
+        alert.addAction(libButton)
+        alert.addAction(cancelButton)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
