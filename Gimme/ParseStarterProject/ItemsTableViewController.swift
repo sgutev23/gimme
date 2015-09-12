@@ -35,7 +35,6 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.ItemCell, forIndexPath: indexPath) as! ItemTableViewCell
@@ -44,8 +43,10 @@ class ItemsTableViewController: UITableViewController {
         
         cell.urlLabel?.text = item.url
         cell.nameLabel?.text = item.name
-        cell.picture?.image = item.picture
-            
+        cell.picture.frame.size = item.picture!.size
+        cell.pic = item.picture
+        cell.picture.contentMode = UIViewContentMode.ScaleAspectFit
+        
         return cell
     }
     
@@ -169,7 +170,14 @@ class ItemsTableViewController: UITableViewController {
         let pictureToSave = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        UIImageWriteToSavedPhotosAlbum(pictureToSave, nil, nil, nil)
+        
         return pictureToSave
+    }
+}
 
+extension UIImage {
+    var aspectRatio: CGFloat {
+        return size.height != 0 ? size.width / size.height : 0
     }
 }

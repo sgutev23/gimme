@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -155,62 +154,36 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5f-j9-1Me">
-                                            <rect key="frame" x="134" y="8" width="458" height="21"/>
+                                            <rect key="frame" x="547" y="8" width="45" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-lg-UHI">
-                                            <rect key="frame" x="134" y="37" width="458" height="21"/>
+                                            <rect key="frame" x="547" y="37" width="45" height="37"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Lch-hB-ieC">
-                                            <rect key="frame" x="8" y="8" width="118" height="66"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Lch-hB-ieC">
+                                            <rect key="frame" x="8" y="8" width="531" height="66"/>
                                             <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="275" id="FAB-TU-7IF"/>
-                                                <constraint firstAttribute="width" constant="531" id="L48-Db-jbz"/>
-                                                <constraint firstAttribute="height" id="Obb-WC-nWZ"/>
-                                                <constraint firstAttribute="height" constant="66" id="RYL-ib-B1e"/>
-                                                <constraint firstAttribute="width" secondItem="Lch-hB-ieC" secondAttribute="height" multiplier="59:33" id="W9i-0H-euF"/>
-                                                <constraint firstAttribute="width" constant="118" id="X7H-5R-zQU"/>
-                                                <constraint firstAttribute="width" secondItem="Lch-hB-ieC" secondAttribute="height" multiplier="59:33" id="cvd-bn-pHs"/>
-                                                <constraint firstAttribute="width" constant="118" id="ecz-X6-wiM"/>
-                                                <constraint firstAttribute="height" constant="160" id="k9w-sQ-F1B"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="wVK-cq-494"/>
-                                                <constraint firstAttribute="height" constant="66" id="zaY-ns-LKA"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="FAB-TU-7IF"/>
-                                                    <exclude reference="L48-Db-jbz"/>
-                                                    <exclude reference="Obb-WC-nWZ"/>
-                                                    <exclude reference="X7H-5R-zQU"/>
-                                                    <exclude reference="cvd-bn-pHs"/>
-                                                    <exclude reference="k9w-sQ-F1B"/>
-                                                    <exclude reference="wVK-cq-494"/>
-                                                    <exclude reference="zaY-ns-LKA"/>
-                                                </mask>
-                                            </variation>
                                         </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="U5f-j9-1Me" secondAttribute="trailing" id="9hR-yD-A3r"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Lch-hB-ieC" secondAttribute="bottom" id="BFr-PA-MVs"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="Lch-hB-ieC" secondAttribute="leading" id="NeU-BV-KoJ"/>
-                                        <constraint firstItem="dVR-lg-UHI" firstAttribute="height" secondItem="U5f-j9-1Me" secondAttribute="height" id="YTT-GV-UjK"/>
-                                        <constraint firstItem="dVR-lg-UHI" firstAttribute="top" secondItem="U5f-j9-1Me" secondAttribute="bottom" constant="8" id="h2p-EL-VW3"/>
-                                        <constraint firstItem="dVR-lg-UHI" firstAttribute="leading" secondItem="bqC-4H-2PT" secondAttribute="leadingMargin" constant="126" id="i5W-fd-0QG"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="dVR-lg-UHI" secondAttribute="trailing" id="jgW-FH-iCl"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="dVR-lg-UHI" secondAttribute="bottom" constant="16" id="m4K-YG-eNM"/>
-                                        <constraint firstItem="U5f-j9-1Me" firstAttribute="leading" secondItem="Lch-hB-ieC" secondAttribute="trailing" constant="8" symbolic="YES" id="tf9-M8-roY"/>
-                                        <constraint firstAttribute="topMargin" secondItem="Lch-hB-ieC" secondAttribute="top" id="tzW-z3-HnU"/>
-                                        <constraint firstAttribute="topMargin" secondItem="U5f-j9-1Me" secondAttribute="top" id="wM9-8D-EXX"/>
+                                        <constraint firstItem="U5f-j9-1Me" firstAttribute="leading" secondItem="Lch-hB-ieC" secondAttribute="trailing" constant="8" symbolic="YES" id="8nC-pr-oJs"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dVR-lg-UHI" secondAttribute="bottom" id="DL6-eD-T3j"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dVR-lg-UHI" secondAttribute="trailing" id="IXO-VM-wnk"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Lch-hB-ieC" secondAttribute="leading" id="Vzf-ps-TOP"/>
+                                        <constraint firstItem="dVR-lg-UHI" firstAttribute="top" secondItem="U5f-j9-1Me" secondAttribute="bottom" constant="8" symbolic="YES" id="Xd4-jN-qIX"/>
+                                        <constraint firstItem="dVR-lg-UHI" firstAttribute="leading" secondItem="Lch-hB-ieC" secondAttribute="trailing" constant="8" symbolic="YES" id="kCv-G5-Yyy"/>
+                                        <constraint firstAttribute="topMargin" secondItem="Lch-hB-ieC" secondAttribute="top" id="nUF-34-kze"/>
+                                        <constraint firstAttribute="topMargin" secondItem="U5f-j9-1Me" secondAttribute="top" id="qwW-Me-rjh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Lch-hB-ieC" secondAttribute="bottom" id="xx1-6c-Vfq"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="U5f-j9-1Me" secondAttribute="trailing" id="zuw-bJ-JZq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -274,16 +247,16 @@
                                     <action selector="takePhoto:" destination="Vb0-DS-95N" eventType="touchUpInside" id="zja-cx-fDT"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIE-93-kzs">
-                                <rect key="frame" x="20" y="52" width="560" height="388"/>
-                                <animations/>
-                            </scrollView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOl-QI-ofT">
                                 <rect key="frame" x="20" y="486" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIE-93-kzs">
+                                <rect key="frame" x="20" y="52" width="560" height="388"/>
+                                <animations/>
+                            </scrollView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
