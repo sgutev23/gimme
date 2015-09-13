@@ -31,6 +31,21 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    @IBAction func save(sender: UIButton) {
+        var canSaveItem = true
+        
+        if let itemName = nameLabel.text {
+            if itemName.isEmpty {
+                canSaveItem = false
+                addAlert(AlertLabels.NameTitle, message: AlertLabels.NameMessage)
+            }
+        }
+        
+        if canSaveItem {
+            performSegueWithIdentifier(SeguesIdentifiers.SaveNewItemSegue, sender: self)
+        }
+    }
+    
     @IBAction func takePhoto(sender: UIButton) {
         let imageController = UIImagePickerController()
         imageController.editing = false
@@ -117,6 +132,19 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         } else {
             scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
         }
+    }
+    
+    private func addAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: false, completion: nil)
+    }
+    
+    private struct AlertLabels {
+        static let NameTitle = "Invalid Name"
+        static let DescriptionTitle = "Invalid Description"
+        static let NameMessage = "Please enter a valid name."
+        static let DescriptionMessage = "Please enter a valid description."
     }
     
 }
