@@ -39,9 +39,21 @@ class FriendsWishlistViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendsWishlistCell, forIndexPath: indexPath) as! FriendWishlistTableViewCell
         let wishlist = wishlists[indexPath.row]
+        
         cell.nameLabel?.text = wishlist.name
+        cell.wishlistId = wishlist.identifier
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SeguesIdentifiers.FriendsItemsSegue {
+            if let destinationViewController = segue.destinationViewController as? FriendItemsTableViewController {
+                if let friendWishlistViewCell = sender as? FriendWishlistTableViewCell {
+                    destinationViewController.wishlistId = friendWishlistViewCell.wishlistId
+                }
+            }
+        }
     }
 
     func loadWishlistsForFriend () {
@@ -72,7 +84,6 @@ class FriendsWishlistViewController: UITableViewController {
                 NSLog("error: \(error)")
             }
         }
-
     }
    
 }

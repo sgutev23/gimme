@@ -13,4 +13,6 @@ class FriendWishlistTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var availableItemsLabel: UILabel!
+    
+    var wishlistId: String? = nil
 }

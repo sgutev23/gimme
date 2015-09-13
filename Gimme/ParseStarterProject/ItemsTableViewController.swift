@@ -13,6 +13,7 @@ class ItemsTableViewController: UITableViewController {
 
     var items = [Item]()
     var wishlistId: String? = nil
+    var progressBar = UIProgressView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +44,14 @@ class ItemsTableViewController: UITableViewController {
         
         cell.urlLabel?.text = item.url
         cell.nameLabel?.text = item.name
-        cell.picture.frame.size = item.picture!.size
-        cell.pic = item.picture
-        cell.picture.contentMode = UIViewContentMode.ScaleAspectFit
+
+        if item.picture != nil {
+            cell.picture.frame.size = item.picture!.size
+            cell.picture.contentMode = UIViewContentMode.ScaleAspectFit
+            cell.pic = item.picture
+        } else {
+            //TODO: add default picture - like a question mark or something
+        }
         
         return cell
     }
@@ -127,41 +133,58 @@ class ItemsTableViewController: UITableViewController {
     
     @IBAction func saveNewItem(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let source = segue.sourceViewController as? NewItemViewController {
-            if let picture = source.imageView.image {
-                let pictureData = (UIImagePNGRepresentation(cropAndScaleImage(source.scrollView)))
+            if let _ = source.imageView.image {
+                let resizedPicture = cropAndScaleImage(source.scrollView)
+                let pictureData = (UIImagePNGRepresentation(resizedPicture))
                 let pictureName = "image-" + (PFUser.currentUser()!.objectId)! + "-" + "\(NSDate.timeIntervalSinceReferenceDate())"
                 
                 let file = PFFile(name: pictureName, data: pictureData!)
                 file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
                     if succeeded {
-                        let item = PFObject(className: DatabaseTables.Wishitem)
-                        item["wishlistId"] = source.wishlistId
-                        item["picture"] = file
-                        item["name"] = source.nameLabel?.text
-                        item["description"] = source.descriptionLabel?.text
-                        
-                        item.saveInBackgroundWithBlock {
-                            (success: Bool, error: NSError?) -> Void in
-                            if (success) {
-                                NSLog("added item \(item.objectId)")
-                                self.items.append(Item(identifier: item.objectId!, name: item["name"] as! String, url: item["description"] as! String, picture: picture))
-                                self.tableView.reloadData()
-                            } else {
-                                NSLog("error adding \(error)")
-                            }
-                        }
-                        
+                        self.saveNewItem(source.wishlistId, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: file)
                     } else if let errorMessage = error {
                         NSLog("\(errorMessage)")
                     }
                     }, progressBlock: { percent in
                         NSLog("Uploaded: \(percent)")
                 })
+            } else {
+                saveNewItem(source.wishlistId, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: nil)
             }
         }
     }
     
-    func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {
+    private func addAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: false, completion: nil)
+    }
+    
+    private func saveNewItem(identifier: String?, name: String?, description: String?, file: PFFile?) -> Void {
+        let item = PFObject(className: DatabaseTables.Wishitem)
+        item["wishlistId"] = identifier
+        item["picture"] = file ?? NSNull()
+        item["name"] = name
+        item["description"] = description
+        
+        item.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                NSLog("added item \(item.objectId)")
+                self.items.append(
+                    Item(
+                        identifier: item.objectId!,
+                        name: item["name"] as! String,
+                        url: item["description"] as! String,
+                        picture: file == nil ? nil : UIImage(data: file!.getData()!)))
+                self.tableView.reloadData()
+            } else {
+                NSLog("error adding \(error)")
+            }
+        }
+    }
+    
+    private func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(scrollView.bounds.size, true, UIScreen.mainScreen().scale)
         let offset = scrollView.contentOffset
         

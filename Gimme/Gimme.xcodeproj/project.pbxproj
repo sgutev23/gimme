@@ -13,6 +13,8 @@
 		011EB7291B9B60C5002142A5 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7281B9B60C5002142A5 /* Cells.swift */; settings = {ASSET_TAGS = (); }; };
 		015FC4FF1BA43AB3006C205A /* NewWishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		015FC5011BA56D00006C205A /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5001BA56D00006C205A /* NewItemViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		015FC5061BA58A99006C205A /* FriendItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		015FC5081BA58AF9006C205A /* FriendItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		0183797F1B9B39B800E27C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0183797E1B9B39B800E27C39 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		018379811B9B39C400E27C39 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379801B9B39C400E27C39 /* Wishlist.swift */; settings = {ASSET_TAGS = (); }; };
 		018379831B9B39D000E27C39 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379821B9B39D000E27C39 /* Item.swift */; settings = {ASSET_TAGS = (); }; };
@@ -50,6 +52,8 @@
 		011EB7281B9B60C5002142A5 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
 		015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewWishlistViewController.swift; sourceTree = "<group>"; };
 		015FC5001BA56D00006C205A /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
+		015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendItemsTableViewController.swift; sourceTree = "<group>"; };
+		015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendItemTableViewCell.swift; sourceTree = "<group>"; };
 		0183797E1B9B39B800E27C39 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		018379801B9B39C400E27C39 /* Wishlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		018379821B9B39D000E27C39 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				0185BE181B9B78870099A56E /* FriendTableViewCell.swift */,
 				01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */,
 				011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */,
+				015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				58B535EA1B9B36B600D02062 /* LoginViewController.swift */,
 				015FC5001BA56D00006C205A /* NewItemViewController.swift */,
 				015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */,
+				015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				011EB7291B9B60C5002142A5 /* Cells.swift in Sources */,
 				015FC5011BA56D00006C205A /* NewItemViewController.swift in Sources */,
+				015FC5061BA58A99006C205A /* FriendItemsTableViewController.swift in Sources */,
 				015FC4FF1BA43AB3006C205A /* NewWishlistViewController.swift in Sources */,
 				01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */,
 				01E394121B9E20F700093162 /* DatabaseTables.swift in Sources */,
@@ -331,6 +338,7 @@
 				011EB7191B9B48CE002142A5 /* Segues.swift in Sources */,
 				0183797F1B9B39B800E27C39 /* User.swift in Sources */,
 				0185BE191B9B78870099A56E /* FriendTableViewCell.swift in Sources */,
+				015FC5081BA58AF9006C205A /* FriendItemTableViewCell.swift in Sources */,
 				011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */,
 				018379831B9B39D000E27C39 /* Item.swift in Sources */,
 				018379811B9B39C400E27C39 /* Wishlist.swift in Sources */,
