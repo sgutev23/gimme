@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+public class User {
+    let identifier: String?
+    let name: String?
+    
+    public init(identifier: String?, name: String?) {
+        self.identifier = identifier
+        self.name = name
+    }
+}

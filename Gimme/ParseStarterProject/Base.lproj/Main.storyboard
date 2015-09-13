@@ -141,36 +141,39 @@
         <scene sceneID="Szo-t0-Y9V">
             <objects>
                 <tableViewController id="YpY-uP-uUQ" customClass="ItemsTableViewController" customModule="Gimme" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" id="em8-vb-Q5a">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="em8-vb-Q5a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="83" id="3Ba-u5-x3e" customClass="ItemTableViewCell" customModule="Gimme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="83"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="97" id="3Ba-u5-x3e" customClass="ItemTableViewCell" customModule="Gimme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" tableViewCell="3Ba-u5-x3e" id="bqC-4H-2PT">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5f-j9-1Me">
-                                            <rect key="frame" x="547" y="8" width="45" height="21"/>
+                                            <rect key="frame" x="131" y="8" width="461" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-lg-UHI">
-                                            <rect key="frame" x="547" y="37" width="45" height="37"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-lg-UHI">
+                                            <rect key="frame" x="131" y="37" width="461" height="51"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Lch-hB-ieC">
-                                            <rect key="frame" x="8" y="8" width="531" height="66"/>
+                                            <rect key="frame" x="8" y="8" width="115" height="80"/>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Lch-hB-ieC" secondAttribute="height" multiplier="140:97" id="Qve-QT-GAi"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <animations/>
@@ -359,35 +362,35 @@
         <scene sceneID="v6j-Nc-Gn2">
             <objects>
                 <tableViewController id="mSL-mq-ULX" customClass="FriendItemsTableViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" id="w1S-hP-UbE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="w1S-hP-UbE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendItemCell" rowHeight="83" id="50o-0Q-DqC" customClass="FriendItemTableViewCell" customModule="Gimme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="83"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendItemCell" rowHeight="97" id="50o-0Q-DqC" customClass="FriendItemTableViewCell" customModule="Gimme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="50o-0Q-DqC" id="oBb-VQ-iu0">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="wLG-U5-GMb">
-                                            <rect key="frame" x="8" y="8" width="143" height="66"/>
+                                            <rect key="frame" x="8" y="8" width="115" height="80"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="wLG-U5-GMb" secondAttribute="height" multiplier="13:6" id="3ue-kl-gvE"/>
+                                                <constraint firstAttribute="width" secondItem="wLG-U5-GMb" secondAttribute="height" multiplier="140:97" id="3ue-kl-gvE"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx5-hj-tZB">
-                                            <rect key="frame" x="159" y="37" width="433" height="21"/>
+                                            <rect key="frame" x="131" y="37" width="461" height="60"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIA-mu-qcE">
-                                            <rect key="frame" x="159" y="8" width="433" height="21"/>
+                                            <rect key="frame" x="131" y="8" width="461" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -408,6 +411,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qx5-hj-tZB" secondAttribute="bottom" id="Rec-AD-vr3"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="nameLabel" destination="gIA-mu-qcE" id="ZM8-rN-q90"/>
                                     <outlet property="picture" destination="wLG-U5-GMb" id="gZx-hI-5ID"/>

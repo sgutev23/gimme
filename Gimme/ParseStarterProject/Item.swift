@@ -13,11 +13,13 @@ public class Item {
     let name: String
     let url: String
     let picture: UIImage?
+    var boughtBy: User?
     
-    public init(identifier: String, name: String, url: String, picture: UIImage?) {
+    public init(identifier: String, name: String, url: String, picture: UIImage?, boughtBy: User?) {
         self.identifier = identifier
         self.name = name
         self.url = url
         self.picture = picture
+        self.boughtBy = boughtBy
     }
 }

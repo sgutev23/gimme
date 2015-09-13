@@ -46,9 +46,7 @@ class ItemsTableViewController: UITableViewController {
         cell.nameLabel?.text = item.name
 
         if item.picture != nil {
-            cell.picture.frame.size = item.picture!.size
-            cell.picture.contentMode = UIViewContentMode.ScaleAspectFit
-            cell.pic = item.picture
+            cell.picture.image = item.picture
         } else {
             //TODO: add default picture - like a question mark or something
         }
@@ -118,7 +116,13 @@ class ItemsTableViewController: UITableViewController {
                                 if let errorMessage = error {
                                     NSLog("Error while retrieving picture: \(errorMessage)")
                                 } else {
-                                    self.items.append(Item(identifier: itemObject.objectId!, name: itemObject["name"] as! String, url: itemObject["description"] as! String, picture: UIImage(data: imageData!)))
+                                    self.items.append(
+                                        Item(
+                                            identifier: itemObject.objectId!,
+                                            name: itemObject["name"] as! String,
+                                            url: itemObject["description"] as! String,
+                                            picture: UIImage(data: imageData!),
+                                            boughtBy: nil))
                                     self.tableView.reloadData()
                                 }
                             }
@@ -176,7 +180,8 @@ class ItemsTableViewController: UITableViewController {
                         identifier: item.objectId!,
                         name: item["name"] as! String,
                         url: item["description"] as! String,
-                        picture: file == nil ? nil : UIImage(data: file!.getData()!)))
+                        picture: file == nil ? nil : UIImage(data: file!.getData()!),
+                        boughtBy: nil))
                 self.tableView.reloadData()
             } else {
                 NSLog("error adding \(error)")
@@ -192,8 +197,6 @@ class ItemsTableViewController: UITableViewController {
         scrollView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let pictureToSave = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
-        UIImageWriteToSavedPhotosAlbum(pictureToSave, nil, nil, nil)
         
         return pictureToSave
     }

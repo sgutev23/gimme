@@ -11,4 +11,5 @@ import Foundation
 public struct DatabaseTables {
     public static let Wishlist = "Wishlist"
     public static let Wishitem = "Wishitem"
+    public static let User = "User"
 }
