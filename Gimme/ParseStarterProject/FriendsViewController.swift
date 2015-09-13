@@ -96,6 +96,7 @@ class FriendsViewController: UITableViewController {
     func loadWishlistCounts(friendsArray: [String]) {
         let query = PFQuery(className:"Wishlist")
         query.whereKey("userid", containedIn: friendsArray)
+        query.whereKey("public", equalTo: true)
         query.findObjectsInBackgroundWithBlock {
             (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
