@@ -21,17 +21,25 @@ class NewWishlistViewController: UIViewController {
     @IBOutlet weak var privacyDescription: UILabel!
    
     @IBAction func saveNewWishlist(sender: UIButton) {
+        var canSaveWishlist = true
+        
         if let wishlistName = nameTextField.text {
             if wishlistName.isEmpty {
+                canSaveWishlist = false
                 addAlert(AlertLabels.NameTitle, message: AlertLabels.NameMessage)
-            }
-        } else if let wishlistDescription = descriptionTextField.text {
-            if wishlistDescription.isEmpty {
-                addAlert(AlertLabels.DescriptionTitle, message: AlertLabels.DescriptionMessage)
             }
         }
         
-        performSegueWithIdentifier(SeguesIdentifiers.SaveNewWishlistSegue, sender: self)
+        if let wishlistDescription = descriptionTextField.text {
+            if wishlistDescription.isEmpty {
+                canSaveWishlist = false
+                addAlert(AlertLabels.DescriptionTitle, message: AlertLabels.DescriptionMessage)
+            }
+        }
+            
+        if canSaveWishlist {
+            performSegueWithIdentifier(SeguesIdentifiers.SaveNewWishlistSegue, sender: self)
+        }
     }
     
     @IBAction func privacySwitched(sender: UISwitch) {

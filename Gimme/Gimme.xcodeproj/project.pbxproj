@@ -130,7 +130,6 @@
 		011EB7201B9B5825002142A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */,
 				01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */,
 				0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */,
 				0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */,
@@ -138,6 +137,7 @@
 				011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */,
 				58B535EA1B9B36B600D02062 /* LoginViewController.swift */,
 				01E3940D1B9CA3A600093162 /* NewItemViewController.swift */,
+				015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
