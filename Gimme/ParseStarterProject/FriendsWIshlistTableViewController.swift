@@ -63,7 +63,8 @@ class FriendsWishlistViewController: UITableViewController {
                         self.wishlists.append(
                             Wishlist(identifier: wishlistObject.objectId!,
                                 name: wishlistObject["name"] as! String,
-                                description: "desc"))
+                                description: "desc",
+                                isPublic: true))
                     }
                     self.tableView.reloadData()
                 }

@@ -72,6 +72,10 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
         textLabel.textColor = UIColor.blackColor()
         textLabel.text = wishlist.name
         
+        if(!wishlist.isPublic) {
+            textLabel.font = UIFont.italicSystemFontOfSize(textLabel.font.pointSize)
+        }
+        
         cell.addSubview(textLabel)
         cell.wishlistId = wishlist.identifier
         
@@ -120,7 +124,12 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.wishlists.removeAll()
                 if let wishlistObjects = wishlistObjects as? [PFObject] {
                     for wishlistObject in wishlistObjects {
-                        self.wishlists.append(Wishlist(identifier: wishlistObject.objectId!, name: wishlistObject["name"] as! String, description: "desc"))
+                        self.wishlists.append(
+                            Wishlist(
+                                identifier: wishlistObject.objectId!,
+                                name: wishlistObject["name"] as! String,
+                                description: "desc",
+                                isPublic: wishlistObject["public"] as! Bool))
                     }
                     self.tableView.reloadData()
                 }

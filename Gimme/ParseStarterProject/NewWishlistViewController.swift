@@ -9,25 +9,33 @@
 import UIKit
 
 class NewWishlistViewController: UIViewController {
-
     
+    var isPublic = true {
+        didSet {
+            privacyDescription.text = isPublic ? PrivacyDescription.Public : PrivacyDescription.Private
+        }
+    }
+ 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var privacyDescription: UILabel!
    
     @IBAction func saveNewWishlist(sender: UIButton) {
         if let wishlistName = nameTextField.text {
-            if !wishlistName.isEmpty {
-                performSegueWithIdentifier(SeguesIdentifiers.SaveNewWishlistSegue, sender: self)
-            } else {
+            if wishlistName.isEmpty {
                 addAlert(AlertLabels.NameTitle, message: AlertLabels.NameMessage)
             }
         } else if let wishlistDescription = descriptionTextField.text {
-            if !wishlistDescription.isEmpty {
-                performSegueWithIdentifier(SeguesIdentifiers.SaveNewWishlistSegue, sender: self)
-            } else {
+            if wishlistDescription.isEmpty {
                 addAlert(AlertLabels.DescriptionTitle, message: AlertLabels.DescriptionMessage)
             }
         }
+        
+        performSegueWithIdentifier(SeguesIdentifiers.SaveNewWishlistSegue, sender: self)
+    }
+    
+    @IBAction func privacySwitched(sender: UISwitch) {
+        isPublic = sender.on
     }
     
     private func addAlert(title: String, message: String) {
@@ -41,5 +49,10 @@ class NewWishlistViewController: UIViewController {
         static let DescriptionTitle = "Invalid Description"
         static let NameMessage = "Please enter a valid name."
         static let DescriptionMessage = "Please enter a valid description."
+    }
+    
+    private struct PrivacyDescription {
+        static let Private = "The wishlist will be private."
+        static let Public = "The wishlist will be public."
     }
 }

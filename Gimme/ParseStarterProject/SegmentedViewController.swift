@@ -72,6 +72,7 @@ class SegmentedViewController: UIViewController {
             let wishlist = PFObject(className: DatabaseTables.Wishlist)
             wishlist["userid"] = currentUser?.objectId
             wishlist["name"] = source.nameTextField.text
+            wishlist["public"] = source.isPublic
             wishlist.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {

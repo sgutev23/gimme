@@ -437,7 +437,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdS-bc-3c8">
-                                <rect key="frame" x="20" y="332" width="560" height="222"/>
+                                <rect key="frame" x="20" y="371" width="560" height="183"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -449,6 +449,13 @@
                                     <action selector="saveNewWishlist:" destination="Y5e-EL-ns9" eventType="touchUpInside" id="fX0-CF-5x3"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRb-2l-tIT">
+                                <rect key="frame" x="20" y="332" width="51" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="privacySwitched:" destination="Y5e-EL-ns9" eventType="valueChanged" id="SaS-hB-ayE"/>
+                                </connections>
+                            </switch>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBr-go-3QH">
                                 <rect key="frame" x="20" y="72" width="560" height="176"/>
                                 <animations/>
@@ -460,25 +467,38 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The wishlist will be public." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5N-F7-u3v">
+                                <rect key="frame" x="77" y="332" width="503" height="31"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DdS-bc-3c8" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="1tf-ep-Wms"/>
                             <constraint firstItem="DdS-bc-3c8" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="2Hx-Om-bzg"/>
-                            <constraint firstItem="DdS-bc-3c8" firstAttribute="top" secondItem="jqc-NE-Hpp" secondAttribute="bottom" constant="8" symbolic="YES" id="4pT-m6-5n0"/>
                             <constraint firstItem="8fk-Df-88l" firstAttribute="trailing" secondItem="DdS-bc-3c8" secondAttribute="trailing" id="6iZ-Bc-S5O"/>
                             <constraint firstItem="sBr-go-3QH" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="7R1-Vv-w9D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Z5N-F7-u3v" secondAttribute="trailing" id="89E-kO-oEb"/>
                             <constraint firstItem="sBr-go-3QH" firstAttribute="top" secondItem="2Yn-zh-Sl9" secondAttribute="bottom" constant="8" symbolic="YES" id="APb-1V-CYU"/>
+                            <constraint firstItem="Z5N-F7-u3v" firstAttribute="leading" secondItem="wRb-2l-tIT" secondAttribute="trailing" constant="8" symbolic="YES" id="MT3-ZG-JjL"/>
                             <constraint firstItem="8fk-Df-88l" firstAttribute="top" secondItem="DdS-bc-3c8" secondAttribute="bottom" constant="8" symbolic="YES" id="MbM-Pc-XvM"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wRb-2l-tIT" secondAttribute="leading" id="NFp-Pb-olQ"/>
+                            <constraint firstItem="wRb-2l-tIT" firstAttribute="top" secondItem="jqc-NE-Hpp" secondAttribute="bottom" constant="8" symbolic="YES" id="Nzd-vz-1Bs"/>
                             <constraint firstItem="8fk-Df-88l" firstAttribute="leading" secondItem="DdS-bc-3c8" secondAttribute="leading" id="Ohf-ye-j6g"/>
                             <constraint firstItem="ySX-H9-Mmg" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="Olh-b8-1eo"/>
+                            <constraint firstItem="Z5N-F7-u3v" firstAttribute="top" secondItem="jqc-NE-Hpp" secondAttribute="bottom" constant="8" symbolic="YES" id="QpU-Zk-0oc"/>
                             <constraint firstItem="jqc-NE-Hpp" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="Ujq-UQ-L1K"/>
                             <constraint firstItem="ySX-H9-Mmg" firstAttribute="top" secondItem="sBr-go-3QH" secondAttribute="bottom" constant="8" symbolic="YES" id="bnl-Az-KpV"/>
                             <constraint firstItem="8fk-Df-88l" firstAttribute="top" secondItem="DdS-bc-3c8" secondAttribute="bottom" constant="8" symbolic="YES" id="f0g-sA-mVc"/>
                             <constraint firstItem="jqc-NE-Hpp" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="hK1-Py-sPq"/>
                             <constraint firstItem="sBr-go-3QH" firstAttribute="trailing" secondItem="1ND-EJ-Pdj" secondAttribute="trailingMargin" id="ldX-VH-yDA"/>
                             <constraint firstItem="afc-YV-Nn0" firstAttribute="top" secondItem="8fk-Df-88l" secondAttribute="bottom" constant="8" symbolic="YES" id="qL2-6K-pWd"/>
+                            <constraint firstItem="DdS-bc-3c8" firstAttribute="top" secondItem="wRb-2l-tIT" secondAttribute="bottom" constant="8" symbolic="YES" id="qnM-A6-qHu"/>
+                            <constraint firstItem="DdS-bc-3c8" firstAttribute="top" secondItem="Z5N-F7-u3v" secondAttribute="bottom" constant="8" symbolic="YES" id="vBp-nq-fXq"/>
                             <constraint firstItem="ySX-H9-Mmg" firstAttribute="leading" secondItem="1ND-EJ-Pdj" secondAttribute="leadingMargin" id="vFK-Vt-0Cv"/>
                             <constraint firstItem="8fk-Df-88l" firstAttribute="top" secondItem="DdS-bc-3c8" secondAttribute="bottom" constant="8" symbolic="YES" id="wt4-aE-Tkx"/>
                             <constraint firstItem="jqc-NE-Hpp" firstAttribute="top" secondItem="ySX-H9-Mmg" secondAttribute="bottom" constant="8" symbolic="YES" id="xGw-la-324"/>
@@ -488,6 +508,7 @@
                     <connections>
                         <outlet property="descriptionTextField" destination="jqc-NE-Hpp" id="gyl-xx-0e5"/>
                         <outlet property="nameTextField" destination="ySX-H9-Mmg" id="pLB-a6-pyA"/>
+                        <outlet property="privacyDescription" destination="Z5N-F7-u3v" id="0xB-Oa-JhU"/>
                         <segue destination="tdx-Wg-BYv" kind="unwind" identifier="SaveNewWishlistSegue" unwindAction="saveNewWishlist:sender:" id="atj-hg-bsh"/>
                     </connections>
                 </viewController>

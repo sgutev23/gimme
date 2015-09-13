@@ -12,11 +12,12 @@ public class Wishlist {
     let identifier: String
     let name: String
     let description: String
+    let isPublic: Bool
     
-    
-    public init(identifier: String, name: String, description: String) {
+    public init(identifier: String, name: String, description: String, isPublic: Bool) {
         self.identifier = identifier
         self.name = name
         self.description = description
+        self.isPublic = isPublic
     }
 }
