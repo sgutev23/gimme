@@ -13,11 +13,13 @@ class ItemsTableViewController: UITableViewController {
 
     var items = [Item]()
     var wishlistId: String? = nil
-    var progressBar = UIProgressView()
+    
+    @IBOutlet weak var uploadProgressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.uploadProgressView.hidden = true
         self.loadItems()
         self.tableView.reloadData()
     }
@@ -42,7 +44,7 @@ class ItemsTableViewController: UITableViewController {
 
         let item = items[indexPath.row]
         
-        cell.urlLabel?.text = item.url
+        cell.descriptionLabel?.text = item.url
         cell.nameLabel?.text = item.name
 
         if item.picture != nil {
@@ -142,6 +144,8 @@ class ItemsTableViewController: UITableViewController {
                 let pictureData = (UIImagePNGRepresentation(resizedPicture))
                 let pictureName = "image-" + (PFUser.currentUser()!.objectId)! + "-" + "\(NSDate.timeIntervalSinceReferenceDate())"
                 
+                self.uploadProgressView.hidden = false
+                
                 let file = PFFile(name: pictureName, data: pictureData!)
                 file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
                     if succeeded {
@@ -150,6 +154,7 @@ class ItemsTableViewController: UITableViewController {
                         NSLog("\(errorMessage)")
                     }
                     }, progressBlock: { percent in
+                        self.uploadProgressView.setProgress((Float(percent) / 100.0), animated: false)
                         NSLog("Uploaded: \(percent)")
                 })
             } else {
@@ -182,6 +187,8 @@ class ItemsTableViewController: UITableViewController {
                         url: item["description"] as! String,
                         picture: file == nil ? nil : UIImage(data: file!.getData()!),
                         boughtBy: nil))
+                
+                self.uploadProgressView.hidden = true
                 self.tableView.reloadData()
             } else {
                 NSLog("error adding \(error)")

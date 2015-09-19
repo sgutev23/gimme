@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class FriendItemsTableViewController: UITableViewController {
+class FriendItemsTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     var wishlistId: String? = nil
 
     private var items = [Item]()

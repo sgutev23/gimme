@@ -17,4 +17,5 @@ public struct SeguesIdentifiers {
     public static let NewItemSegue = "NewItemSegue"
     public static let SaveNewItemSegue = "SaveNewItemSegue"
     public static let FriendsItemsSegue = "FriendsItemsSegue"
+    public static let ItemInfoSegue = "ItemInfoSegue"
 }
