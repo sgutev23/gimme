@@ -9,12 +9,16 @@
 import UIKit
 
 public class Friend: NSObject {
-    let name: String
+    let firstName: String
+    let lastName: String
     let identifier: String
+    let profilePic: UIImage?
     var numWishLists: Int = 0
     
-    public init(identifier: String, name: String) {
+    public init(identifier: String, firstName: String, lastName: String, profilePic: UIImage?) {
         self.identifier = identifier
-        self.name = name
+        self.firstName = firstName
+        self.lastName = lastName
+        self.profilePic = profilePic
     }
 }

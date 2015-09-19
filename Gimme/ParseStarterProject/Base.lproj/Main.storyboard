@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A262e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1LW-Yy-Kxt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -83,46 +83,60 @@
         <scene sceneID="2Hg-Ii-gbI">
             <objects>
                 <tableViewController id="VAM-17-YGp" customClass="FriendsViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ege-2D-BJo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="ege-2D-BJo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="uQm-rB-YbN" customClass="FriendTableViewCell" customModule="Gimme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="97" id="uQm-rB-YbN" customClass="FriendTableViewCell" customModule="Gimme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uQm-rB-YbN" id="lVD-ft-GiC">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btz-PJ-ekx">
-                                            <rect key="frame" x="8" y="8" width="48" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Wishlists: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-kH-97d">
+                                            <rect key="frame" x="96" y="38" width="496" height="50"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Wishlists: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lq-kH-97d">
-                                            <rect key="frame" x="263" y="18" width="75" height="17"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jzk-V2-YAZ">
+                                            <rect key="frame" x="8" y="8" width="80" height="80"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="jzk-V2-YAZ" secondAttribute="height" multiplier="1:1" id="lCn-aV-fnL"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btz-PJ-ekx">
+                                            <rect key="frame" x="96" y="8" width="496" height="22"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="btz-PJ-ekx" firstAttribute="top" secondItem="lVD-ft-GiC" secondAttribute="topMargin" id="UI9-HE-YuT"/>
-                                        <constraint firstItem="1Lq-kH-97d" firstAttribute="centerX" secondItem="lVD-ft-GiC" secondAttribute="centerX" id="Wgk-5s-eoo"/>
-                                        <constraint firstItem="1Lq-kH-97d" firstAttribute="top" secondItem="lVD-ft-GiC" secondAttribute="topMargin" constant="10" id="q3y-BO-Yxh"/>
-                                        <constraint firstItem="btz-PJ-ekx" firstAttribute="leading" secondItem="lVD-ft-GiC" secondAttribute="leadingMargin" id="vPz-s9-Or5"/>
+                                        <constraint firstItem="btz-PJ-ekx" firstAttribute="leading" secondItem="jzk-V2-YAZ" secondAttribute="trailing" constant="8" symbolic="YES" id="9mT-BG-hto"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="1Lq-kH-97d" secondAttribute="trailing" id="AXQ-xG-n6l"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1Lq-kH-97d" secondAttribute="bottom" id="B7r-jX-cal"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jzk-V2-YAZ" secondAttribute="bottom" id="FIu-fM-hu5"/>
+                                        <constraint firstAttribute="topMargin" secondItem="btz-PJ-ekx" secondAttribute="top" id="Npt-Qq-soH"/>
+                                        <constraint firstItem="jzk-V2-YAZ" firstAttribute="leading" secondItem="lVD-ft-GiC" secondAttribute="leadingMargin" id="Oj5-KX-V7w"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="btz-PJ-ekx" secondAttribute="trailing" id="QeL-zF-uk4"/>
+                                        <constraint firstItem="jzk-V2-YAZ" firstAttribute="top" secondItem="lVD-ft-GiC" secondAttribute="topMargin" id="ecx-4Z-rxx"/>
+                                        <constraint firstItem="1Lq-kH-97d" firstAttribute="leading" secondItem="jzk-V2-YAZ" secondAttribute="trailing" constant="8" symbolic="YES" id="hr6-lj-khL"/>
+                                        <constraint firstItem="1Lq-kH-97d" firstAttribute="top" secondItem="btz-PJ-ekx" secondAttribute="bottom" constant="8" symbolic="YES" id="o8x-eg-qk6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="nameLabel" destination="btz-PJ-ekx" id="ihQ-jp-D5n"/>
-                                    <outlet property="wishListCounterLabel" destination="1Lq-kH-97d" id="PUl-0o-zav"/>
+                                    <outlet property="profilePic" destination="jzk-V2-YAZ" id="K1G-fV-N7J"/>
+                                    <outlet property="wishListCounterLabel" destination="1Lq-kH-97d" id="ixV-h8-Jz0"/>
                                     <segue destination="sys-rF-E9V" kind="show" identifier="FriendsWishlistViewSegue" id="y1G-c2-O3v"/>
                                 </connections>
                             </tableViewCell>

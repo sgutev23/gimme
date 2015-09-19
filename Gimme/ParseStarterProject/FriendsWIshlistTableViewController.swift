@@ -61,7 +61,7 @@ class FriendsWishlistViewController: UITableViewController {
             return
         }
         
-        titleLabel?.title = (friend?.name)! + "'s wishlist"
+        titleLabel?.title = (friend?.firstName)! + "'s wishlist"
         
         let query = PFQuery(className:"Wishlist")
         query.whereKey("userid", equalTo:(friend?.identifier)!)

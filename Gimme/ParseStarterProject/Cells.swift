@@ -13,4 +13,5 @@ public struct CellsIdentifiers {
     public static let ItemCell = "ItemCell"
     public static let FriendsWishlistCell = "FriendsWishlistCell"
     public static let FriendItemCell = "FriendItemCell"
+    public static let FriendCell = "FriendCell"
 }

@@ -121,8 +121,6 @@ class FriendItemsTableViewController: UITableViewController {
                                     if boughtById != nil {
                                         let userQuery = PFQuery(className: DatabaseTables.User)
                                         
-                                        NSLog("BOUGHT BY ID: \(boughtById!)")
-                                        
                                         userQuery.getObjectInBackgroundWithId(boughtById!) {
                                             (boughtByObject, error) -> Void in
                                             if error == nil {

@@ -12,8 +12,7 @@ import FBSDKCoreKit
 
 class FriendsViewController: UITableViewController {
 
-    private var friendsMap = [String:Friend]()
-    private var friendsArray = [Friend]()
+    private var friends = [Friend]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +32,18 @@ class FriendsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendsArray.count
+        return friends.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendCell, forIndexPath: indexPath) as! FriendTableViewCell
         
-        let friend = friendsArray[indexPath.row]
+        let friend = friends[indexPath.row]
         cell.friend = friend
-        cell.nameLabel?.text = friend.name
+        cell.nameLabel?.text = "\(friend.firstName) \(friend.lastName)"
         cell.wishListCounterLabel?.text = "Wishlists: " + String(friend.numWishLists)
+        cell.profilePic.image = friend.profilePic
         
         return cell
     }
@@ -70,16 +70,30 @@ class FriendsViewController: UITableViewController {
                     if error == nil {
                         NSLog("friendUserids: \(friendUserids)")
                         if let friendUserids = friendUserids as? [PFObject] {
-                            var friendIds = [String]()
                             for friendUserid in friendUserids {
                                 let objectId = friendUserid.objectId!
-                                friendIds.append(objectId)
-                                self.friendsMap[objectId] = Friend(identifier: objectId, name: friendUserid["name"] as! String)
-                                self.friendsArray.append(self.friendsMap[objectId]!)
+                                
+                                if let profilePictureFile = friendUserid["profilePicture"] as? PFFile {
+                                    profilePictureFile.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+                                        var profilePicture: UIImage? = nil
+                                        
+                                        if error == nil {
+                                            profilePicture = UIImage(data: imageData!)
+                                        } else {
+                                            NSLog("Error retrieving profile pic data for user \(objectId): \(error?.localizedDescription).")
+                                        }
+                                        
+                                        let friend = Friend(
+                                            identifier: objectId,
+                                            firstName: friendUserid["firstName"] as! String,
+                                            lastName: friendUserid["lastName"] as! String,
+                                            profilePic: profilePicture)
+                                        self.friends.append(friend)
+                                        self.loadWishlistCount(friend)
+                                    }
+                                }
                             }
-                            NSLog("friendIds \(friendIds)")
-                            self.loadWishlistCounts(friendIds)
-                            self.tableView.reloadData()
+                            
                         }
                     } else {
                         NSLog("error: \(error)")
@@ -92,29 +106,25 @@ class FriendsViewController: UITableViewController {
             }
         }
     }
-
-    func loadWishlistCounts(friendsArray: [String]) {
-        let query = PFQuery(className:"Wishlist")
-        query.whereKey("userid", containedIn: friendsArray)
+    
+    func loadWishlistCount(friend: Friend) {
+        let query = PFQuery(className: DatabaseTables.Wishlist)
+        query.whereKey("userid", equalTo: friend.identifier)
         query.whereKey("public", equalTo: true)
-        query.findObjectsInBackgroundWithBlock {
-            (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
+        
+        query.countObjectsInBackgroundWithBlock {
+            (count, error) -> Void in
+            
             if error == nil {
-                NSLog("wishlistObjects: \(wishlistObjects)")
-                
-                if let wishlistObjects = wishlistObjects as? [PFObject] {
-                    for wishlistObject in wishlistObjects {
-                        let friendId = wishlistObject["userid"] as! String
-                        self.friendsMap[friendId]?.numWishLists = (self.friendsMap[friendId]?.numWishLists)! + 1
-                    }
-                    self.tableView.reloadData()
-                } else {
-                    NSLog("error: \(error)")
-                }
+                NSLog("NUMBER OF WISHLISTS for \(friend.identifier): \(count)")
+                friend.numWishLists = Int(count)
+                self.tableView.reloadData()
+            } else {
+                NSLog("Error getting the number of wishlists for friend \(friend.identifier): \(error?.localizedDescription)")
             }
+            
         }
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SeguesIdentifiers.FriendsWishlistSegue {
