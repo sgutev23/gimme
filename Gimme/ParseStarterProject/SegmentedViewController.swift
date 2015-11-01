@@ -15,32 +15,48 @@ class SegmentedViewController: UIViewController {
     
     @IBOutlet weak var segmentedController: UISegmentedControl!
     
-    @IBOutlet weak var firstContainerView: UIView!
-    
-    @IBOutlet weak var secondContainerView: UIView!
+    @IBOutlet weak var wishlistsContainerView: UIView!
+    @IBOutlet weak var friendsContainerView: UIView!
+    @IBOutlet weak var boughtItemsContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstContainerView.hidden = false
-        secondContainerView.hidden = true
+        
+        showWishlistsContainerView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
+    func showFriendsContainerView() {
+        friendsContainerView.hidden = false
+        
+        wishlistsContainerView.hidden = true
+        boughtItemsContainerView.hidden = true
+    }
+    
+    func showWishlistsContainerView() {
+        wishlistsContainerView.hidden = false
+        
+        friendsContainerView.hidden = true
+        boughtItemsContainerView.hidden = true
+    }
+    
+    func showItemsBoughtContainerView() {
+        boughtItemsContainerView.hidden = false
+        
+        friendsContainerView.hidden = true
+        wishlistsContainerView.hidden = true
+    }
     
     @IBAction func indexChanged(sender: AnyObject) {
         switch segmentedController.selectedSegmentIndex
         {
-        case 0:
-            firstContainerView.hidden = false
-            secondContainerView.hidden = true
-        case 1:
-            firstContainerView.hidden = true
-            secondContainerView.hidden = false
+        case 0: showWishlistsContainerView()
+        case 1: showFriendsContainerView()
+        case 2: showItemsBoughtContainerView()
         default:
             break;
         }

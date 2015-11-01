@@ -68,7 +68,6 @@ class FriendsViewController: UITableViewController {
                 query.findObjectsInBackgroundWithBlock {
                     (friendUserids: [AnyObject]?, error: NSError?) -> Void in
                     if error == nil {
-                        NSLog("friendUserids: \(friendUserids)")
                         if let friendUserids = friendUserids as? [PFObject] {
                             for friendUserid in friendUserids {
                                 let objectId = friendUserid.objectId!

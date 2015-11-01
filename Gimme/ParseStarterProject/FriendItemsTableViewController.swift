@@ -44,7 +44,7 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
         if item.picture != nil {
             cell.picture.image = item.picture!
         } else {
-            //TODO: add default picture - like a question mark or something
+            //TODO: add default picture
         }
         
         return cell
@@ -79,19 +79,26 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
     private func changeItemBuyState(itemIndex: Int, buy: Bool) {
         let item = items[itemIndex]
         let query = PFQuery(className: DatabaseTables.Wishitem)
+        
+        NSLog("Item Identifier: \(item.identifier)")
 
         query.getObjectInBackgroundWithId(item.identifier) {
             (object, error) -> Void in
             
             if error == nil {
                 if let object = object {
-                    object["boughtBy"] = buy ? self.currentUser?.objectId : NSNull()
-                    object.saveInBackground()
-                    
-                    NSLog("Saving item's boughtBy user")
-                    
-                    item.boughtBy = buy ? User(identifier: self.currentUser?.objectId, name: self.currentUser?["name"] as? String) : nil
-                    self.tableView.reloadData()
+                    object["boughtBy"] = buy ? self.currentUser?.objectId : NSNull()                    
+                    object.saveInBackgroundWithBlock {
+                        (success, error) -> Void in
+                        
+                        if success {
+                            item.boughtBy = buy ? User(identifier: self.currentUser?.objectId, name: self.currentUser?["name"] as? String) : nil
+                            self.tableView.reloadData()
+                            NSLog("Saved item's boughtBy user")
+                        } else {
+                            NSLog("Cannot save object: \(error?.localizedDescription)")
+                        }
+                    }
                 }
             } else {
                 NSLog("Cannot buy item: \(error)")
@@ -101,13 +108,11 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
 
     private func loadItems() {
         let query = PFQuery(className: DatabaseTables.Wishitem)
-        query.whereKey("wishlistId", equalTo: wishlistId!)
+        query.whereKey("wishlistId", equalTo: self.wishlistId!)
         query.findObjectsInBackgroundWithBlock {
             (itemObjects: [AnyObject]?, error: NSError?) -> Void in
             
             if error == nil {
-                NSLog("results: \(itemObjects)")
-                
                 self.items.removeAll()
                 
                 if let itemObjects = itemObjects as? [PFObject] {
@@ -131,8 +136,9 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
                                                             name: itemObject["name"] as! String,
                                                             url: itemObject["description"] as! String,
                                                             picture: UIImage(data: imageData!),
+                                                            friend: nil,
                                                             boughtBy: User(identifier: boughtByUser["objectId"] as? String, name: (boughtByUser["name"] as! String))))
-                                                
+                                                    
                                                     
                                                 }
                                             } else {
@@ -146,6 +152,7 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
                                                 name: itemObject["name"] as! String,
                                                 url: itemObject["description"] as! String,
                                                 picture: UIImage(data: imageData!),
+                                                friend: nil,
                                                 boughtBy: nil))
                                     }
                                     

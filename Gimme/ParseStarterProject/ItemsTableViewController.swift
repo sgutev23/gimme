@@ -124,6 +124,7 @@ class ItemsTableViewController: UITableViewController {
                                             name: itemObject["name"] as! String,
                                             url: itemObject["description"] as! String,
                                             picture: UIImage(data: imageData!),
+                                            friend: nil,
                                             boughtBy: nil))
                                     self.tableView.reloadData()
                                 }
@@ -175,6 +176,7 @@ class ItemsTableViewController: UITableViewController {
         item["picture"] = file ?? NSNull()
         item["name"] = name
         item["description"] = description
+        item.ACL = PFACL(user: PFUser.currentUser()!)
         
         item.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
@@ -186,6 +188,7 @@ class ItemsTableViewController: UITableViewController {
                         name: item["name"] as! String,
                         url: item["description"] as! String,
                         picture: file == nil ? nil : UIImage(data: file!.getData()!),
+                        friend: nil,
                         boughtBy: nil))
                 
                 self.uploadProgressView.hidden = true

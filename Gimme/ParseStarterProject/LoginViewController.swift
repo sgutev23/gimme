@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
                                                     user.saveInBackground()
                                                     
                                                     NSLog("User logged in through Facebook with a profile picture!")
-                                                    self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
+                                                    self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)                                                    
                                                 })
                                             } else {
                                                 NSLog("Error getting profile picture: \(error?.localizedDescription)")

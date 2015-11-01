@@ -7,31 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011EB7191B9B48CE002142A5 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7181B9B48CE002142A5 /* Segues.swift */; settings = {ASSET_TAGS = (); }; };
-		011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		011EB71F1B9B4DF4002142A5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		011EB7291B9B60C5002142A5 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7281B9B60C5002142A5 /* Cells.swift */; settings = {ASSET_TAGS = (); }; };
-		015FC4FF1BA43AB3006C205A /* NewWishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		015FC5011BA56D00006C205A /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5001BA56D00006C205A /* NewItemViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		015FC5061BA58A99006C205A /* FriendItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		015FC5081BA58AF9006C205A /* FriendItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		0183797F1B9B39B800E27C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0183797E1B9B39B800E27C39 /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		018379811B9B39C400E27C39 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379801B9B39C400E27C39 /* Wishlist.swift */; settings = {ASSET_TAGS = (); }; };
-		018379831B9B39D000E27C39 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379821B9B39D000E27C39 /* Item.swift */; settings = {ASSET_TAGS = (); }; };
-		0185BE191B9B78870099A56E /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE181B9B78870099A56E /* FriendTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		0185BE1F1B9B78B00099A56E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1E1B9B78B00099A56E /* Friend.swift */; settings = {ASSET_TAGS = (); }; };
-		01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		01E3940A1B9C30FB00093162 /* FriendsWIshlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		01E394121B9E20F700093162 /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394111B9E20F700093162 /* DatabaseTables.swift */; settings = {ASSET_TAGS = (); }; };
+		0102D6D61BE634470064BC5B /* BoughtItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0102D6D51BE634470064BC5B /* BoughtItemsTableViewController.swift */; };
+		0102D6D81BE6554E0064BC5B /* BoughtItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0102D6D71BE6554E0064BC5B /* BoughtItemsTableViewCell.swift */; };
+		011EB7191B9B48CE002142A5 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7181B9B48CE002142A5 /* Segues.swift */; };
+		011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */; };
+		011EB71F1B9B4DF4002142A5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */; };
+		011EB7291B9B60C5002142A5 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011EB7281B9B60C5002142A5 /* Cells.swift */; };
+		015FC4FF1BA43AB3006C205A /* NewWishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */; };
+		015FC5011BA56D00006C205A /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5001BA56D00006C205A /* NewItemViewController.swift */; };
+		015FC5061BA58A99006C205A /* FriendItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */; };
+		015FC5081BA58AF9006C205A /* FriendItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */; };
+		0183797F1B9B39B800E27C39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0183797E1B9B39B800E27C39 /* User.swift */; };
+		018379811B9B39C400E27C39 /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379801B9B39C400E27C39 /* Wishlist.swift */; };
+		018379831B9B39D000E27C39 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018379821B9B39D000E27C39 /* Item.swift */; };
+		0185BE191B9B78870099A56E /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE181B9B78870099A56E /* FriendTableViewCell.swift */; };
+		0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */; };
+		0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */; };
+		0185BE1F1B9B78B00099A56E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1E1B9B78B00099A56E /* Friend.swift */; };
+		01A535A01B9B2EFA00DBC96C /* WishlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5359F1B9B2EFA00DBC96C /* WishlistTableViewController.swift */; };
+		01A535A21B9B305900DBC96C /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */; };
+		01E3940A1B9C30FB00093162 /* FriendsWIshlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */; };
+		01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */; };
+		01E394121B9E20F700093162 /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394111B9E20F700093162 /* DatabaseTables.swift */; };
 		588DFF2C1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */; };
-		588DFF361B9B3D8A00644648 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF331B9B3D8A00644648 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
-		588DFF371B9B3D8A00644648 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF341B9B3D8A00644648 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
-		588DFF381B9B3D8A00644648 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF351B9B3D8A00644648 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
-		58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B535EA1B9B36B600D02062 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		588DFF361B9B3D8A00644648 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF331B9B3D8A00644648 /* FBSDKCoreKit.framework */; };
+		588DFF371B9B3D8A00644648 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF341B9B3D8A00644648 /* FBSDKLoginKit.framework */; };
+		588DFF381B9B3D8A00644648 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF351B9B3D8A00644648 /* FBSDKShareKit.framework */; };
+		58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B535EA1B9B36B600D02062 /* LoginViewController.swift */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
 		81BA81501A49DA1800E65899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA814E1A49DA1800E65899 /* Main.storyboard */; };
 		81BA81521A49DA1800E65899 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81BA81511A49DA1800E65899 /* Images.xcassets */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0102D6D51BE634470064BC5B /* BoughtItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtItemsTableViewController.swift; sourceTree = "<group>"; };
+		0102D6D71BE6554E0064BC5B /* BoughtItemsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtItemsTableViewCell.swift; sourceTree = "<group>"; };
 		011EB7181B9B48CE002142A5 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				01A535A11B9B305900DBC96C /* WishlistTableViewCell.swift */,
 				011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */,
 				015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */,
+				0102D6D71BE6554E0064BC5B /* BoughtItemsTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				015FC5001BA56D00006C205A /* NewItemViewController.swift */,
 				015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */,
 				015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */,
+				0102D6D51BE634470064BC5B /* BoughtItemsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -337,7 +343,9 @@
 				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
 				011EB7191B9B48CE002142A5 /* Segues.swift in Sources */,
 				0183797F1B9B39B800E27C39 /* User.swift in Sources */,
+				0102D6D61BE634470064BC5B /* BoughtItemsTableViewController.swift in Sources */,
 				0185BE191B9B78870099A56E /* FriendTableViewCell.swift in Sources */,
+				0102D6D81BE6554E0064BC5B /* BoughtItemsTableViewCell.swift in Sources */,
 				015FC5081BA58AF9006C205A /* FriendItemTableViewCell.swift in Sources */,
 				011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */,
 				018379831B9B39D000E27C39 /* Item.swift in Sources */,
