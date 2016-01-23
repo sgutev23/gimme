@@ -32,7 +32,6 @@ class WishlistViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadWishLists()
     }
     
