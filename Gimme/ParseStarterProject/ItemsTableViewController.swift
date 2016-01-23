@@ -177,6 +177,8 @@ class ItemsTableViewController: UITableViewController {
         item["name"] = name
         item["description"] = description
         item.ACL = PFACL(user: PFUser.currentUser()!)
+        item.ACL?.setPublicReadAccess(true)
+        item.ACL?.setPublicWriteAccess(true)
         
         item.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in

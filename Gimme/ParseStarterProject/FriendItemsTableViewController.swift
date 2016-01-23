@@ -80,14 +80,12 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
         let item = items[itemIndex]
         let query = PFQuery(className: DatabaseTables.Wishitem)
         
-        NSLog("Item Identifier: \(item.identifier)")
-
         query.getObjectInBackgroundWithId(item.identifier) {
             (object, error) -> Void in
             
             if error == nil {
                 if let object = object {
-                    object["boughtBy"] = buy ? self.currentUser?.objectId : NSNull()                    
+                    object.setObject(self.currentUser!, forKey: "boughtBy")
                     object.saveInBackgroundWithBlock {
                         (success, error) -> Void in
                         
@@ -108,6 +106,7 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
 
     private func loadItems() {
         let query = PFQuery(className: DatabaseTables.Wishitem)
+
         query.whereKey("wishlistId", equalTo: self.wishlistId!)
         query.findObjectsInBackgroundWithBlock {
             (itemObjects: [AnyObject]?, error: NSError?) -> Void in
@@ -117,48 +116,39 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
                 
                 if let itemObjects = itemObjects as? [PFObject] {
                     for itemObject in itemObjects {
+                        var boughtByUser: User? = nil
+                        if let boughtBy = itemObject["boughtBy"] as? PFUser {
+                            boughtByUser = User(identifier: boughtBy["objectId"] as? String, name: (boughtBy["firstName"] as! String))
+                        }
+                        
                         if let picture = itemObject["picture"] as? PFFile {
                             picture.getDataInBackgroundWithBlock { (imageData, error) -> Void in
                                 if let errorMessage = error {
                                     NSLog("Error while retrieving picture: \(errorMessage)")
                                 } else {
-                                    let boughtById = itemObject["boughtBy"] as? String
-                                    if boughtById != nil {
-                                        let userQuery = PFQuery(className: DatabaseTables.User)
-                                        
-                                        userQuery.getObjectInBackgroundWithId(boughtById!) {
-                                            (boughtByObject, error) -> Void in
-                                            if error == nil {
-                                                if let boughtByUser = boughtByObject {
-                                                    self.items.append(
-                                                        Item(
-                                                            identifier: itemObject.objectId!,
-                                                            name: itemObject["name"] as! String,
-                                                            url: itemObject["description"] as! String,
-                                                            picture: UIImage(data: imageData!),
-                                                            friend: nil,
-                                                            boughtBy: User(identifier: boughtByUser["objectId"] as? String, name: (boughtByUser["name"] as! String))))
-                                                    
-                                                    
-                                                }
-                                            } else {
-                                                NSLog("Error while retrieving boughtBy user: \(error)")
-                                            }
-                                        }
-                                    } else {
-                                        self.items.append(
-                                            Item(
-                                                identifier: itemObject.objectId!,
-                                                name: itemObject["name"] as! String,
-                                                url: itemObject["description"] as! String,
-                                                picture: UIImage(data: imageData!),
-                                                friend: nil,
-                                                boughtBy: nil))
-                                    }
+                                    self.items.append(
+                                        Item(
+                                            identifier: itemObject.objectId!,
+                                            name: itemObject["name"] as! String,
+                                            url: itemObject["description"] as! String,
+                                            picture: UIImage(data: imageData!),
+                                            friend: nil,
+                                            boughtBy: boughtByUser))
                                     
                                     self.tableView.reloadData()
                                 }
                             }
+                        } else {
+                            self.items.append(
+                                Item(
+                                    identifier: itemObject.objectId!,
+                                    name: itemObject["name"] as! String,
+                                    url: itemObject["description"] as! String,
+                                    picture: nil,
+                                    friend: nil,
+                                    boughtBy: boughtByUser))
+                            
+                            self.tableView.reloadData()
                         }
                     }
                 }
