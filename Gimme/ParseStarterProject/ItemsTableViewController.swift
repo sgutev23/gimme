@@ -12,7 +12,7 @@ import Parse
 class ItemsTableViewController: UITableViewController {
 
     var items = [Item]()
-    var wishlistId: String? = nil
+    var wishlist: Wishlist? = nil
     
     @IBOutlet weak var uploadProgressView: UIProgressView!
     
@@ -59,7 +59,7 @@ class ItemsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SeguesIdentifiers.NewItemSegue {
             if let destination = segue.destinationViewController as? NewItemViewController {
-                destination.wishlistId = wishlistId
+                destination.wishlist = wishlist
             }
         }
     }
@@ -102,13 +102,15 @@ class ItemsTableViewController: UITableViewController {
     }
     
     func loadItems() {
+        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
         let query = PFQuery(className: DatabaseTables.Wishitem)
-        query.whereKey("wishlistId", equalTo: wishlistId!)
+        
+        wishlistQuery.whereKey("objectId", equalTo: wishlist!.identifier)
+        
+        query.whereKey("wishlist", matchesQuery: wishlistQuery)
         query.findObjectsInBackgroundWithBlock {
             (itemObjects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                NSLog("results: \(itemObjects)")
-                
                 self.items.removeAll()
                 
                 if let itemObjects = itemObjects as? [PFObject] {
@@ -150,7 +152,8 @@ class ItemsTableViewController: UITableViewController {
                 let file = PFFile(name: pictureName, data: pictureData!)
                 file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
                     if succeeded {
-                        self.saveNewItem(source.wishlistId, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: file)
+                        NSLog("HERE!!")
+                        self.saveNewItem(source.wishlist, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: file)
                     } else if let errorMessage = error {
                         NSLog("\(errorMessage)")
                     }
@@ -159,7 +162,7 @@ class ItemsTableViewController: UITableViewController {
                         NSLog("Uploaded: \(percent)")
                 })
             } else {
-                saveNewItem(source.wishlistId, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: nil)
+                saveNewItem(source.wishlist, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: nil)
             }
         }
     }
@@ -170,33 +173,47 @@ class ItemsTableViewController: UITableViewController {
         self.presentViewController(alertController, animated: false, completion: nil)
     }
     
-    private func saveNewItem(identifier: String?, name: String?, description: String?, file: PFFile?) -> Void {
-        let item = PFObject(className: DatabaseTables.Wishitem)
-        item["wishlistId"] = identifier
-        item["picture"] = file ?? NSNull()
-        item["name"] = name
-        item["description"] = description
-        item.ACL = PFACL(user: PFUser.currentUser()!)
-        item.ACL?.setPublicReadAccess(true)
-        item.ACL?.setPublicWriteAccess(true)
-        
-        item.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                NSLog("added item \(item.objectId)")
-                self.items.append(
-                    Item(
-                        identifier: item.objectId!,
-                        name: item["name"] as! String,
-                        url: item["description"] as! String,
-                        picture: file == nil ? nil : UIImage(data: file!.getData()!),
-                        friend: nil,
-                        boughtBy: nil))
-                
-                self.uploadProgressView.hidden = true
-                self.tableView.reloadData()
+    private func saveNewItem(wishlist: Wishlist?, name: String?, description: String?, file: PFFile?) -> Void {
+        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
+
+        wishlistQuery.getObjectInBackgroundWithId((wishlist?.identifier)!) {
+            (wishlistObject: PFObject?, error: NSError?) -> Void in
+            
+            if error == nil && wishlistObject != nil {
+                let item = PFObject(className: DatabaseTables.Wishitem)
+                item.setObject(wishlistObject!, forKey: "wishlist")
+                item.setObject(file ?? NSNull(), forKey: "picture")
+                item.setObject(name!, forKey: "name")
+                item.setObject(description!, forKey: "description")
+                item.ACL = PFACL(user: PFUser.currentUser()!)
+                item.ACL?.setPublicReadAccess(true)
+                item.ACL?.setPublicWriteAccess(true)
+                item.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        NSLog("added item \(item.objectId)")
+                        self.items.append(
+                            Item(
+                                identifier: item.objectId!,
+                                name: item["name"] as! String,
+                                url: item["description"] as! String,
+                                picture: file == nil ? nil : UIImage(data: file!.getData()!),
+                                friend: nil,
+                                boughtBy: nil))
+                        
+                        self.uploadProgressView.hidden = true
+                        self.tableView.reloadData()
+                    } else {
+                        NSLog("error adding item \(error)")
+                    }
+                }
             } else {
-                NSLog("error adding \(error)")
+                if(wishlistObject == nil) {
+                    NSLog("Error retrieving wishlist: the 'wishlistObject' is nil.")
+                } else {
+                    NSLog("Error retrieving wishlist: \(error)")
+                }
+                
             }
         }
     }

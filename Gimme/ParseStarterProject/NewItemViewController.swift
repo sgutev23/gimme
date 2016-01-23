@@ -20,7 +20,7 @@ class NewItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     var imageView = UIImageView()
-    var wishlistId: String? = nil
+    var wishlist: Wishlist? = nil
     
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var descriptionLabel: UITextField!

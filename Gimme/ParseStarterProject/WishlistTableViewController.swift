@@ -26,7 +26,7 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
         if segue.identifier == SeguesIdentifiers.ItemsViewSegue {
             if let destinationViewController = segue.destinationViewController as? ItemsTableViewController {
                 if currentSelectedWishlist != nil {
-                    destinationViewController.wishlistId = (currentSelectedWishlist?.identifier)!
+                    destinationViewController.wishlist = currentSelectedWishlist!
                     
                     currentSelectedWishlist = nil
                 }
@@ -116,7 +116,7 @@ class WishlistTableViewController: UIViewController, UITableViewDataSource, UITa
     
     func loadWishLists() {
         let query = PFQuery(className: DatabaseTables.Wishlist)
-        query.whereKey("userid", equalTo:currentUser!.objectId!)
+        query.whereKey("user", equalTo:currentUser!)
         query.findObjectsInBackgroundWithBlock {
             (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {

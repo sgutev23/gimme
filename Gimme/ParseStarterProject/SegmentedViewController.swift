@@ -86,9 +86,9 @@ class SegmentedViewController: UIViewController {
     @IBAction func saveNewWishlist(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let source = segue.sourceViewController as? NewWishlistViewController {
             let wishlist = PFObject(className: DatabaseTables.Wishlist)
-            wishlist["userid"] = currentUser?.objectId
-            wishlist["name"] = source.nameTextField.text
-            wishlist["public"] = source.isPublic
+            wishlist.setObject(currentUser!, forKey: "user")
+            wishlist.setObject(source.nameTextField.text!, forKey: "name")
+            wishlist.setObject(source.isPublic, forKey: "public")
             wishlist.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {

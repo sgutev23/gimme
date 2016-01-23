@@ -51,7 +51,7 @@ class BoughtItemsTableViewController: UITableViewController {
     
     private func loadItems() {
         let query = PFQuery(className: DatabaseTables.Wishitem)
-        query.whereKey("boughtBy", equalTo: (currentUser?.objectId)!)
+        query.whereKey("boughtBy", equalTo: PFUser.currentUser()!)
         query.findObjectsInBackgroundWithBlock {
             (itemObjects, error) -> Void in
             
