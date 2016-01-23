@@ -44,8 +44,8 @@ class FriendsViewController: UITableViewController {
         cell.nameLabel?.text = "\(friend.firstName) \(friend.lastName)"
         cell.wishListCounterLabel?.text = "WISHLISTS: " + String(friend.numWishLists)
         cell.profilePic.image = friend.profilePic
-        cell.profilePic.layer.cornerRadius = cell.profilePic.frame.size.width / 2;
         cell.profilePic.clipsToBounds = true;
+        cell.profilePic.layer.cornerRadius = cell.profilePic.frame.size.width / 2;
         cell.profilePic.layer.borderWidth = 1.0;
         let borderColor : UIColor = UIColor.lightGrayColor()
         cell.profilePic.layer.borderColor = borderColor.CGColor;

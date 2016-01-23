@@ -103,7 +103,7 @@ class SegmentedViewController: UIViewController {
     
     private func reloadWishlists() -> Void {
         for childViewController in self.childViewControllers {
-            if let wishlistsViewController = childViewController as? WishlistTableViewController {
+            if let wishlistsViewController = childViewController as? WishlistViewController {
                 wishlistsViewController.loadWishLists()
             }
         }
