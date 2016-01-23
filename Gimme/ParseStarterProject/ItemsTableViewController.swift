@@ -39,6 +39,11 @@ class ItemsTableViewController: UITableViewController {
         return items.count
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
+        forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.ItemCell, forIndexPath: indexPath) as! ItemTableViewCell
 
@@ -49,9 +54,30 @@ class ItemsTableViewController: UITableViewController {
 
         if item.picture != nil {
             cell.picture.image = item.picture
+            cell.picture.layer.borderWidth = 1.0;
+            let borderColor : UIColor = UIColor.lightGrayColor()
+            cell.picture.layer.borderColor = borderColor.CGColor;
         } else {
             //TODO: add default picture - like a question mark or something
         }
+        
+        if item.boughtBy != nil {
+            cell.reservedImage.alpha = 1.0
+        } else {
+            cell.reservedImage.alpha = 1.0
+            cell.reservedImage.clipsToBounds = true;
+            cell.reservedImage.layer.cornerRadius = cell.reservedImage.frame.size.width / 2;
+            cell.reservedImage.layer.borderWidth = 2.0;
+            let borderColor : UIColor = UIColor.whiteColor()
+            cell.reservedImage.layer.borderColor = borderColor.CGColor;
+
+        }
+        
+        
+        let topBorder = UIView();
+        topBorder.backgroundColor = UIColor.whiteColor();
+        topBorder.frame = CGRectMake(0, 0, cell.placeholderView.frame.size.width, 3);
+        cell.placeholderView.addSubview(topBorder)
         
         return cell
     }

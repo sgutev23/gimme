@@ -14,4 +14,6 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var placeholderView: UIView!
+    @IBOutlet weak var reservedImage: UIImageView!
 }
