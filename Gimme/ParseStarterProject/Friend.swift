@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 public class Friend: NSObject {
     let firstName: String
