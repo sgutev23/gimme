@@ -519,7 +519,7 @@
         <!--Segmented View Controller-->
         <scene sceneID="rUd-I7-4SG">
             <objects>
-                <viewController id="FrI-EP-jDB" customClass="SegmentedViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FrI-EP-jDB" customClass="SegmentedViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q52-1K-nAA"/>
                         <viewControllerLayoutGuide type="bottom" id="isN-P9-kkY"/>
@@ -726,41 +726,52 @@
         <!--Wishlist View Controller-->
         <scene sceneID="rY0-tE-ZAM">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="IzM-f6-7Or" userLabel="Wishlist View Controller" customClass="WishlistViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="41" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Qu-b1-76a">
+                <tableViewController id="IzM-f6-7Or" userLabel="Wishlist View Controller" customClass="WishlistViewController" customModule="Gimme" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Qu-b1-76a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WishlistItemCell" rowHeight="41" id="uc3-uC-QbV" customClass="WishlistItemTableViewCell" customModule="Gimme" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="41"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WishlistItemCell" rowHeight="78" id="uc3-uC-QbV" customClass="WishlistItemTableViewCell" customModule="Gimme" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uc3-uC-QbV" id="dQG-tu-VdX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="77"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wishlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mz6-M5-gxO">
-                                            <rect key="frame" x="26" y="9" width="247" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qiH-Ha-ei7">
+                                            <rect key="frame" x="20" y="9" width="59" height="59"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="247" id="43w-uH-bkQ"/>
-                                                <constraint firstAttribute="height" constant="21" id="lp0-VW-mAm"/>
+                                                <constraint firstAttribute="width" secondItem="qiH-Ha-ei7" secondAttribute="height" multiplier="1:1" id="eLX-Cs-nxC"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wishlist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-OQ-lfQ">
+                                            <rect key="frame" x="92" y="16" width="411" height="22"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="411" id="TAc-fQ-EAq"/>
+                                                <constraint firstAttribute="height" constant="22" id="Zzi-ad-782"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" white="0.27068965519999999" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="mz6-M5-gxO" firstAttribute="top" secondItem="dQG-tu-VdX" secondAttribute="topMargin" constant="1" id="KsZ-wl-7Vo"/>
-                                        <constraint firstItem="mz6-M5-gxO" firstAttribute="leading" secondItem="dQG-tu-VdX" secondAttribute="leadingMargin" constant="18" id="qUh-4H-Nky"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="qiH-Ha-ei7" secondAttribute="bottom" constant="1" id="4KC-gA-R0K"/>
+                                        <constraint firstItem="qiH-Ha-ei7" firstAttribute="top" secondItem="dQG-tu-VdX" secondAttribute="topMargin" constant="1" id="O8Z-mQ-ZVj"/>
+                                        <constraint firstItem="4Cg-OQ-lfQ" firstAttribute="top" secondItem="dQG-tu-VdX" secondAttribute="topMargin" constant="8" id="ZN0-Zu-4qt"/>
+                                        <constraint firstItem="qiH-Ha-ei7" firstAttribute="leading" secondItem="dQG-tu-VdX" secondAttribute="leadingMargin" constant="12" id="ZV1-FE-eB0"/>
+                                        <constraint firstItem="4Cg-OQ-lfQ" firstAttribute="leading" secondItem="qiH-Ha-ei7" secondAttribute="trailing" constant="13" id="qWv-hn-Cns"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="nameLabel" destination="mz6-M5-gxO" id="pjC-wc-iRW"/>
+                                    <outlet property="categoryImage" destination="qiH-Ha-ei7" id="zei-ci-cYN"/>
+                                    <outlet property="nameLabel" destination="4Cg-OQ-lfQ" id="OTu-VD-9Ek"/>
                                     <segue destination="pFh-4L-g6z" kind="show" identifier="ItemsViewSegue" id="6nh-II-KQd"/>
                                 </connections>
                             </tableViewCell>

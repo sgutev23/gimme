@@ -55,13 +55,20 @@ class WishlistViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.WishlistItemCell, forIndexPath: indexPath) as! WishlistItemTableViewCell
         let wishlist = wishlists[indexPath.row]
         
-        cell.textLabel?.text = wishlist.name
+        cell.nameLabel?.text = wishlist.name
         
         if(!wishlist.isPublic) {
-            cell.textLabel?.font = UIFont.italicSystemFontOfSize((cell.textLabel?.font.pointSize)!)
+            cell.nameLabel?.font = UIFont.italicSystemFontOfSize((cell.nameLabel?.font.pointSize)!)
         }
         
         cell.wishlist = wishlist
+        if (indexPath.row % 3 == 1) {
+            cell.categoryImage.image = UIImage(named: "gift")
+        } else if (indexPath.row % 3 == 2) {
+            cell.categoryImage.image = UIImage(named: "xmas")
+        } else {
+            cell.categoryImage.image = UIImage(named: "heart")
+        }
         
         return cell
     }
