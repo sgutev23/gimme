@@ -13,6 +13,7 @@ import FBSDKCoreKit
 class FriendsViewController: UITableViewController {
 
     private var friends = [Friend]()
+    private var selectedIndexPath : NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +51,15 @@ class FriendsViewController: UITableViewController {
         let borderColor : UIColor = UIColor.lightGrayColor()
         cell.profilePic.layer.borderColor = borderColor.CGColor;
         
+        if let birthday = friend.birthday {
+            cell.birthday.setTitle(birthday, forState: UIControlState.Normal)
+        } else {
+            cell.birthday.setTitle("Not Set Yet", forState: UIControlState.Normal)
+        }
+        
         return cell
     }
-
-
+   
     func loadFriends() {
         let fbRequest = FBSDKGraphRequest(graphPath:"/me/friends", parameters: nil);
         fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
@@ -91,6 +97,7 @@ class FriendsViewController: UITableViewController {
                                             identifier: objectId,
                                             firstName: friendUserid["firstName"] as! String,
                                             lastName: friendUserid["lastName"] as! String,
+                                            birthday: friendUserid["birthday"] as! String?,
                                             profilePic: profilePicture)
                                         self.friends.append(friend)
                                         self.loadWishlistCount(friend)
@@ -142,4 +149,7 @@ class FriendsViewController: UITableViewController {
         }
     }
 
+    @IBAction func updateFriendBirthday(sender: UIButton) {
+
+    }
 }

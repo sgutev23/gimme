@@ -15,4 +15,5 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var wishListCounterLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var birthday: UIButton!
 }

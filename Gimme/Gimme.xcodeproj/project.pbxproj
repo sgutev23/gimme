@@ -27,9 +27,8 @@
 		01E3940A1B9C30FB00093162 /* FriendsWIshlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */; };
 		01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */; };
 		01E394121B9E20F700093162 /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394111B9E20F700093162 /* DatabaseTables.swift */; };
-		582145E81C53E2F400F27425 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582145E71C53E2F300F27425 /* WishlistViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		582145EA1C53E65400F27425 /* WishlistItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582145E91C53E65400F27425 /* WishlistItemTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		582145EC1C54230A00F27425 /* CellAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582145EB1C54230A00F27425 /* CellAnimator.swift */; settings = {ASSET_TAGS = (); }; };
+		01E7730A1C54151B009901CB /* WishlistItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E773081C54151B009901CB /* WishlistItemTableViewCell.swift */; };
+		01E7730B1C54151B009901CB /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E773091C54151B009901CB /* WishlistViewController.swift */; };
 		588DFF2C1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */; };
 		588DFF361B9B3D8A00644648 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF331B9B3D8A00644648 /* FBSDKCoreKit.framework */; };
 		588DFF371B9B3D8A00644648 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF341B9B3D8A00644648 /* FBSDKLoginKit.framework */; };
@@ -69,9 +68,8 @@
 		01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsWIshlistTableViewController.swift; sourceTree = "<group>"; };
 		01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendWishlistTableViewCell.swift; sourceTree = "<group>"; };
 		01E394111B9E20F700093162 /* DatabaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTables.swift; sourceTree = "<group>"; };
-		582145E71C53E2F300F27425 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
-		582145E91C53E65400F27425 /* WishlistItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistItemTableViewCell.swift; sourceTree = "<group>"; };
-		582145EB1C54230A00F27425 /* CellAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAnimator.swift; sourceTree = "<group>"; };
+		01E773081C54151B009901CB /* WishlistItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistItemTableViewCell.swift; sourceTree = "<group>"; };
+		01E773091C54151B009901CB /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		588DFF331B9B3D8A00644648 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		588DFF341B9B3D8A00644648 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -119,9 +117,9 @@
 		011EB7151B9B473E002142A5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				01E773081C54151B009901CB /* WishlistItemTableViewCell.swift */,
 				01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */,
 				0185BE181B9B78870099A56E /* FriendTableViewCell.swift */,
-				582145E91C53E65400F27425 /* WishlistItemTableViewCell.swift */,
 				011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */,
 				015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */,
 				0102D6D71BE6554E0064BC5B /* BoughtItemsTableViewCell.swift */,
@@ -142,10 +140,10 @@
 		011EB7201B9B5825002142A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				01E773091C54151B009901CB /* WishlistViewController.swift */,
 				01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */,
 				0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */,
 				0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */,
-				582145E71C53E2F300F27425 /* WishlistViewController.swift */,
 				011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */,
 				58B535EA1B9B36B600D02062 /* LoginViewController.swift */,
 				015FC5001BA56D00006C205A /* NewItemViewController.swift */,
@@ -159,7 +157,6 @@
 		011EB7251B9B5AB2002142A5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				582145EB1C54230A00F27425 /* CellAnimator.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -344,16 +341,15 @@
 				0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */,
 				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
 				011EB7191B9B48CE002142A5 /* Segues.swift in Sources */,
-				582145EA1C53E65400F27425 /* WishlistItemTableViewCell.swift in Sources */,
-				582145E81C53E2F400F27425 /* WishlistViewController.swift in Sources */,
 				0183797F1B9B39B800E27C39 /* User.swift in Sources */,
 				0102D6D61BE634470064BC5B /* BoughtItemsTableViewController.swift in Sources */,
+				01E7730B1C54151B009901CB /* WishlistViewController.swift in Sources */,
 				0185BE191B9B78870099A56E /* FriendTableViewCell.swift in Sources */,
 				0102D6D81BE6554E0064BC5B /* BoughtItemsTableViewCell.swift in Sources */,
-				582145EC1C54230A00F27425 /* CellAnimator.swift in Sources */,
 				015FC5081BA58AF9006C205A /* FriendItemTableViewCell.swift in Sources */,
 				011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */,
 				018379831B9B39D000E27C39 /* Item.swift in Sources */,
+				01E7730A1C54151B009901CB /* WishlistItemTableViewCell.swift in Sources */,
 				018379811B9B39C400E27C39 /* Wishlist.swift in Sources */,
 				0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */,
 				01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */,

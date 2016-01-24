@@ -77,6 +77,7 @@ class BoughtItemsTableViewController: UITableViewController {
                                                     identifier: friendObject.objectId!,
                                                     firstName: friendObject["firstName"] as! String,
                                                     lastName: friendObject["lastName"] as! String,
+                                                    birthday: friendObject["birthday"] as! String?,
                                                     profilePic: nil)
                                                 
                                                 if let picture = itemObject["picture"] as? PFFile {

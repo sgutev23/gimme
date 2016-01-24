@@ -230,7 +230,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Z-k8-vsp">
                                                     <rect key="frame" x="16" y="33" width="584" height="23"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="584" id="NjC-KJ-oQb"/>
                                                         <constraint firstAttribute="height" constant="23" id="qDu-3v-ATi"/>
@@ -241,7 +240,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubl-eB-9E7">
                                                     <rect key="frame" x="16" y="14" width="584" height="21"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="EHD-LA-GBR"/>
                                                         <constraint firstAttribute="width" constant="584" id="Ri6-pC-xnf"/>

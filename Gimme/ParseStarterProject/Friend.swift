@@ -14,12 +14,14 @@ public class Friend: NSObject {
     let lastName: String
     let identifier: String
     let profilePic: UIImage?
+    let birthday: String?
     var numWishLists: Int = 0
     
-    public init(identifier: String, firstName: String, lastName: String, profilePic: UIImage?) {
+    public init(identifier: String, firstName: String, lastName: String, birthday: String?, profilePic: UIImage?) {
         self.identifier = identifier
         self.firstName = firstName
         self.lastName = lastName
+        self.birthday = birthday
         self.profilePic = profilePic
     }
 }
