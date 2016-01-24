@@ -8,19 +8,38 @@
 
 import UIKit
 
-class NewWishlistViewController: UIViewController {
+class NewWishlistViewController: UIViewController, UITextFieldDelegate {
     
     var isPublic = true {
         didSet {
             privacyDescription.text = isPublic ? PrivacyDescription.Public : PrivacyDescription.Private
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        nameTextField.delegate = self
+        descriptionTextField.delegate = self
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
  
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var privacyDescription: UILabel!
    
-    @IBAction func saveNewWishlist(sender: UIButton) {
+    @IBAction func cancel(sender: AnyObject) {
+        NSLog("popping")
+       performSegueWithIdentifier(SeguesIdentifiers.CancelWishlistSegue, sender: self)
+    }
+    
+    @IBAction func saveNewWishlist(sender: AnyObject) {
+    
         var canSaveWishlist = true
         
         if let wishlistName = nameTextField.text {
@@ -62,5 +81,14 @@ class NewWishlistViewController: UIViewController {
     private struct PrivacyDescription {
         static let Private = "The wishlist will be private."
         static let Public = "The wishlist will be public."
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

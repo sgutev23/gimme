@@ -19,9 +19,12 @@ class SegmentedViewController: UIViewController {
     @IBOutlet weak var friendsContainerView: UIView!
     @IBOutlet weak var boughtItemsContainerView: UIView!
     
+    @IBOutlet weak var addWishlistButton: UIBarButtonItem!
+    @IBOutlet weak var navSwitch: UISegmentedControl!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         showWishlistsContainerView()
     }
 
@@ -64,8 +67,9 @@ class SegmentedViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SeguesIdentifiers.LogOutSegue {
-            navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: false)
             PFUser.logOut()
+        } else if segue.identifier == SeguesIdentifiers.NewWishlistSegue {
+            
         }
     }
    
@@ -83,7 +87,7 @@ class SegmentedViewController: UIViewController {
         }
     }
     
-    @IBAction func saveNewWishlist(segue: UIStoryboardSegue, sender: AnyObject?) {
+    @IBAction func unwindAndSave(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let source = segue.sourceViewController as? NewWishlistViewController {
             let wishlist = PFObject(className: DatabaseTables.Wishlist)
             wishlist.setObject(currentUser!, forKey: "user")
@@ -99,6 +103,11 @@ class SegmentedViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func unwindAndCancel(segue: UIStoryboardSegue, sender: AnyObject?) {
+        NSLog("Cancel")
+        
     }
     
     private func reloadWishlists() -> Void {
