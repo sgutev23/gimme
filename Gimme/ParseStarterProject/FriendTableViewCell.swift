@@ -13,7 +13,6 @@ class FriendTableViewCell: UITableViewCell {
     var friend : Friend?
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var wishListCounterLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var birthday: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
 }

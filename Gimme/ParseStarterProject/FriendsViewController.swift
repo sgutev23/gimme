@@ -10,10 +10,12 @@ import UIKit
 import Parse
 import FBSDKCoreKit
 
-class FriendsViewController: UITableViewController {
+class FriendsViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
     private var friends = [Friend]()
-    private var selectedIndexPath : NSIndexPath?
+    //private var selectedIndexPath: NSIndexPath? = nil
+    //private var selectedDate: NSDate? = nil
+    private let dateFormat = "dd MMM yyyy"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +27,6 @@ class FriendsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    // MARK: - Table view data source
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -36,14 +35,13 @@ class FriendsViewController: UITableViewController {
         return friends.count
     }
     
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendCell, forIndexPath: indexPath) as! FriendTableViewCell
         
         let friend = friends[indexPath.row]
         cell.friend = friend
         cell.nameLabel?.text = "\(friend.firstName) \(friend.lastName)"
-        cell.wishListCounterLabel?.text = "WISHLISTS: " + String(friend.numWishLists)
+        //cell.wishListCounterLabel?.text = "WISHLISTS: " + String(friend.numWishLists)
         cell.profilePic.image = friend.profilePic
         cell.profilePic.clipsToBounds = true;
         cell.profilePic.layer.cornerRadius = cell.profilePic.frame.size.width / 2;
@@ -51,11 +49,9 @@ class FriendsViewController: UITableViewController {
         let borderColor : UIColor = UIColor.lightGrayColor()
         cell.profilePic.layer.borderColor = borderColor.CGColor;
         
-        if let birthday = friend.birthday {
-            cell.birthday.setTitle(birthday, forState: UIControlState.Normal)
-        } else {
-            cell.birthday.setTitle("Not Set Yet", forState: UIControlState.Normal)
-        }
+        let backgroundColorView = UIView()
+        backgroundColorView.backgroundColor = UIColor(red:0.93, green:0.98, blue:0.93, alpha:1.00)
+        cell.selectedBackgroundView = backgroundColorView
         
         return cell
     }
@@ -97,7 +93,7 @@ class FriendsViewController: UITableViewController {
                                             identifier: objectId,
                                             firstName: friendUserid["firstName"] as! String,
                                             lastName: friendUserid["lastName"] as! String,
-                                            birthday: friendUserid["birthday"] as! String?,
+                                            birthdate: friendUserid["birthdate"] as! NSDate?,
                                             profilePic: profilePicture)
                                         self.friends.append(friend)
                                         self.loadWishlistCount(friend)
@@ -117,6 +113,11 @@ class FriendsViewController: UITableViewController {
             }
         }
     }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+
     
     func loadWishlistCount(friend: Friend) {
         let query = PFQuery(className: DatabaseTables.Wishlist)
@@ -149,7 +150,108 @@ class FriendsViewController: UITableViewController {
         }
     }
 
-    @IBAction func updateFriendBirthday(sender: UIButton) {
-
+    @IBAction func showFriendInfo(sender: UIButton) {
+        let selectedIndexPath = self.tableView.indexPathForRowAtPoint(sender.convertPoint(sender.bounds.origin, toView: self.tableView))
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendCell, forIndexPath: selectedIndexPath!) as! FriendTableViewCell
+        let friend = friends[selectedIndexPath!.row]
+        let popover = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(ViewControllers.FriendInfoPopover) as! PopoverViewController
+        
+        popover.birthdate = friend.birthdate
+        popover.wishlistsNumber = friend.numWishLists
+        popover.modalPresentationStyle = UIModalPresentationStyle.Popover
+        popover.popoverPresentationController?.backgroundColor = UIColor(red: 0.93, green: 0.90, blue: 0.93, alpha: 1.0)
+        popover.popoverPresentationController?.delegate = self
+        popover.popoverPresentationController?.sourceView = cell
+        popover.popoverPresentationController?.sourceRect = cell.bounds
+        popover.popoverPresentationController?.permittedArrowDirections = .Any
+        popover.preferredContentSize = CGSizeMake(320, 120)
+        
+        self.presentViewController(popover, animated: true, completion: nil)
     }
+    
+//    @IBAction func birthdayTextFieldSelected(sender: UITextField) {
+//        selectedIndexPath = self.tableView.indexPathForRowAtPoint(sender.convertPoint(sender.bounds.origin, toView: self.tableView))
+//        
+//        NSLog("Selected Index: \(selectedIndexPath?.row)")
+//        
+//        sender.inputView = createDatePickerView()
+//        sender.inputAccessoryView = createDatePickerToolBar()
+//    }
+//    
+//    func createDatePickerView() -> UIView {
+//        let inputView = UIView(frame: CGRectMake(0, 200, self.view.frame.width, 200))
+//        
+//        let datePickerView = UIDatePicker()
+//        datePickerView.datePickerMode = UIDatePickerMode.Date
+//        datePickerView.addTarget(self, action: Selector("handleDatePicker:"), forControlEvents: UIControlEvents.ValueChanged)
+//        inputView.addSubview(datePickerView)
+//        
+//        return inputView
+//    }
+//    
+//    func createDatePickerToolBar() -> UIToolbar {
+//        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker:")
+//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+//        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicker:")
+//        
+//        let toolBar = UIToolbar()
+//        toolBar.barStyle = UIBarStyle.Default
+//        toolBar.translucent = true
+//        toolBar.sizeToFit()
+//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+//        toolBar.userInteractionEnabled = true;
+//        
+//        return toolBar
+//    }
+// 
+//    func handleDatePicker(sender: UIDatePicker) {
+//        selectedDate = sender.date
+//    }
+//    
+//    func cancelPicker(sender: UIBarButtonItem) {
+//        NSLog("cancelPicker: \(selectedIndexPath?.row)")
+//        
+//        let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendCell, forIndexPath: selectedIndexPath!) as! FriendTableViewCell
+//        cell.birthdayTextField.inputView?.removeFromSuperview()
+//        cell.birthdayTextField.resignFirstResponder()
+//        
+//        tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+//        
+//        selectedDate = nil
+//        selectedIndexPath = nil
+//    }
+//    
+//    func donePicker(sender: UIBarButtonItem) {
+//        NSLog("donePicker: \(selectedIndexPath?.row)")
+//        
+//        if selectedIndexPath != nil && selectedDate != nil {
+//            let friend = friends[(selectedIndexPath?.row)!]
+//            friend.birthdate = selectedDate
+//            
+//            let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendCell, forIndexPath: selectedIndexPath!) as! FriendTableViewCell
+//            cell.birthdayTextField.resignFirstResponder()
+//            
+//            tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+//            
+//            let query = PFQuery(className: DatabaseTables.User)
+//            query.getObjectInBackgroundWithId(friend.identifier) { (friendObject, error) -> Void in
+//                if error != nil {
+//                    NSLog("FOUND FRIEND with identifier: \(friend.identifier)")
+//                    friendObject?.setObject(self.selectedDate!, forKey: "birthdate")
+//                    friendObject?.saveInBackgroundWithBlock { (success, error) -> Void in
+//                        if success {
+//                            NSLog("Saved BirthDate!")
+//                            
+//                            self.selectedDate = nil
+//                            self.selectedIndexPath = nil
+//                        } else {
+//                            NSLog("Error while saving birthdate for \(friend.firstName) \(friend.lastName): \(error?.description)")
+//                        }
+//                    }
+//                } else {
+//                    NSLog("Cannot update birthdate for \(friend.firstName) \(friend.lastName).")
+//                }
+//            }
+//        }
+//    }
 }

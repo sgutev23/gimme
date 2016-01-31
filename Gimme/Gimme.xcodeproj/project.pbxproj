@@ -24,6 +24,9 @@
 		0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */; };
 		0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */; };
 		0185BE1F1B9B78B00099A56E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1E1B9B78B00099A56E /* Friend.swift */; };
+		01E074D41C5E3D7B000A1A92 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E074D31C5E3D7B000A1A92 /* PopoverViewController.swift */; };
+		01E074D61C5E45CF000A1A92 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E074D51C5E45CF000A1A92 /* ViewControllers.swift */; };
+		01E074DA1C5E6A6B000A1A92 /* MyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E074D91C5E6A6B000A1A92 /* MyInfoTableViewCell.swift */; };
 		01E3940A1B9C30FB00093162 /* FriendsWIshlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */; };
 		01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */; };
 		01E394121B9E20F700093162 /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394111B9E20F700093162 /* DatabaseTables.swift */; };
@@ -65,6 +68,9 @@
 		0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
 		0185BE1E1B9B78B00099A56E /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		01E074D31C5E3D7B000A1A92 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		01E074D51C5E45CF000A1A92 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
+		01E074D91C5E6A6B000A1A92 /* MyInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsWIshlistTableViewController.swift; sourceTree = "<group>"; };
 		01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendWishlistTableViewCell.swift; sourceTree = "<group>"; };
 		01E394111B9E20F700093162 /* DatabaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTables.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 				011EB71E1B9B4DF4002142A5 /* ItemTableViewCell.swift */,
 				015FC5071BA58AF9006C205A /* FriendItemTableViewCell.swift */,
 				0102D6D71BE6554E0064BC5B /* BoughtItemsTableViewCell.swift */,
+				01E074D91C5E6A6B000A1A92 /* MyInfoTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -133,6 +140,7 @@
 				011EB7181B9B48CE002142A5 /* Segues.swift */,
 				011EB7281B9B60C5002142A5 /* Cells.swift */,
 				01E394111B9E20F700093162 /* DatabaseTables.swift */,
+				01E074D51C5E45CF000A1A92 /* ViewControllers.swift */,
 			);
 			name = Identifiers;
 			sourceTree = "<group>";
@@ -150,6 +158,7 @@
 				015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */,
 				015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */,
 				0102D6D51BE634470064BC5B /* BoughtItemsTableViewController.swift */,
+				01E074D31C5E3D7B000A1A92 /* PopoverViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +284,7 @@
 				TargetAttributes = {
 					81BA81441A49DA1800E65899 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 34Q552Z465;
 					};
 				};
 			};
@@ -334,9 +344,11 @@
 				011EB7291B9B60C5002142A5 /* Cells.swift in Sources */,
 				015FC5011BA56D00006C205A /* NewItemViewController.swift in Sources */,
 				015FC5061BA58A99006C205A /* FriendItemsTableViewController.swift in Sources */,
+				01E074D61C5E45CF000A1A92 /* ViewControllers.swift in Sources */,
 				015FC4FF1BA43AB3006C205A /* NewWishlistViewController.swift in Sources */,
 				01E394121B9E20F700093162 /* DatabaseTables.swift in Sources */,
 				011EB71F1B9B4DF4002142A5 /* ItemTableViewCell.swift in Sources */,
+				01E074D41C5E3D7B000A1A92 /* PopoverViewController.swift in Sources */,
 				01E3940A1B9C30FB00093162 /* FriendsWIshlistTableViewController.swift in Sources */,
 				0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */,
 				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
@@ -349,6 +361,7 @@
 				015FC5081BA58AF9006C205A /* FriendItemTableViewCell.swift in Sources */,
 				011EB71D1B9B4C1A002142A5 /* ItemsTableViewController.swift in Sources */,
 				018379831B9B39D000E27C39 /* Item.swift in Sources */,
+				01E074DA1C5E6A6B000A1A92 /* MyInfoTableViewCell.swift in Sources */,
 				01E7730A1C54151B009901CB /* WishlistItemTableViewCell.swift in Sources */,
 				018379811B9B39C400E27C39 /* Wishlist.swift in Sources */,
 				0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */,
@@ -456,6 +469,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -463,7 +478,7 @@
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lepookey.gimme;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lepookey.gimmeTester;
 				PRODUCT_NAME = Gimme;
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
 			};
@@ -474,6 +489,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -481,7 +498,7 @@
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lepookey.gimme;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lepookey.gimmeTester;
 				PRODUCT_NAME = Gimme;
 				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
 			};
