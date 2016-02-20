@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import Firebase
 
 class LoginViewController: UIViewController {
+    let ref = Firebase(url: "https://gimmeproject.firebaseio.com")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
         let permissions = ["public_profile", "email", "user_friends"]
-        let ref = Firebase(url: "https://gimmeproject.firebaseio.com")
         let facebookLogin = FBSDKLoginManager()
         facebookLogin.logInWithReadPermissions(permissions, handler: {
             (facebookResult, facebookError) -> Void in
@@ -34,12 +34,12 @@ class LoginViewController: UIViewController {
                 NSLog("Facebook login was cancelled.")
             } else {
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                ref.authWithOAuthProvider("facebook", token: accessToken,
+                self.ref.authWithOAuthProvider("facebook", token: accessToken,
                     withCompletionBlock: { error, authData in
                         if error != nil {
                             NSLog("Login failed. \(error)")
                         } else {
-                            ref.childByAppendingPath("users")
+                            self.ref.childByAppendingPath("users")
                                 .queryOrderedByChild("facebookID")
                                 .queryEqualToValue(authData.uid)
                                 .observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -74,10 +74,10 @@ class LoginViewController: UIViewController {
                                                             ]
                                                             
                                                             NSLog("data to store: \(newUser)")
-                                                            ref.childByAppendingPath("users")
+                                                            self.ref.childByAppendingPath("users")
                                                                 .childByAppendingPath(authData.uid)
                                                                 .setValue(newUser)
-                                                            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
+                                                            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: authData)
                                                         }
                                                     })
                                                 }
@@ -88,7 +88,7 @@ class LoginViewController: UIViewController {
                                         let firstName = name!["firstName"]
                                         NSLog("Logged in: \(firstName)")
                                         NSLog("Logged in: \(snapshot)")
-                                        self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
+                                        self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: authData)
                                     }
                                 })
                         }
@@ -103,5 +103,14 @@ class LoginViewController: UIViewController {
         //            NSLog("User logged in")
         //            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
         //        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let wishlistViewController = segue.destinationViewController as! SegmentedViewController
+   
+        if let authData = sender as? FAuthData {
+            wishlistViewController.user = authData
+            wishlistViewController.ref = ref
+        }
     }
 }

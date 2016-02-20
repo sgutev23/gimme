@@ -8,10 +8,12 @@
 
 import UIKit
 import Parse
+import Firebase
 
 class SegmentedViewController: UIViewController {
 
-    let currentUser = PFUser.currentUser()
+    var user: FAuthData?
+    var ref: Firebase!
     
     @IBOutlet weak var segmentedController: UISegmentedControl!
     

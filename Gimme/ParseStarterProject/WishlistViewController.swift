@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import Parse
 import FBSDKCoreKit
+import Firebase
 
 class WishlistViewController: UITableViewController {
-    private var currentUser = PFUser.currentUser()
+    let ref = Firebase(url: "https://gimmeproject.firebaseio.com")
+    private var authData : ();
     private var wishlists = [Wishlist]()
     private var currentSelectedWishlist: Wishlist? = nil
     
