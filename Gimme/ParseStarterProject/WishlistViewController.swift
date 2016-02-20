@@ -32,7 +32,7 @@ class WishlistViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadWishLists()
+      //  loadWishLists()
     }
     
     override func didReceiveMemoryWarning() {

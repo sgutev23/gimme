@@ -20,9 +20,9 @@ class BoughtItemsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadUser()
-        self.loadItems()
-        self.tableView.reloadData()
+       // self.loadUser()
+       // self.loadItems()
+       // self.tableView.reloadData()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
