@@ -11,17 +11,17 @@ import FBSDKCoreKit
 import Firebase
 
 class LoginViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func loginWithFacebook(sender: AnyObject) {
         let permissions = ["public_profile", "email", "user_friends"]
         let ref = Firebase(url: "https://gimmeproject.firebaseio.com")
@@ -39,79 +39,69 @@ class LoginViewController: UIViewController {
                         if error != nil {
                             NSLog("Login failed. \(error)")
                         } else {
-                            NSLog("Logged in! \(authData)")
+                            ref.childByAppendingPath("users")
+                                .queryOrderedByChild("facebookID")
+                                .queryEqualToValue(authData.uid)
+                                .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                                    if snapshot.value is NSNull {
+                                        let fbRequest = FBSDKGraphRequest(graphPath:"/me", parameters: ["fields":"id,email,name,first_name,last_name"] );
+                                        fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
+                                            if error == nil {
+                                                if let result = result {
+                                                    var newUserCredentials = [String : String]()
+                                                    newUserCredentials["facebookId"] = result["id"] as? String
+                                                    newUserCredentials["firstName"] = result["first_name"] as? String ?? result["name"] as? String
+                                                    newUserCredentials["lastName"] = result["last_name"] as? String ?? ""
+                                                    
+                                                    let facebookId = result["id"] as? String
+                                                    let pictureURL = "https://graph.facebook.com/\(facebookId!)/picture?width=300&height=300"
+                                                    let urlRequest = NSURL(string: pictureURL)
+                                                    let urlRequestNeeded = NSURLRequest(URL: urlRequest!)
+                                                    
+                                                    NSURLConnection.sendAsynchronousRequest(urlRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {
+                                                        (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                                                        if error == nil {
+                                                            
+                                                            let base64String = data!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+
+                                                            let newUser = [
+                                                                "provider": authData.provider,
+                                                                "firstName": newUserCredentials["firstName"],
+                                                                "lastName": newUserCredentials["lastName"],
+                                                                "email" : authData.providerData["email"] as? NSString as? String,
+                                                                "profilePic" : base64String,
+                                                                "facebookID" : authData.uid
+                                                            ]
+                                                            
+                                                            NSLog("data to store: \(newUser)")
+                                                            ref.childByAppendingPath("users")
+                                                                .childByAppendingPath(authData.uid)
+                                                                .setValue(newUser)
+                                                            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
+                                                        }
+                                                    })
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        let name = snapshot.value[authData.uid]!
+                                        let firstName = name!["firstName"]
+                                        NSLog("Logged in: \(firstName)")
+                                        NSLog("Logged in: \(snapshot)")
+                                        self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
+                                    }
+                                })
                         }
-                })
+                    }
+                )
             }
         })
-
-//        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
-//                (user: PFUser?, error: NSError?) -> Void in
-//            
-//                if let error = error {
-//                    NSLog("Error: \(error)")
-//                } else {
-//                    if let user = user {
-//                        if user.isNew {
-//                            NSLog("New user \(user)")
-//                            let fbRequest = FBSDKGraphRequest(graphPath:"/me", parameters: ["fields":"id,email,name,first_name,last_name"] );
-//                            fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
-//                                if error == nil {
-//                                    if let result = result {
-//                                        
-//                                        user["facebookId"] = result["id"] as? String
-//                                        user["firstName"] = result["first_name"] as? String ?? result["name"] as? String
-//                                        user["lastName"] = result["last_name"] as? String ?? ""
-//                                        
-//                                        let facebookId = result["id"] as? String
-//                                        let pictureURL = "https://graph.facebook.com/\(facebookId!)/picture?width=300&height=300"
-//                                        let urlRequest = NSURL(string: pictureURL)
-//                                        let urlRequestNeeded = NSURLRequest(URL: urlRequest!)
-//                                        
-//                                        NSURLConnection.sendAsynchronousRequest(urlRequestNeeded, queue: NSOperationQueue.mainQueue(), completionHandler: {
-//                                            (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-//                                            if error == nil {
-//                                                let picture = PFFile(data: data!)
-//                                                picture.saveInBackgroundWithBlock( {
-//                                                    (succeeded, error) -> Void in
-//                                                    
-//                                                    if error == nil {
-//                                                        user["profilePicture"] = picture
-//                                                    } else {
-//                                                        user["profilePicture"] = NSNull()
-//                                                        NSLog("Error saving image in Parse: \(error?.localizedDescription)")
-//                                                    }
-//                                                    user.saveInBackground()
-//                                                    
-//                                                    NSLog("User logged in through Facebook with a profile picture!")
-//                                                    self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)                                                    
-//                                                })
-//                                            } else {
-//                                                NSLog("Error getting profile picture: \(error?.localizedDescription)")
-//                                                user["picture"] = NSNull()
-//                                                user.saveInBackground()
-//                                                
-//                                                NSLog("User logged in through Facebook without a profile picture!")
-//                                                self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
-//                                            }
-//                                        })
-//                                    }
-//                                } else {
-//                                    NSLog("Error retrieving user: \(error?.localizedDescription)")
-//                                }
-//                            }
-//                        }
-////                        NSLog("User logged in through Facebook!")
-////                        self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
-//                    }
-//                }
-//            })
     }
     
     override func viewDidAppear(animated: Bool) {
-//        if PFUser.currentUser()?.username != nil {
-//            NSLog("User logged in")
-//            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
-//        }
+        //        if PFUser.currentUser()?.username != nil {
+        //            NSLog("User logged in")
+        //            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
+        //        }
     }
 }

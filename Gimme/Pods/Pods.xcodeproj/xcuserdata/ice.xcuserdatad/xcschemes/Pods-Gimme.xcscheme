@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D8E3D2C850E6B421CFBA7DEF'
+               BlueprintIdentifier = '3BA25A18AABD51AF686510DA'
                BlueprintName = 'Pods-Gimme'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Gimme.framework'>
