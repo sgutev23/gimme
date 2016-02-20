@@ -137,7 +137,7 @@ class BoughtItemsTableViewController: UITableViewController {
 
             tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
 
-            let query = PFQuery(className: DatabaseTables.User)
+//            let query = PFQuery(className: DatabaseTables.User)
 //            query.getObjectInBackgroundWithId((currentUser?.identifier)!) { (userObject, error) -> Void in
 //                if error != nil {
 //                    NSLog("FOUND FRIEND with identifier: \((PFUser.currentUser()?.objectId)!)")
