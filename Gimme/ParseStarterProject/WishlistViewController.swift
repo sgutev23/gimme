@@ -11,8 +11,10 @@ import FBSDKCoreKit
 import Firebase
 
 class WishlistViewController: UITableViewController {
-    let ref = Firebase(url: "https://gimmeproject.firebaseio.com")
-    private var authData : ();
+   
+//    var user: FAuthData?
+  //  var ref: Firebase!
+    
     private var wishlists = [Wishlist]()
     private var currentSelectedWishlist: Wishlist? = nil
     
@@ -33,7 +35,7 @@ class WishlistViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  loadWishLists()
+        loadWishLists()
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,50 +94,54 @@ class WishlistViewController: UITableViewController {
     }
     
     func loadWishLists() {
-        let query = PFQuery(className: DatabaseTables.Wishlist)
-        query.whereKey("user", equalTo:currentUser!)
-        query.findObjectsInBackgroundWithBlock {
-            (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                NSLog("results: \(wishlistObjects)")
-                self.wishlists.removeAll()
-                if let wishlistObjects = wishlistObjects as? [PFObject] {
-                    for wishlistObject in wishlistObjects {
+        
+        ref.childByAppendingPath("wishlists")
+            .queryOrderedByChild("userid")
+            .queryEqualToValue(user!.uid)
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                if snapshot.value is NSNull {
+                    NSLog("error")
+                } else {
+                    self.wishlists.removeAll()
+                    let enumerator = snapshot.children
+                    while let single = enumerator.nextObject() as? FDataSnapshot {
+                        let name = single.value.objectForKey("name") as! String;
+                        let isPublic = single.value.objectForKey("public") as! Bool
+                        let uid = single.key
+                        NSLog ("\(single)")
                         self.wishlists.append(
                             Wishlist(
-                                identifier: wishlistObject.objectId!,
-                                name: wishlistObject["name"] as! String,
+                                identifier: uid,
+                                name: name,
                                 description: "desc",
-                                isPublic: wishlistObject["public"] as! Bool))
+                                isPublic: isPublic)
+                        )
                     }
                     self.tableView.reloadData()
                 }
-            } else {
-                NSLog("error: \(error)")
-            }
-        }
+        })
     }
     
     func deleteWishlist(wishlistIndex: Int) {
-        let wishlistToDelete = self.wishlists[wishlistIndex]
+    //    let wishlistToDelete = self.wishlists[wishlistIndex]
         
-        let query = PFQuery(className: DatabaseTables.Wishlist)
-        query.whereKey("objectId", equalTo: wishlistToDelete.identifier)
-        query.findObjectsInBackgroundWithBlock {
-            (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let wishlistObjects = wishlistObjects as? [PFObject] {
-                    for wishlistObject in wishlistObjects {
-                        NSLog("Deleting wishlist with id: \(wishlistObject.objectId)")
-                        wishlistObject.deleteInBackground()
-                    }
-                }
-            } else {
-                NSLog("error: \(error)")
-            }
-        }
+//        let query = PFQuery(className: DatabaseTables.Wishlist)
+//        query.whereKey("objectId", equalTo: wishlistToDelete.identifier)
+//        query.findObjectsInBackgroundWithBlock {
+//            (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                if let wishlistObjects = wishlistObjects as? [PFObject] {
+//                    for wishlistObject in wishlistObjects {
+//                        NSLog("Deleting wishlist with id: \(wishlistObject.objectId)")
+//                        wishlistObject.deleteInBackground()
+//                    }
+//                }
+//            } else {
+//                NSLog("error: \(error)")
+//            }
+  //      }
         
-        self.wishlists.removeAtIndex(wishlistIndex)
-        self.tableView.reloadData()
+    //    self.wishlists.removeAtIndex(wishlistIndex)
+    //    self.tableView.reloadData()
     }
 }

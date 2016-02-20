@@ -12,8 +12,8 @@ import Firebase
 
 class SegmentedViewController: UIViewController {
 
-    var user: FAuthData?
-    var ref: Firebase!
+ //   var user: FAuthData?
+ //   var ref: Firebase!
     
     @IBOutlet weak var segmentedController: UISegmentedControl!
     
@@ -77,7 +77,7 @@ class SegmentedViewController: UIViewController {
    
     @IBAction func addWishlist(sender: AnyObject) {
         let wishlist = PFObject(className: DatabaseTables.Wishlist)
-        wishlist["userid"] = currentUser?.objectId
+      //  wishlist["userid"] = currentUser?.objectId
         wishlist["name"] = "Wishlist " + String(arc4random())
         wishlist.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
@@ -91,19 +91,16 @@ class SegmentedViewController: UIViewController {
     
     @IBAction func unwindAndSave(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let source = segue.sourceViewController as? NewWishlistViewController {
-            let wishlist = PFObject(className: DatabaseTables.Wishlist)
-            wishlist.setObject(currentUser!, forKey: "user")
-            wishlist.setObject(source.nameTextField.text!, forKey: "name")
-            wishlist.setObject(source.isPublic, forKey: "public")
-            wishlist.saveInBackgroundWithBlock {
-                (success: Bool, error: NSError?) -> Void in
-                if (success) {
-                    NSLog("added " + String(wishlist["name"]))
-                    self.reloadWishlists()
-                } else {
-                    NSLog("error adding \(error)")
-                }
-            }
+            let uuid = NSUUID().UUIDString
+            let wishlist = [
+                "userid" : user!.uid,
+                "name" : source.nameTextField.text!,
+                "public" : source.isPublic
+            ]
+            
+            ref.childByAppendingPath("wishlists")
+                .childByAppendingPath(uuid)
+                .setValue(wishlist)
         }
     }
     
