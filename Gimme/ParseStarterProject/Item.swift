@@ -11,15 +11,15 @@ import Foundation
 public class Item {
     let identifier: String
     let name: String
-    let url: String
+    let description: String
     let picture: UIImage?
     let friend: User?
     var boughtBy: User?
     
-    public init(identifier: String, name: String, url: String, picture: UIImage?, friend: User?, boughtBy: User?) {
+    public init(identifier: String, name: String, description: String, picture: UIImage?, friend: User?, boughtBy: User?) {
         self.identifier = identifier
         self.name = name
-        self.url = url
+        self.description = description
         self.picture = picture
         self.friend = friend
         self.boughtBy = boughtBy

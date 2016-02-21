@@ -77,7 +77,7 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
                                 while let single = enumerator.nextObject() as? FDataSnapshot {
                                     let formatter = NSDateFormatter()
                                     formatter.dateStyle = NSDateFormatterStyle.LongStyle
-                                    
+
                                     let firstName = single.value.objectForKey("firstName") as! String
                                     let lastName = single.value.objectForKey("lastName") as! String
                                     let profilePic = single.value.objectForKey("profilePic") as! String

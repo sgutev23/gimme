@@ -36,7 +36,7 @@ class FriendItemsTableViewController: UITableViewController, UIPopoverPresentati
         
         let item = items[indexPath.row]
         
-        cell.urlLabel?.text = item.url
+        cell.urlLabel?.text = item.description
         cell.nameLabel?.text = item.name
         
         if item.picture != nil {
