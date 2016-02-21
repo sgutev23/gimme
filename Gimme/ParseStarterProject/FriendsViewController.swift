@@ -8,12 +8,11 @@
 
 import UIKit
 import FBSDKCoreKit
+import Firebase
 
 class FriendsViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
     private var friends = [User]()
-    //private var selectedIndexPath: NSIndexPath? = nil
-    //private var selectedDate: NSDate? = nil
     private let dateFormat = "dd MMM yyyy"
     
     override func viewDidLoad() {
@@ -40,7 +39,6 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
         let friend = friends[indexPath.row]
         cell.friend = friend
         cell.nameLabel?.text = "\(friend.firstName) \(friend.lastName)"
-        //cell.wishListCounterLabel?.text = "WISHLISTS: " + String(friend.numWishLists)
         cell.profilePic.image = friend.profilePic
         cell.profilePic.clipsToBounds = true;
         cell.profilePic.layer.cornerRadius = cell.profilePic.frame.size.width / 2;
@@ -59,14 +57,53 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
         let fbRequest = FBSDKGraphRequest(graphPath:"/me/friends", parameters: nil);
         fbRequest.startWithCompletionHandler { (connection : FBSDKGraphRequestConnection!, result : AnyObject!, error : NSError!) -> Void in
             if error == nil {
+                self.friends.removeAll()
+                
                 let friendObjects = result["data"] as! [NSDictionary]
-                var friendIdsArray = [String]()
-
+                
                 for friendObject in friendObjects {
                     let friendId = friendObject["id"] as! String;
-                    friendIdsArray.append(friendId)
+                    
+                    ref.childByAppendingPath("users")
+                        .queryOrderedByChild("identifier")
+                        .queryEqualToValue("facebook:\(friendId)")
+                        .observeSingleEventOfType(.Value, withBlock: {
+                            snapshot in
+                            
+                            if snapshot.value is NSNull {
+                                NSLog("error while retrieving friend: \(snapshot)")
+                            } else {
+                                while let single = snapshot.children.nextObject() as? FDataSnapshot {
+                                    let firstName = single.value.objectForKey("firstName") as! String
+                                    let lastName = single.value.objectForKey("lastName") as! String
+                                    let profilePic = single.value.objectForKey("profilePic") as! String
+                                    let email = single.value.objectForKey("email") as! String
+                                    let birthdate = single.value.objectForKey("birthdate") as! String
+                                    let formatter = NSDateFormatter()
+                                    let decodedData = NSData(base64EncodedString: profilePic, options: NSDataBase64DecodingOptions(rawValue: 0))
+                                    
+                                    NSLog("FRIEND'S FIRST NAME: \(firstName)")
+                                    
+                                    formatter.dateStyle = NSDateFormatterStyle.LongStyle
+                                    
+                                    let friend = User(
+                                        identifier: friendId,
+                                        firstName: firstName,
+                                        lastName: lastName,
+                                        email: email,
+                                        birthdate: formatter.dateFromString(birthdate),
+                                        profilePic: UIImage(data: decodedData!))
+                                    self.friends.append(friend)
+                                    self.loadWishlistCount(friend)
+                                }
+                            }
+                            
+                        })
                 }
-
+                
+                
+                
+                
 //                let query = PFQuery(className:"_User")
 //                NSLog("friendsArray \(friendIdsArray)")
 //                

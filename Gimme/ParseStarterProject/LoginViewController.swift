@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
                             NSLog("Login failed. \(error)")
                         } else {
                             ref.childByAppendingPath("users")
-                                .queryOrderedByChild("facebookID")
+                                .queryOrderedByChild("identifier")
                                 .queryEqualToValue(authData.uid)
                                 .observeSingleEventOfType(.Value, withBlock: { snapshot in
                                     if snapshot.value is NSNull {
@@ -83,6 +83,7 @@ class LoginViewController: UIViewController {
                                                                 identifier: authData.uid,
                                                                 firstName: newUserCredentials["firstName"]!,
                                                                 lastName: newUserCredentials["lastName"]!,
+                                                                email: (authData.providerData["email"] as? NSString as? String)!,
                                                                 birthdate: nil,
                                                                 profilePic: UIImage(data: data!))
                                                             
@@ -114,7 +115,7 @@ class LoginViewController: UIViewController {
     
     func handleLoggedInUser(authData : FAuthData) {
         ref.childByAppendingPath("users")
-            .queryOrderedByChild("facebookID")
+            .queryOrderedByChild("identifier")
             .queryEqualToValue(authData.uid)
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
                 if snapshot.value is NSNull {
@@ -133,6 +134,7 @@ class LoginViewController: UIViewController {
                         identifier: authData.uid,
                         firstName: (user!["firstName"] as? String)!,
                         lastName: (user!["lastName"] as? String)!,
+                        email: (user!["email"] as? String)!,
                         birthdate: nil,
                         profilePic: nil)
                     
