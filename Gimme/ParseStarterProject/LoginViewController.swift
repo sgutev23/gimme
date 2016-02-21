@@ -93,23 +93,7 @@ class LoginViewController: UIViewController {
                                             }
                                         }
                                     } else {
-                                        let name = snapshot.value[authData.uid]!
-                                        let firstName = name!["firstName"]
-                                        let formatter = NSDateFormatter()
-                                        
-                                        formatter.dateStyle = NSDateFormatterStyle.LongStyle
-                                        
-                                        NSLog("Logged in: \(firstName)")
-                                        NSLog("Logged in: \(snapshot)")
-                                        
-                                        currentUser = User(
-                                            identifier: authData.uid,
-                                            firstName: (name!["firstName"] as? String)!,
-                                            lastName: (name!["lastName"] as? String)!,
-                                            birthdate: formatter.dateFromString((name!["lastName"] as? String)!),
-                                            profilePic: nil)
-                                        
-                                        self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: authData)
+                                        self.handleLoggedInUser(authData)
                                     }
                                 })
                         }
@@ -120,18 +104,41 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        //        if PFUser.currentUser()?.username != nil {
-        //            NSLog("User logged in")
-        //            self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
-        //        }
+        if let authData = ref.authData {
+            NSLog("User logged in, retrieving details")
+            handleLoggedInUser(authData)
+        } else {
+            NSLog("User not logged in")
+        }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let wishlistViewController = segue.destinationViewController as! SegmentedViewController
-//   
-//        if let authData = sender as? FAuthData {
-//            wishlistViewController.user = authData
-//            wishlistViewController.ref = ref
-//        }
+    func handleLoggedInUser(authData : FAuthData) {
+        ref.childByAppendingPath("users")
+            .queryOrderedByChild("facebookID")
+            .queryEqualToValue(authData.uid)
+            .observeSingleEventOfType(.Value, withBlock: { snapshot in
+                if snapshot.value is NSNull {
+                    NSLog ("Something terrible happened")
+                } else {
+                    let user = snapshot.value[authData.uid]!
+                    let firstName = user!["firstName"]
+                    let formatter = NSDateFormatter()
+                    
+                    formatter.dateStyle = NSDateFormatterStyle.LongStyle
+                    
+                    NSLog("Logged in: \(firstName)")
+                    NSLog("Logged in: \(snapshot)")
+                    
+                    currentUser = User(
+                        identifier: authData.uid,
+                        firstName: (user!["firstName"] as? String)!,
+                        lastName: (user!["lastName"] as? String)!,
+                        birthdate: nil,
+                        profilePic: nil)
+                    
+                    self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: self)
+                }
+            })
+
     }
 }
