@@ -73,76 +73,27 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
                             if snapshot.value is NSNull {
                                 NSLog("error while retrieving friend: \(snapshot)")
                             } else {
-                                while let single = snapshot.children.nextObject() as? FDataSnapshot {
+                                let enumerator = snapshot.children
+                                while let single = enumerator.nextObject() as? FDataSnapshot {
+                                    let formatter = NSDateFormatter()
+                                    formatter.dateStyle = NSDateFormatterStyle.LongStyle
+                                    
                                     let firstName = single.value.objectForKey("firstName") as! String
                                     let lastName = single.value.objectForKey("lastName") as! String
                                     let profilePic = single.value.objectForKey("profilePic") as! String
                                     let email = single.value.objectForKey("email") as! String
-                                    let birthdate = single.value.objectForKey("birthdate") as! String
-                                    let formatter = NSDateFormatter()
-                                    let decodedData = NSData(base64EncodedString: profilePic, options: NSDataBase64DecodingOptions(rawValue: 0))
+                                    let birthdateString = single.value.objectForKey("birthdate") as! String
+                                    let birthdate = formatter.dateFromString(birthdateString)
+                                    let decodedData = NSData(base64EncodedString: profilePic, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+                                    let friend = User(identifier: friendId,firstName: firstName,lastName: lastName,email: email,birthdate: birthdate,profilePic: UIImage(data: decodedData!))
                                     
-                                    NSLog("FRIEND'S FIRST NAME: \(firstName)")
-                                    
-                                    formatter.dateStyle = NSDateFormatterStyle.LongStyle
-                                    
-                                    let friend = User(
-                                        identifier: friendId,
-                                        firstName: firstName,
-                                        lastName: lastName,
-                                        email: email,
-                                        birthdate: formatter.dateFromString(birthdate),
-                                        profilePic: UIImage(data: decodedData!))
                                     self.friends.append(friend)
                                     self.loadWishlistCount(friend)
+                                    self.tableView.reloadData()
                                 }
                             }
-                            
                         })
                 }
-                
-                
-                
-                
-//                let query = PFQuery(className:"_User")
-//                NSLog("friendsArray \(friendIdsArray)")
-//                
-//                query.whereKey("facebookId", containedIn: friendIdsArray)
-//                query.findObjectsInBackgroundWithBlock {
-//                    (friendUserids: [AnyObject]?, error: NSError?) -> Void in
-//                    if error == nil {
-//                        if let friendUserids = friendUserids as? [PFObject] {
-//                            for friendUserid in friendUserids {
-//                                let objectId = friendUserid.objectId!
-//                                
-//                                if let profilePictureFile = friendUserid["profilePicture"] as? PFFile {
-//                                    profilePictureFile.getDataInBackgroundWithBlock { (imageData, error) -> Void in
-//                                        var profilePicture: UIImage? = nil
-//                                        
-//                                        if error == nil {
-//                                            profilePicture = UIImage(data: imageData!)
-//                                        } else {
-//                                            NSLog("Error retrieving profile pic data for user \(objectId): \(error?.localizedDescription).")
-//                                        }
-//                                        
-//                                        let friend = Friend(
-//                                            identifier: objectId,
-//                                            firstName: friendUserid["firstName"] as! String,
-//                                            lastName: friendUserid["lastName"] as! String,
-//                                            birthdate: friendUserid["birthdate"] as! NSDate?,
-//                                            profilePic: profilePicture)
-//                                        self.friends.append(friend)
-//                                        self.loadWishlistCount(friend)
-//                                    }
-//                                }
-//                            }
-//                            
-//                        }
-//                    } else {
-//                        NSLog("error: \(error)")
-//                    }
-//
-//                }
                 NSLog("Friends are : \(result)")
             } else {
                 NSLog("Error Getting Friends \(error)");
@@ -156,22 +107,17 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
 
     
     func loadWishlistCount(friend: User) {
-//        let query = PFQuery(className: DatabaseTables.Wishlist)
-//        query.whereKey("userid", equalTo: friend.identifier)
-//        query.whereKey("public", equalTo: true)
-//        
-//        query.countObjectsInBackgroundWithBlock {
-//            (count, error) -> Void in
-//            
-//            if error == nil {
-//                NSLog("NUMBER OF WISHLISTS for \(friend.identifier): \(count)")
-//                friend.numWishLists = Int(count)
-//                self.tableView.reloadData()
-//            } else {
-//                NSLog("Error getting the number of wishlists for friend \(friend.identifier): \(error?.localizedDescription)")
-//            }
-//            
-//        }
+        ref.childByAppendingPath("wishlists").queryOrderedByChild("userid").queryEqualToValue("facebook:\(friend.identifier)")
+            .observeSingleEventOfType(.Value, withBlock: {
+                snapshot in
+                
+                if snapshot.value is NSNull {
+                    NSLog("error while retrieving friends' wishlist count: \(snapshot)")
+                } else {
+                    friend.numWishLists = snapshot.children.allObjects.count
+                    self.tableView.reloadData()
+                }
+            })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -204,90 +150,4 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
         
         self.presentViewController(popover, animated: true, completion: nil)
     }
-    
-//    @IBAction func birthdayTextFieldSelected(sender: UITextField) {
-//        selectedIndexPath = self.tableView.indexPathForRowAtPoint(sender.convertPoint(sender.bounds.origin, toView: self.tableView))
-//        
-//        NSLog("Selected Index: \(selectedIndexPath?.row)")
-//        
-//        sender.inputView = createDatePickerView()
-//        sender.inputAccessoryView = createDatePickerToolBar()
-//    }
-//    
-//    func createDatePickerView() -> UIView {
-//        let inputView = UIView(frame: CGRectMake(0, 200, self.view.frame.width, 200))
-//        
-//        let datePickerView = UIDatePicker()
-//        datePickerView.datePickerMode = UIDatePickerMode.Date
-//        datePickerView.addTarget(self, action: Selector("handleDatePicker:"), forControlEvents: UIControlEvents.ValueChanged)
-//        inputView.addSubview(datePickerView)
-//        
-//        return inputView
-//    }
-//    
-//    func createDatePickerToolBar() -> UIToolbar {
-//        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: "donePicker:")
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelPicker:")
-//        
-//        let toolBar = UIToolbar()
-//        toolBar.barStyle = UIBarStyle.Default
-//        toolBar.translucent = true
-//        toolBar.sizeToFit()
-//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-//        toolBar.userInteractionEnabled = true;
-//        
-//        return toolBar
-//    }
-// 
-//    func handleDatePicker(sender: UIDatePicker) {
-//        selectedDate = sender.date
-//    }
-//    
-//    func cancelPicker(sender: UIBarButtonItem) {
-//        NSLog("cancelPicker: \(selectedIndexPath?.row)")
-//        
-//        let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendCell, forIndexPath: selectedIndexPath!) as! FriendTableViewCell
-//        cell.birthdayTextField.inputView?.removeFromSuperview()
-//        cell.birthdayTextField.resignFirstResponder()
-//        
-//        tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
-//        
-//        selectedDate = nil
-//        selectedIndexPath = nil
-//    }
-//    
-//    func donePicker(sender: UIBarButtonItem) {
-//        NSLog("donePicker: \(selectedIndexPath?.row)")
-//        
-//        if selectedIndexPath != nil && selectedDate != nil {
-//            let friend = friends[(selectedIndexPath?.row)!]
-//            friend.birthdate = selectedDate
-//            
-//            let cell = tableView.dequeueReusableCellWithIdentifier(CellsIdentifiers.FriendCell, forIndexPath: selectedIndexPath!) as! FriendTableViewCell
-//            cell.birthdayTextField.resignFirstResponder()
-//            
-//            tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
-//            
-//            let query = PFQuery(className: DatabaseTables.User)
-//            query.getObjectInBackgroundWithId(friend.identifier) { (friendObject, error) -> Void in
-//                if error != nil {
-//                    NSLog("FOUND FRIEND with identifier: \(friend.identifier)")
-//                    friendObject?.setObject(self.selectedDate!, forKey: "birthdate")
-//                    friendObject?.saveInBackgroundWithBlock { (success, error) -> Void in
-//                        if success {
-//                            NSLog("Saved BirthDate!")
-//                            
-//                            self.selectedDate = nil
-//                            self.selectedIndexPath = nil
-//                        } else {
-//                            NSLog("Error while saving birthdate for \(friend.firstName) \(friend.lastName): \(error?.description)")
-//                        }
-//                    }
-//                } else {
-//                    NSLog("Cannot update birthdate for \(friend.firstName) \(friend.lastName).")
-//                }
-//            }
-//        }
-//    }
 }
