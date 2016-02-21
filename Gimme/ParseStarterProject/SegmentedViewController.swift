@@ -64,11 +64,12 @@ class SegmentedViewController: UIViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == SeguesIdentifiers.LogOutSegue {
-//            PFUser.logOut()
-//        } else if segue.identifier == SeguesIdentifiers.NewWishlistSegue {
-//            
-//        }
+        if segue.identifier == SeguesIdentifiers.LogOutSegue {
+            currentUser = nil
+            ref.unauth()
+        } else if segue.identifier == SeguesIdentifiers.NewWishlistSegue {
+            
+        }
     }
    
     @IBAction func addWishlist(sender: AnyObject) {
