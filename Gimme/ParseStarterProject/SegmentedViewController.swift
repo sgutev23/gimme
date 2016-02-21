@@ -7,14 +7,10 @@
 //
 
 import UIKit
-import Parse
 import Firebase
 
 class SegmentedViewController: UIViewController {
-
- //   var user: FAuthData?
- //   var ref: Firebase!
-    
+   
     @IBOutlet weak var segmentedController: UISegmentedControl!
     
     @IBOutlet weak var wishlistsContainerView: UIView!
@@ -68,39 +64,38 @@ class SegmentedViewController: UIViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SeguesIdentifiers.LogOutSegue {
-            PFUser.logOut()
-        } else if segue.identifier == SeguesIdentifiers.NewWishlistSegue {
-            
-        }
+//        if segue.identifier == SeguesIdentifiers.LogOutSegue {
+//            PFUser.logOut()
+//        } else if segue.identifier == SeguesIdentifiers.NewWishlistSegue {
+//            
+//        }
     }
    
     @IBAction func addWishlist(sender: AnyObject) {
-        let wishlist = PFObject(className: DatabaseTables.Wishlist)
-      //  wishlist["userid"] = currentUser?.objectId
-        wishlist["name"] = "Wishlist " + String(arc4random())
-        wishlist.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                NSLog("added " + String(wishlist["name"]))
-            } else {
-                NSLog("error adding \(error)")
-            }
-        }
+//        let wishlist = PFObject(className: DatabaseTables.Wishlist)
+//        wishlist["name"] = "Wishlist " + String(arc4random())
+//        wishlist.saveInBackgroundWithBlock {
+//            (success: Bool, error: NSError?) -> Void in
+//            if (success) {
+//                NSLog("added " + String(wishlist["name"]))
+//            } else {
+//                NSLog("error adding \(error)")
+//            }
+//        }
     }
     
     @IBAction func unwindAndSave(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let source = segue.sourceViewController as? NewWishlistViewController {
             let uuid = NSUUID().UUIDString
             let wishlist = [
-                "userid" : user!.uid,
+                "userid" : (currentUser?.identifier)!,
                 "name" : source.nameTextField.text!,
                 "public" : source.isPublic
             ]
             
-            ref.childByAppendingPath("wishlists")
-                .childByAppendingPath(uuid)
-                .setValue(wishlist)
+            ref.childByAppendingPath("wishlists").childByAppendingPath(uuid).setValue(wishlist)
+            
+            reloadWishlists()
         }
     }
     

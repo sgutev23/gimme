@@ -10,7 +10,7 @@ import UIKit
 
 class FriendTableViewCell: UITableViewCell {
 
-    var friend : Friend?
+    var friend : User?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!

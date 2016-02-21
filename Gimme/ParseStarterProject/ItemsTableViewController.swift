@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class ItemsTableViewController: UITableViewController {
 
@@ -18,7 +17,6 @@ class ItemsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.uploadProgressView.hidden = true
         self.loadItems()
         self.tableView.reloadData()
@@ -104,93 +102,93 @@ class ItemsTableViewController: UITableViewController {
     }
     
     func deleteItem(itemIndex: Int) {
-        let itemToDelete = self.items[itemIndex]
-        let query = PFQuery(className: DatabaseTables.Wishitem)
-        
-        query.whereKey("objectId", equalTo: itemToDelete.identifier)
-        query.findObjectsInBackgroundWithBlock {
-            (itemObjects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                if let itemObjects = itemObjects as? [PFObject] {
-                    for itemObject in itemObjects {
-                        NSLog("Deleting item with id: \(itemObject.objectId)")
-                        itemObject.deleteInBackground()
-                    }
-                }
-            } else {
-                NSLog("error: \(error)")
-            }
-        }
-        
-        self.items.removeAtIndex(itemIndex)
-        self.tableView.reloadData()
+//        let itemToDelete = self.items[itemIndex]
+//        let query = PFQuery(className: DatabaseTables.Wishitem)
+//        
+//        query.whereKey("objectId", equalTo: itemToDelete.identifier)
+//        query.findObjectsInBackgroundWithBlock {
+//            (itemObjects: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                if let itemObjects = itemObjects as? [PFObject] {
+//                    for itemObject in itemObjects {
+//                        NSLog("Deleting item with id: \(itemObject.objectId)")
+//                        itemObject.deleteInBackground()
+//                    }
+//                }
+//            } else {
+//                NSLog("error: \(error)")
+//            }
+//        }
+//        
+//        self.items.removeAtIndex(itemIndex)
+//        self.tableView.reloadData()
         
     }
     
     func loadItems() {
-        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
-        let query = PFQuery(className: DatabaseTables.Wishitem)
-        
-        wishlistQuery.whereKey("objectId", equalTo: wishlist!.identifier)
-        
-        query.whereKey("wishlist", matchesQuery: wishlistQuery)
-        query.findObjectsInBackgroundWithBlock {
-            (itemObjects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                self.items.removeAll()
-                
-                if let itemObjects = itemObjects as? [PFObject] {
-                    for itemObject in itemObjects {
-                        if let picture = itemObject["picture"] as? PFFile {
-                            picture.getDataInBackgroundWithBlock { (imageData, error) -> Void in
-                                if let errorMessage = error {
-                                    NSLog("Error while retrieving picture: \(errorMessage)")
-                                } else {
-                                    self.items.append(
-                                        Item(
-                                            identifier: itemObject.objectId!,
-                                            name: itemObject["name"] as! String,
-                                            url: itemObject["description"] as! String,
-                                            picture: UIImage(data: imageData!),
-                                            friend: nil,
-                                            boughtBy: nil))
-                                    self.tableView.reloadData()
-                                }
-                            }
-                        }
-                    }
-                }
-            } else {
-                NSLog("Error while retrieving items: \(error)")
-            }
-        }
+//        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
+//        let query = PFQuery(className: DatabaseTables.Wishitem)
+//        
+//        wishlistQuery.whereKey("objectId", equalTo: wishlist!.identifier)
+//        
+//        query.whereKey("wishlist", matchesQuery: wishlistQuery)
+//        query.findObjectsInBackgroundWithBlock {
+//            (itemObjects: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                self.items.removeAll()
+//                
+//                if let itemObjects = itemObjects as? [PFObject] {
+//                    for itemObject in itemObjects {
+//                        if let picture = itemObject["picture"] as? PFFile {
+//                            picture.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+//                                if let errorMessage = error {
+//                                    NSLog("Error while retrieving picture: \(errorMessage)")
+//                                } else {
+//                                    self.items.append(
+//                                        Item(
+//                                            identifier: itemObject.objectId!,
+//                                            name: itemObject["name"] as! String,
+//                                            url: itemObject["description"] as! String,
+//                                            picture: UIImage(data: imageData!),
+//                                            friend: nil,
+//                                            boughtBy: nil))
+//                                    self.tableView.reloadData()
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                NSLog("Error while retrieving items: \(error)")
+//            }
+//        }
     }
     
     @IBAction func saveNewItem(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let source = segue.sourceViewController as? NewItemViewController {
-            if let _ = source.imageView.image {
-                let resizedPicture = cropAndScaleImage(source.scrollView)
-                let pictureData = (UIImagePNGRepresentation(resizedPicture))
-                let pictureName = "image-" + (PFUser.currentUser()!.objectId)! + "-" + "\(NSDate.timeIntervalSinceReferenceDate())"
-                
-                self.uploadProgressView.hidden = false
-                
-                let file = PFFile(name: pictureName, data: pictureData!)
-                file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-                    if succeeded {
-                        NSLog("HERE!!")
-                        self.saveNewItem(source.wishlist, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: file)
-                    } else if let errorMessage = error {
-                        NSLog("\(errorMessage)")
-                    }
-                    }, progressBlock: { percent in
-                        self.uploadProgressView.setProgress((Float(percent) / 100.0), animated: false)
-                        NSLog("Uploaded: \(percent)")
-                })
-            } else {
-                saveNewItem(source.wishlist, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: nil)
-            }
-        }
+//        if let source = segue.sourceViewController as? NewItemViewController {
+//            if let _ = source.imageView.image {
+//                let resizedPicture = cropAndScaleImage(source.scrollView)
+//                let pictureData = (UIImagePNGRepresentation(resizedPicture))
+//                let pictureName = "image-" + (PFUser.currentUser()!.objectId)! + "-" + "\(NSDate.timeIntervalSinceReferenceDate())"
+//                
+//                self.uploadProgressView.hidden = false
+//                
+//                let file = PFFile(name: pictureName, data: pictureData!)
+//                file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
+//                    if succeeded {
+//                        NSLog("HERE!!")
+//                        self.saveNewItem(source.wishlist, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: file)
+//                    } else if let errorMessage = error {
+//                        NSLog("\(errorMessage)")
+//                    }
+//                    }, progressBlock: { percent in
+//                        self.uploadProgressView.setProgress((Float(percent) / 100.0), animated: false)
+//                        NSLog("Uploaded: \(percent)")
+//                })
+//            } else {
+//                saveNewItem(source.wishlist, name: source.nameLabel?.text, description: source.descriptionLabel.text, file: nil)
+//            }
+//        }
     }
     
     private func addAlert(title: String, message: String) {
@@ -199,50 +197,50 @@ class ItemsTableViewController: UITableViewController {
         self.presentViewController(alertController, animated: false, completion: nil)
     }
     
-    private func saveNewItem(wishlist: Wishlist?, name: String?, description: String?, file: PFFile?) -> Void {
-        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
-
-        wishlistQuery.getObjectInBackgroundWithId((wishlist?.identifier)!) {
-            (wishlistObject: PFObject?, error: NSError?) -> Void in
-            
-            if error == nil && wishlistObject != nil {
-                let item = PFObject(className: DatabaseTables.Wishitem)
-                item.setObject(wishlistObject!, forKey: "wishlist")
-                item.setObject(file ?? NSNull(), forKey: "picture")
-                item.setObject(name!, forKey: "name")
-                item.setObject(description!, forKey: "description")
-                item.ACL = PFACL(user: PFUser.currentUser()!)
-                item.ACL?.setPublicReadAccess(true)
-                item.ACL?.setPublicWriteAccess(true)
-                item.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError?) -> Void in
-                    if (success) {
-                        NSLog("added item \(item.objectId)")
-                        self.items.append(
-                            Item(
-                                identifier: item.objectId!,
-                                name: item["name"] as! String,
-                                url: item["description"] as! String,
-                                picture: file == nil ? nil : UIImage(data: file!.getData()!),
-                                friend: nil,
-                                boughtBy: nil))
-                        
-                        self.uploadProgressView.hidden = true
-                        self.tableView.reloadData()
-                    } else {
-                        NSLog("error adding item \(error)")
-                    }
-                }
-            } else {
-                if(wishlistObject == nil) {
-                    NSLog("Error retrieving wishlist: the 'wishlistObject' is nil.")
-                } else {
-                    NSLog("Error retrieving wishlist: \(error)")
-                }
-                
-            }
-        }
-    }
+//    private func saveNewItem(wishlist: Wishlist?, name: String?, description: String?, file: PFFile?) -> Void {
+//        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
+//
+//        wishlistQuery.getObjectInBackgroundWithId((wishlist?.identifier)!) {
+//            (wishlistObject: PFObject?, error: NSError?) -> Void in
+//            
+//            if error == nil && wishlistObject != nil {
+//                let item = PFObject(className: DatabaseTables.Wishitem)
+//                item.setObject(wishlistObject!, forKey: "wishlist")
+//                item.setObject(file ?? NSNull(), forKey: "picture")
+//                item.setObject(name!, forKey: "name")
+//                item.setObject(description!, forKey: "description")
+//                item.ACL = PFACL(user: PFUser.currentUser()!)
+//                item.ACL?.setPublicReadAccess(true)
+//                item.ACL?.setPublicWriteAccess(true)
+//                item.saveInBackgroundWithBlock {
+//                    (success: Bool, error: NSError?) -> Void in
+//                    if (success) {
+//                        NSLog("added item \(item.objectId)")
+//                        self.items.append(
+//                            Item(
+//                                identifier: item.objectId!,
+//                                name: item["name"] as! String,
+//                                url: item["description"] as! String,
+//                                picture: file == nil ? nil : UIImage(data: file!.getData()!),
+//                                friend: nil,
+//                                boughtBy: nil))
+//                        
+//                        self.uploadProgressView.hidden = true
+//                        self.tableView.reloadData()
+//                    } else {
+//                        NSLog("error adding item \(error)")
+//                    }
+//                }
+//            } else {
+//                if(wishlistObject == nil) {
+//                    NSLog("Error retrieving wishlist: the 'wishlistObject' is nil.")
+//                } else {
+//                    NSLog("Error retrieving wishlist: \(error)")
+//                }
+//                
+//            }
+//        }
+//    }
     
     private func cropAndScaleImage(scrollView: UIScrollView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(scrollView.bounds.size, true, UIScreen.mainScreen().scale)

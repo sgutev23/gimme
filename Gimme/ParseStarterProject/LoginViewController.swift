@@ -11,7 +11,7 @@ import FBSDKCoreKit
 import Firebase
 
 let ref = Firebase(url: "https://gimmeproject.firebaseio.com")
-var user = FAuthData?()
+var currentUser: User? = nil
 
 class LoginViewController: UIViewController {
     
@@ -72,14 +72,20 @@ class LoginViewController: UIViewController {
                                                                 "lastName": newUserCredentials["lastName"],
                                                                 "email" : authData.providerData["email"] as? NSString as? String,
                                                                 "profilePic" : base64String,
-                                                                "facebookID" : authData.uid
+                                                                "identifier" : authData.uid,
+                                                                "birthdate" : ""
                                                             ]
                                                             
                                                             NSLog("data to store: \(newUser)")
-                                                            ref.childByAppendingPath("users")
-                                                                .childByAppendingPath(authData.uid)
-                                                                .setValue(newUser)
-                                                            user = authData
+                                                            ref.childByAppendingPath("users").childByAppendingPath(authData.uid).setValue(newUser)
+                                                            
+                                                            currentUser = User(
+                                                                identifier: authData.uid,
+                                                                firstName: newUserCredentials["firstName"]!,
+                                                                lastName: newUserCredentials["lastName"]!,
+                                                                birthdate: nil,
+                                                                profilePic: UIImage(data: data!))
+                                                            
                                                             self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: authData)
                                                         }
                                                     })
@@ -89,9 +95,20 @@ class LoginViewController: UIViewController {
                                     } else {
                                         let name = snapshot.value[authData.uid]!
                                         let firstName = name!["firstName"]
+                                        let formatter = NSDateFormatter()
+                                        
+                                        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+                                        
                                         NSLog("Logged in: \(firstName)")
                                         NSLog("Logged in: \(snapshot)")
-                                        user = authData
+                                        
+                                        currentUser = User(
+                                            identifier: authData.uid,
+                                            firstName: (name!["firstName"] as? String)!,
+                                            lastName: (name!["lastName"] as? String)!,
+                                            birthdate: formatter.dateFromString((name!["lastName"] as? String)!),
+                                            profilePic: nil)
+                                        
                                         self.performSegueWithIdentifier(SeguesIdentifiers.WishlistsViewSegue, sender: authData)
                                     }
                                 })
@@ -110,11 +127,11 @@ class LoginViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
- //       let wishlistViewController = segue.destinationViewController as! SegmentedViewController
-   
-       // if let authData = sender as? FAuthData {
-   //         wishlistViewController.user = authData
-     //       wishlistViewController.ref = ref
-      //  }
+//        let wishlistViewController = segue.destinationViewController as! SegmentedViewController
+//   
+//        if let authData = sender as? FAuthData {
+//            wishlistViewController.user = authData
+//            wishlistViewController.ref = ref
+//        }
     }
 }

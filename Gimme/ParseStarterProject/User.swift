@@ -9,11 +9,18 @@
 import Foundation
 
 public class User {
-    let identifier: String?
-    let name: String?
+    let firstName: String
+    let lastName: String
+    let identifier: String
+    let profilePic: UIImage?
+    var birthdate: NSDate?
+    var numWishLists: Int = 0
     
-    public init(identifier: String?, name: String?) {
+    public init(identifier: String, firstName: String, lastName: String, birthdate: NSDate?, profilePic: UIImage?) {
         self.identifier = identifier
-        self.name = name
+        self.firstName = firstName
+        self.lastName = lastName
+        self.birthdate = birthdate
+        self.profilePic = profilePic
     }
 }

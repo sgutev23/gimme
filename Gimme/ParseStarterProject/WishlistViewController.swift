@@ -97,7 +97,7 @@ class WishlistViewController: UITableViewController {
         
         ref.childByAppendingPath("wishlists")
             .queryOrderedByChild("userid")
-            .queryEqualToValue(user!.uid)
+            .queryEqualToValue(currentUser!.identifier)
             .observeSingleEventOfType(.Value, withBlock: { snapshot in
                 if snapshot.value is NSNull {
                     NSLog("error")

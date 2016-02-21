@@ -15,7 +15,6 @@ class BoughtItemsTableViewController: UITableViewController {
     private var selectedDate: NSDate? = nil
     private var items = [Item]()
     private var sectionTitles = ["My Info", "My Items"]
-    private var currentUser: Friend? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,88 +159,88 @@ class BoughtItemsTableViewController: UITableViewController {
     }
     
     private func loadUser() {
-        let query = PFQuery(className: DatabaseTables.User)
-        query.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!, block: {
-            (object, error) -> Void in
-            
-            if error == nil {
-                self.currentUser = Friend(  identifier: object!["objectId"] as! String,
-                                            firstName: object!["firstName"] as! String,
-                                            lastName: object!["lastName"] as! String,
-                                            birthdate: object!["birthdate"] as! NSDate?,
-                                            profilePic: nil)
-            } else {
-                NSLog("Error: Cannot retrieve user with ID \((PFUser.currentUser()?.objectId!)!)")
-            }
-        })
+//        let query = PFQuery(className: DatabaseTables.User)
+//        query.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId!)!, block: {
+//            (object, error) -> Void in
+//            
+//            if error == nil {
+//                self.currentUser = Friend(  identifier: object!["objectId"] as! String,
+//                                            firstName: object!["firstName"] as! String,
+//                                            lastName: object!["lastName"] as! String,
+//                                            birthdate: object!["birthdate"] as! NSDate?,
+//                                            profilePic: nil)
+//            } else {
+//                NSLog("Error: Cannot retrieve user with ID \((PFUser.currentUser()?.objectId!)!)")
+//            }
+//        })
     }
     
     private func loadItems() {
-        let query = PFQuery(className: DatabaseTables.Wishitem)
-        query.whereKey("boughtBy", equalTo: PFUser.currentUser()!)
-        query.findObjectsInBackgroundWithBlock {
-            (itemObjects, error) -> Void in
-            
-            if error == nil {
-                for itemObject in itemObjects! {
-                    if let wishlistId = itemObject["wishlistId"] as? String {
-                        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
-                        wishlistQuery.getObjectInBackgroundWithId(wishlistId) {
-                            (wishlistObject, error) -> Void in
-                            
-                            if error == nil {
-                                if let friendId = wishlistObject!["userid"] as? String {
-                                    
-                                    NSLog("FRIEND ID: \(friendId)")
-                                    
-                                    let friendQuery = PFQuery(className: "_User")
-                                    friendQuery.getObjectInBackgroundWithId(friendId) {
-                                        (friendObject, error) -> Void in
-                                        
-                                        if error == nil {
-                                            if let friendObject = friendObject {
-                                                let friend = Friend(
-                                                    identifier: friendObject.objectId!,
-                                                    firstName: friendObject["firstName"] as! String,
-                                                    lastName: friendObject["lastName"] as! String,
-                                                    birthdate: friendObject["birthday"] as! NSDate?,
-                                                    profilePic: nil)
-                                                
-                                                if let picture = itemObject["picture"] as? PFFile {
-                                                    picture.getDataInBackgroundWithBlock {
-                                                        (imageData, error) -> Void in
-                                                        
-                                                        if error == nil {
-                                                            self.items.append(
-                                                                Item(
-                                                                    identifier: itemObject.objectId!!,
-                                                                    name: itemObject["name"] as! String,
-                                                                    url: itemObject["description"] as! String,
-                                                                    picture: UIImage(data: imageData!),
-                                                                    friend: friend,
-                                                                    boughtBy: User(identifier: PFUser.currentUser()!.objectId, name: "Name not important here!"))
-                                                            )
-                                                        } else {
-                                                            NSLog("Cannot retrieve picture: \(error?.localizedDescription)")
-                                                        }
-                                                        self.tableView.reloadData()
-                                                    }
-                                                }
-                                            }
-                                        } else {
-                                            NSLog("Cannot retrieve item's friend: \(error?.localizedDescription)")
-                                        }
-                                    }
-                                }
-                            } else {
-                                NSLog("Cannot retrieve item's wishlist: \(error?.localizedDescription)")
-                            }
-                        }
-                    }
-                }
-            } else {
-                NSLog("Cannot retrieve bought items: \(error?.localizedDescription)")
-            }
-        }
+//        let query = PFQuery(className: DatabaseTables.Wishitem)
+//        query.whereKey("boughtBy", equalTo: PFUser.currentUser()!)
+//        query.findObjectsInBackgroundWithBlock {
+//            (itemObjects, error) -> Void in
+//            
+//            if error == nil {
+//                for itemObject in itemObjects! {
+//                    if let wishlistId = itemObject["wishlistId"] as? String {
+//                        let wishlistQuery = PFQuery(className: DatabaseTables.Wishlist)
+//                        wishlistQuery.getObjectInBackgroundWithId(wishlistId) {
+//                            (wishlistObject, error) -> Void in
+//                            
+//                            if error == nil {
+//                                if let friendId = wishlistObject!["userid"] as? String {
+//                                    
+//                                    NSLog("FRIEND ID: \(friendId)")
+//                                    
+//                                    let friendQuery = PFQuery(className: "_User")
+//                                    friendQuery.getObjectInBackgroundWithId(friendId) {
+//                                        (friendObject, error) -> Void in
+//                                        
+//                                        if error == nil {
+//                                            if let friendObject = friendObject {
+//                                                let friend = Friend(
+//                                                    identifier: friendObject.objectId!,
+//                                                    firstName: friendObject["firstName"] as! String,
+//                                                    lastName: friendObject["lastName"] as! String,
+//                                                    birthdate: friendObject["birthday"] as! NSDate?,
+//                                                    profilePic: nil)
+//                                                
+//                                                if let picture = itemObject["picture"] as? PFFile {
+//                                                    picture.getDataInBackgroundWithBlock {
+//                                                        (imageData, error) -> Void in
+//                                                        
+//                                                        if error == nil {
+//                                                            self.items.append(
+//                                                                Item(
+//                                                                    identifier: itemObject.objectId!!,
+//                                                                    name: itemObject["name"] as! String,
+//                                                                    url: itemObject["description"] as! String,
+//                                                                    picture: UIImage(data: imageData!),
+//                                                                    friend: friend,
+//                                                                    boughtBy: User(identifier: PFUser.currentUser()!.objectId, name: "Name not important here!"))
+//                                                            )
+//                                                        } else {
+//                                                            NSLog("Cannot retrieve picture: \(error?.localizedDescription)")
+//                                                        }
+//                                                        self.tableView.reloadData()
+//                                                    }
+//                                                }
+//                                            }
+//                                        } else {
+//                                            NSLog("Cannot retrieve item's friend: \(error?.localizedDescription)")
+//                                        }
+//                                    }
+//                                }
+//                            } else {
+//                                NSLog("Cannot retrieve item's wishlist: \(error?.localizedDescription)")
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                NSLog("Cannot retrieve bought items: \(error?.localizedDescription)")
+//            }
+//        }
     }
 }

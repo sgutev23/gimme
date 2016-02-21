@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import Parse
 
 class FriendsWishlistViewController: UITableViewController {
 
     var wishlists = [Wishlist]()
-    var friend : Friend?
+    var friend : User?
     
     @IBOutlet weak var titleLabel: UINavigationItem!
     
@@ -63,28 +62,28 @@ class FriendsWishlistViewController: UITableViewController {
         
         titleLabel?.title = (friend?.firstName)! + "'s wishlist"
         
-        let query = PFQuery(className:"Wishlist")
-        query.whereKey("userid", equalTo:(friend?.identifier)!)
-        query.whereKey("public", equalTo: true)
-        query.findObjectsInBackgroundWithBlock {
-            (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                NSLog("results: \(wishlistObjects)")
-                
-                if let wishlistObjects = wishlistObjects as? [PFObject] {
-                    for wishlistObject in wishlistObjects {
-                        self.wishlists.append(
-                            Wishlist(identifier: wishlistObject.objectId!,
-                                name: wishlistObject["name"] as! String,
-                                description: "desc",
-                                isPublic: true))
-                    }
-                    self.tableView.reloadData()
-                }
-            } else {
-                NSLog("error: \(error)")
-            }
-        }
+//        let query = PFQuery(className:"Wishlist")
+//        query.whereKey("userid", equalTo:(friend?.identifier)!)
+//        query.whereKey("public", equalTo: true)
+//        query.findObjectsInBackgroundWithBlock {
+//            (wishlistObjects: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                NSLog("results: \(wishlistObjects)")
+//                
+//                if let wishlistObjects = wishlistObjects as? [PFObject] {
+//                    for wishlistObject in wishlistObjects {
+//                        self.wishlists.append(
+//                            Wishlist(identifier: wishlistObject.objectId!,
+//                                name: wishlistObject["name"] as! String,
+//                                description: "desc",
+//                                isPublic: true))
+//                    }
+//                    self.tableView.reloadData()
+//                }
+//            } else {
+//                NSLog("error: \(error)")
+//            }
+//        }
     }
    
 }

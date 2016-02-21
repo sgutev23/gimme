@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import Parse
 import FBSDKCoreKit
 
 class FriendsViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
-    private var friends = [Friend]()
+    private var friends = [User]()
     //private var selectedIndexPath: NSIndexPath? = nil
     //private var selectedDate: NSDate? = nil
     private let dateFormat = "dd MMM yyyy"
@@ -68,45 +67,45 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
                     friendIdsArray.append(friendId)
                 }
 
-                let query = PFQuery(className:"_User")
-                NSLog("friendsArray \(friendIdsArray)")
-                
-                query.whereKey("facebookId", containedIn: friendIdsArray)
-                query.findObjectsInBackgroundWithBlock {
-                    (friendUserids: [AnyObject]?, error: NSError?) -> Void in
-                    if error == nil {
-                        if let friendUserids = friendUserids as? [PFObject] {
-                            for friendUserid in friendUserids {
-                                let objectId = friendUserid.objectId!
-                                
-                                if let profilePictureFile = friendUserid["profilePicture"] as? PFFile {
-                                    profilePictureFile.getDataInBackgroundWithBlock { (imageData, error) -> Void in
-                                        var profilePicture: UIImage? = nil
-                                        
-                                        if error == nil {
-                                            profilePicture = UIImage(data: imageData!)
-                                        } else {
-                                            NSLog("Error retrieving profile pic data for user \(objectId): \(error?.localizedDescription).")
-                                        }
-                                        
-                                        let friend = Friend(
-                                            identifier: objectId,
-                                            firstName: friendUserid["firstName"] as! String,
-                                            lastName: friendUserid["lastName"] as! String,
-                                            birthdate: friendUserid["birthdate"] as! NSDate?,
-                                            profilePic: profilePicture)
-                                        self.friends.append(friend)
-                                        self.loadWishlistCount(friend)
-                                    }
-                                }
-                            }
-                            
-                        }
-                    } else {
-                        NSLog("error: \(error)")
-                    }
-
-                }
+//                let query = PFQuery(className:"_User")
+//                NSLog("friendsArray \(friendIdsArray)")
+//                
+//                query.whereKey("facebookId", containedIn: friendIdsArray)
+//                query.findObjectsInBackgroundWithBlock {
+//                    (friendUserids: [AnyObject]?, error: NSError?) -> Void in
+//                    if error == nil {
+//                        if let friendUserids = friendUserids as? [PFObject] {
+//                            for friendUserid in friendUserids {
+//                                let objectId = friendUserid.objectId!
+//                                
+//                                if let profilePictureFile = friendUserid["profilePicture"] as? PFFile {
+//                                    profilePictureFile.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+//                                        var profilePicture: UIImage? = nil
+//                                        
+//                                        if error == nil {
+//                                            profilePicture = UIImage(data: imageData!)
+//                                        } else {
+//                                            NSLog("Error retrieving profile pic data for user \(objectId): \(error?.localizedDescription).")
+//                                        }
+//                                        
+//                                        let friend = Friend(
+//                                            identifier: objectId,
+//                                            firstName: friendUserid["firstName"] as! String,
+//                                            lastName: friendUserid["lastName"] as! String,
+//                                            birthdate: friendUserid["birthdate"] as! NSDate?,
+//                                            profilePic: profilePicture)
+//                                        self.friends.append(friend)
+//                                        self.loadWishlistCount(friend)
+//                                    }
+//                                }
+//                            }
+//                            
+//                        }
+//                    } else {
+//                        NSLog("error: \(error)")
+//                    }
+//
+//                }
                 NSLog("Friends are : \(result)")
             } else {
                 NSLog("Error Getting Friends \(error)");
@@ -119,23 +118,23 @@ class FriendsViewController: UITableViewController, UIPopoverPresentationControl
     }
 
     
-    func loadWishlistCount(friend: Friend) {
-        let query = PFQuery(className: DatabaseTables.Wishlist)
-        query.whereKey("userid", equalTo: friend.identifier)
-        query.whereKey("public", equalTo: true)
-        
-        query.countObjectsInBackgroundWithBlock {
-            (count, error) -> Void in
-            
-            if error == nil {
-                NSLog("NUMBER OF WISHLISTS for \(friend.identifier): \(count)")
-                friend.numWishLists = Int(count)
-                self.tableView.reloadData()
-            } else {
-                NSLog("Error getting the number of wishlists for friend \(friend.identifier): \(error?.localizedDescription)")
-            }
-            
-        }
+    func loadWishlistCount(friend: User) {
+//        let query = PFQuery(className: DatabaseTables.Wishlist)
+//        query.whereKey("userid", equalTo: friend.identifier)
+//        query.whereKey("public", equalTo: true)
+//        
+//        query.countObjectsInBackgroundWithBlock {
+//            (count, error) -> Void in
+//            
+//            if error == nil {
+//                NSLog("NUMBER OF WISHLISTS for \(friend.identifier): \(count)")
+//                friend.numWishLists = Int(count)
+//                self.tableView.reloadData()
+//            } else {
+//                NSLog("Error getting the number of wishlists for friend \(friend.identifier): \(error?.localizedDescription)")
+//            }
+//            
+//        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

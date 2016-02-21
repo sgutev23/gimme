@@ -23,20 +23,20 @@
 		0185BE191B9B78870099A56E /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE181B9B78870099A56E /* FriendTableViewCell.swift */; };
 		0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */; };
 		0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */; };
-		0185BE1F1B9B78B00099A56E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0185BE1E1B9B78B00099A56E /* Friend.swift */; };
 		01E074D41C5E3D7B000A1A92 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E074D31C5E3D7B000A1A92 /* PopoverViewController.swift */; };
 		01E074D61C5E45CF000A1A92 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E074D51C5E45CF000A1A92 /* ViewControllers.swift */; };
 		01E074DA1C5E6A6B000A1A92 /* MyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E074D91C5E6A6B000A1A92 /* MyInfoTableViewCell.swift */; };
 		01E3940A1B9C30FB00093162 /* FriendsWIshlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */; };
 		01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */; };
 		01E394121B9E20F700093162 /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E394111B9E20F700093162 /* DatabaseTables.swift */; };
+		01E4B2C41C79AB6900E58F8B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4B2C31C79AB6900E58F8B /* LoginViewController.swift */; };
 		01E7730A1C54151B009901CB /* WishlistItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E773081C54151B009901CB /* WishlistItemTableViewCell.swift */; };
 		01E7730B1C54151B009901CB /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E773091C54151B009901CB /* WishlistViewController.swift */; };
+		2ABB920DF7D7D03C45A447AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB10DC2B40071BF2F3C3797 /* libPods.a */; };
 		588DFF2C1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */; };
 		588DFF361B9B3D8A00644648 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF331B9B3D8A00644648 /* FBSDKCoreKit.framework */; };
 		588DFF371B9B3D8A00644648 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF341B9B3D8A00644648 /* FBSDKLoginKit.framework */; };
 		588DFF381B9B3D8A00644648 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588DFF351B9B3D8A00644648 /* FBSDKShareKit.framework */; };
-		58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B535EA1B9B36B600D02062 /* LoginViewController.swift */; };
 		58CA93031C78E94A009FCFE8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CA93021C78E94A009FCFE8 /* Social.framework */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
 		81BA81501A49DA1800E65899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA814E1A49DA1800E65899 /* Main.storyboard */; };
@@ -49,7 +49,6 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		81BA81811A49E10C00E65899 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81801A49E10C00E65899 /* ParseUI.framework */; };
-		BFE86D7857153FFFE20D3AFA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11768280A08E6F5E1762900E /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,21 +68,19 @@
 		0185BE181B9B78870099A56E /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
-		0185BE1E1B9B78B00099A56E /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		01E074D31C5E3D7B000A1A92 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		01E074D51C5E45CF000A1A92 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		01E074D91C5E6A6B000A1A92 /* MyInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsWIshlistTableViewController.swift; sourceTree = "<group>"; };
 		01E3940B1B9C310300093162 /* FriendWishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendWishlistTableViewCell.swift; sourceTree = "<group>"; };
 		01E394111B9E20F700093162 /* DatabaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTables.swift; sourceTree = "<group>"; };
+		01E4B2C31C79AB6900E58F8B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		01E773081C54151B009901CB /* WishlistItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistItemTableViewCell.swift; sourceTree = "<group>"; };
 		01E773091C54151B009901CB /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
-		11768280A08E6F5E1762900E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588DFF2B1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		588DFF331B9B3D8A00644648 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		588DFF341B9B3D8A00644648 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		588DFF351B9B3D8A00644648 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		58B535EA1B9B36B600D02062 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		58CA93021C78E94A009FCFE8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		68BB37B65E0F627C40D24D45 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		81BA81451A49DA1800E65899 /* Gimme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gimme.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +98,7 @@
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		81BA81821A49E27F00E65899 /* ParseStarterProject-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParseStarterProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		8D1DCA3F4C388E7A8EB3EB97 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FBB10DC2B40071BF2F3C3797 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +107,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58CA93031C78E94A009FCFE8 /* Social.framework in Frameworks */,
-				BFE86D7857153FFFE20D3AFA /* Pods.framework in Frameworks */,
 				588DFF2C1B9B3C9D00644648 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
@@ -122,6 +119,7 @@
 				588DFF371B9B3D8A00644648 /* FBSDKLoginKit.framework in Frameworks */,
 				81BA81811A49E10C00E65899 /* ParseUI.framework in Frameworks */,
 				81BA81701A49DB6800E65899 /* Bolts.framework in Frameworks */,
+				2ABB920DF7D7D03C45A447AC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,12 +154,12 @@
 		011EB7201B9B5825002142A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				01E4B2C31C79AB6900E58F8B /* LoginViewController.swift */,
 				01E773091C54151B009901CB /* WishlistViewController.swift */,
 				01E394091B9C30FB00093162 /* FriendsWIshlistTableViewController.swift */,
 				0185BE1A1B9B789E0099A56E /* FriendsViewController.swift */,
 				0185BE1B1B9B789E0099A56E /* SegmentedViewController.swift */,
 				011EB71C1B9B4C1A002142A5 /* ItemsTableViewController.swift */,
-				58B535EA1B9B36B600D02062 /* LoginViewController.swift */,
 				015FC5001BA56D00006C205A /* NewItemViewController.swift */,
 				015FC4FE1BA43AB3006C205A /* NewWishlistViewController.swift */,
 				015FC5051BA58A99006C205A /* FriendItemsTableViewController.swift */,
@@ -181,7 +179,6 @@
 		01A535A71B9B370900DBC96C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0185BE1E1B9B78B00099A56E /* Friend.swift */,
 				0183797E1B9B39B800E27C39 /* User.swift */,
 				018379801B9B39C400E27C39 /* Wishlist.swift */,
 				018379821B9B39D000E27C39 /* Item.swift */,
@@ -246,7 +243,7 @@
 				81BA816D1A49DB6800E65899 /* ParseCrashReporting.framework */,
 				81BA81801A49E10C00E65899 /* ParseUI.framework */,
 				81BA81751A49E0C500E65899 /* System Frameworks */,
-				11768280A08E6F5E1762900E /* Pods.framework */,
+				FBB10DC2B40071BF2F3C3797 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -419,7 +416,6 @@
 				01E074D41C5E3D7B000A1A92 /* PopoverViewController.swift in Sources */,
 				01E3940A1B9C30FB00093162 /* FriendsWIshlistTableViewController.swift in Sources */,
 				0185BE1C1B9B789E0099A56E /* FriendsViewController.swift in Sources */,
-				58B535EB1B9B36B600D02062 /* LoginViewController.swift in Sources */,
 				011EB7191B9B48CE002142A5 /* Segues.swift in Sources */,
 				0183797F1B9B39B800E27C39 /* User.swift in Sources */,
 				0102D6D61BE634470064BC5B /* BoughtItemsTableViewController.swift in Sources */,
@@ -433,8 +429,8 @@
 				01E7730A1C54151B009901CB /* WishlistItemTableViewCell.swift in Sources */,
 				018379811B9B39C400E27C39 /* Wishlist.swift in Sources */,
 				0185BE1D1B9B789E0099A56E /* SegmentedViewController.swift in Sources */,
+				01E4B2C41C79AB6900E58F8B /* LoginViewController.swift in Sources */,
 				01E3940C1B9C310300093162 /* FriendWishlistTableViewCell.swift in Sources */,
-				0185BE1F1B9B78B00099A56E /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
